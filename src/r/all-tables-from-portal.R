@@ -168,7 +168,8 @@ for (i in seq_along(data_portal$label)) {
 
       associated_theme <- data_portal_structure %>%
         filter(Product_code == associated_product_code[j])
-
+      
+      if (nrow(associated_theme) == 0) next
       if (associated_theme$theme %in% c("Wellbeing framework", "Making life better")) next
 
       tables$tables[[paste0(matrix, "_", j)]] <- list(
