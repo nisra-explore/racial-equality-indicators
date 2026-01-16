@@ -236,3 +236,19 @@ table tr:not(:has(th)):hover {
 .btn-primary {
   background-color: #3878c5;
 }
+
+.sidebar-header {
+  background-color: #3878c5;
+  color: #fff;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+
+}
+
+.sidebar-header::before {
+  content: "☰";
+  margin-right: 0.5rem;
+  font-size: 1.2em;
+}
+

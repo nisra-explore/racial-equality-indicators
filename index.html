@@ -99,17 +99,26 @@
 
           <div class="offcanvas-body">
 
-            <div class="pt-3 px-1 sidebar-search">
-              <label for="global-search" class="form-label mb-1 h5">Search by topic:</label>
-              <div class="input-group">
-                <span class="input-group-text"><i class="bi bi-search"></i></span>
-                <input id="global-search" type="search" class="form-control" placeholder="Search" autocomplete="off">
+            <div class="card my-3">
+              <div class="sidebar-search">
+                <div class="card-header sidebar-header">
+                  <label for="global-search" >Search by Keyword</label>
+                </div>
+                <div class="card-body">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    <input id="global-search" type="search" class="form-control" placeholder="Search" autocomplete="off">
+                  </div>
+                  <div id="global-search-results" class="list-group mt-2"></div>
+                </div>
               </div>
-              <div id="global-search-results" class="list-group mt-2"></div>
             </div>
 
-            <div class="pt-3 px-1 vstack gap-3">
-              <p class="h5">Or browse by category:</p>
+            <div class="card">
+              <div class="card-header sidebar-header">
+                Select topic
+              </div>
+              <div class="card-body pt-3 px-1 vstack gap-3">
               <div>
                 <label for="theme" class="form-label">Theme</label>
                 <select id="theme" name="theme" class="form-select"></select>
@@ -136,6 +145,7 @@
               </div>
 
               <div id="other-vars" class="vstack gap-3"></div>
+              </div>
 
               <div class="pt-3"></div>
               <!-- Done button: mobile only -->
@@ -143,6 +153,7 @@
                 Done
               </button>
             </div>
+            
           </div>
         </div>
       </aside>
