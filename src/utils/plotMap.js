@@ -11,7 +11,7 @@ import { themes_menu, map_container, stats_menu,
          SIDEBAR_OPEN_KEY, map_card, chart_card, headline,
          chart_title, chart_subtitle, headline_fig, dp_link,
          chart_updated, nav_product, nav_subject, nav_theme,
-         table_title, map_updated, map_title, title_card, headline_stat,
+         table_title, map_updated, map_title, title_card, headline_stat, headline_stat_label,
          additional_tables, table_tabs, table_tabs_content,
          tables_title, table_updated, save_chart } from "./elements.js";
 import { addExportControl } from "./addExportControl.js";
@@ -55,7 +55,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
     let subtitle_text = "";
 
     if (other_vars.length > 0) {
-        other_headline = " for ";
+        
         additional_tables.classList.remove("d-none");
 
 
@@ -120,18 +120,12 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
 
             subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
+            
 
-            if (i != 0) {
-                if (i == other_vars.length - 1) {
-                    other_headline += " and "
-                } else {
-                    other_headline += ", "
+            other_headline += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong> category: <em>"${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}"</em>`;
+             if (i != other_vars.length - 1) {
+                    other_headline += "<br>"
                 }
-            }
-            
-
-            other_headline += `the <strong>${tables[matrix].categories[other_vars[i]].label}</strong> category <em>"${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}"</em>`;
-            
 
         }
 
@@ -535,7 +529,8 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         if (values[values.length - 1] != null) headline_value = values[values.length - 1].toLocaleString();
 
         headline_fig.innerHTML = `<span class = "h1">${headline_value}</span> ${unit_fixed}`;
-        headline_stat.innerHTML = `<strong>${stat_label}</strong> in Northern Ireland in <strong>${time_series[time_series.length - 1]}</strong>${other_headline}.`
+        headline_stat_label.textContent = stat_label;
+        headline_stat.innerHTML = `Northern Ireland (<strong>${time_series[time_series.length - 1]}</strong>)<br>${other_headline}.`
 
         if (additional_tables.classList.contains("d-none")) {
 

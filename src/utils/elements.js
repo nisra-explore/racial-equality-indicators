@@ -41,5 +41,6 @@ export const table_updated = document.getElementById("table-updated");
 export const save_map = document.getElementById("save-map");
 export const save_chart = document.getElementById("save-chart");
 export const share_btn = document.querySelectorAll('button[type="share"]');
+export const headline_stat_label = document.getElementById("headline-stat-label");
 
 export const SIDEBAR_OPEN_KEY = "nisra:data-explorer:sidebarOpen";
