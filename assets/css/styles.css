@@ -234,6 +234,12 @@ table tr:not(:has(th)):hover {
 }
 
 .btn-primary {
+  background-color: #68a41e;
+  border-color: #68a41e;
+  color: #000
+}
+
+.btn-primary:hover {
   background-color: #3878c5;
 }
 
@@ -252,3 +258,10 @@ table tr:not(:has(th)):hover {
   font-size: 1.2em;
 }
 
+.i-button {
+  height: 0.75em;
+  margin-left: 0.25em;
+  margin-bottom: 0.25em;
+  cursor: pointer;
+
+}

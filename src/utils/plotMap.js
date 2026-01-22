@@ -13,7 +13,7 @@ import { themes_menu, map_container, stats_menu,
          chart_updated, nav_product, nav_subject, nav_theme,
          table_title, map_updated, map_title, title_card, headline_stat, headline_stat_label,
          additional_tables, table_tabs, table_tabs_content,
-         tables_title, table_updated, save_chart } from "./elements.js";
+         tables_title, table_updated, save_chart, stat_info_text } from "./elements.js";
 import { addExportControl } from "./addExportControl.js";
 import { downloadChart } from "./downloadChart.js";         
 
@@ -354,12 +354,34 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         }
     }
 
+    let headline_value = "Not available";
+        
+
+        
+
+        headline_stat_label.innerHTML = `
+            ${stat_label}
+            <img class="i-button" src="assets/img/icon/i-button.svg" alt="Information button"
+                data-bs-toggle="collapse" data-bs-target="#stat-info" aria-expanded="false"
+                aria-controls="stat-info">
+        `;
+
+        console.log(result.extension.contact.email)
+
+        stat_info_text.innerHTML = `
+            <div>Access data at: <a href="https://data.nisra.gov.uk/table/${matrix}" target="_blank">${result.label}</a></div>
+            <div>Last updated: <strong>${result.updated.substr(8, 2)}/${result.updated.substr(5, 2)}/${result.updated.substr(0, 4)}</strong></div>
+            <div><a href="mailto:${result.extension.contact.email}">Email for more information</a></div>
+        `;
+
+        
+
     if (plot_ni) {
 
         chart_card.classList.remove("d-none");
         chart_card.classList.add("d-block");
-        headline.classList.remove("d-none");
-        headline.classList.add("d-block");
+        // headline.classList.remove("d-none");
+        // headline.classList.add("d-block");
 
         if (themes_menu.value != "67" & geog_type != "none") {
             const NI_position = result.dimension[geog_type].category.index.indexOf("N92000002");
@@ -418,8 +440,12 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         var data_series = ni_result.result.value;
         // Make sure values are numbers
         const values = data_series.map(v => (v === null || v === undefined ? null : Number(v)));
+        if (values[values.length - 1] != null) headline_value = values[values.length - 1].toLocaleString();
+        
+        
 
         var time_series = ni_result.result.dimension[time_var].category.index;
+        headline_stat.innerHTML = `Northern Ireland (<strong>${time_series[time_series.length - 1]}</strong>)<br>${other_headline}`
 
         Chart.defaults.font.family = "'Roboto', Arial, sans-serif";
         Chart.defaults.color = "#212529"; // optional: match Bootstrap body color
@@ -520,17 +546,14 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         }
 
         let unit_fixed = unit;
+        
 
         if (unit.toLowerCase() == "number") {
             unit_fixed = "";
         }
-
-        let headline_value = "Not available";
-        if (values[values.length - 1] != null) headline_value = values[values.length - 1].toLocaleString();
-
         headline_fig.innerHTML = `<span class = "h1">${headline_value}</span> ${unit_fixed}`;
-        headline_stat_label.textContent = stat_label;
-        headline_stat.innerHTML = `Northern Ireland (<strong>${time_series[time_series.length - 1]}</strong>)<br>${other_headline}.`
+
+        
 
         if (additional_tables.classList.contains("d-none")) {
 
@@ -601,7 +624,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             map_card.parentElement.insertBefore(spacer, map_card);
         }
         
-        title_card.classList.remove("col-xl-6");
+        //title_card.classList.remove("col-xl-6");
     }
 
     let data;
