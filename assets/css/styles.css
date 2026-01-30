@@ -244,8 +244,7 @@ table tr:not(:has(th)):hover {
 }
 
 .sidebar-header {
-  background-color: #3878c5;
-  color: #fff;
+  background-color: #68a41e;
   font-weight: normal;
   display: flex;
   align-items: center;

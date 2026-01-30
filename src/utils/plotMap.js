@@ -8,15 +8,16 @@ import { quantile} from "./quantile.js";
 import { themes_menu, map_container, stats_menu,
          other_menu, map_subtitle, page_title, chart_container, 
          table_preview, metadata_text, search, geo_menu,
-         SIDEBAR_OPEN_KEY, map_card, chart_card, headline,
+         SIDEBAR_OPEN_KEY, map_card, chart_card,
          chart_title, chart_subtitle, headline_fig, dp_link,
          chart_updated, nav_product, nav_subject, nav_theme,
-         table_title, map_updated, map_title, title_card, headline_stat, headline_stat_label,
+         table_title, map_updated, map_title, headline_stat, headline_stat_label,
          additional_tables, table_tabs, table_tabs_content,
-         tables_title, table_updated, save_chart, stat_info_text } from "./elements.js";
-import { addExportControl } from "./addExportControl.js";
-import { downloadChart } from "./downloadChart.js";         
+         tables_title, table_updated, stat_info_text } from "./elements.js";     
+import { downloadButton } from "./download-button.js";
 
+
+export let map;
 
 export async function plotMap (tables, matrix, statistic, geog_type) {   
 
@@ -354,10 +355,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         }
     }
 
-    let headline_value = "Not available";
-        
-
-        
+    let headline_value = "Not available";       
 
         headline_stat_label.innerHTML = `
             ${stat_label}
@@ -365,8 +363,6 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                 data-bs-toggle="collapse" data-bs-target="#stat-info" aria-expanded="false"
                 aria-controls="stat-info">
         `;
-
-        console.log(result.extension.contact.email)
 
         stat_info_text.innerHTML = `
             <div>Access data at: <a href="https://data.nisra.gov.uk/table/${matrix}" target="_blank">${result.label}</a></div>
@@ -380,8 +376,6 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
         chart_card.classList.remove("d-none");
         chart_card.classList.add("d-block");
-        // headline.classList.remove("d-none");
-        // headline.classList.add("d-block");
 
         if (themes_menu.value != "67" & geog_type != "none") {
             const NI_position = result.dimension[geog_type].category.index.indexOf("N92000002");
@@ -541,10 +535,6 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         const ctx = chart_canvas.getContext('2d');
         new Chart(ctx, chart_config);
 
-        save_chart.onclick = function () {
-            downloadChart(ctx);
-        }
-
         let unit_fixed = unit;
         
 
@@ -624,7 +614,6 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             map_card.parentElement.insertBefore(spacer, map_card);
         }
         
-        //title_card.classList.remove("col-xl-6");
     }
 
     let data;
@@ -647,7 +636,11 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             delete result.dimension[geog_type].category.label["Unknown"];
         }
 
-        data = result.value;
+        const cleaned = result.value.map(v =>
+            typeof v === "number" && !Number.isNaN(v) ? v : null
+            );
+
+        data = cleaned;
 
         // Useful for legend (keep as-is even for COB quintiles)
         let range_min = Math.floor(Math.min(...data.filter(v => v != null)));
@@ -753,7 +746,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         }
 
         // Create a map
-       const map = new maplibregl.Map({
+       map = new maplibregl.Map({
             container: 'map',
             style: 'public/map/style-omt.json',
             center: [-6.85, 54.67],
@@ -780,7 +773,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
         map.on('load', async () => {
 
-            addExportControl(map, map_title_text);
+            // addExportControl(map, map_title_text);
 
             
             // --- 1) Prepare a styled copy of your GeoJSON with props used by the map ---
@@ -1045,6 +1038,8 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
 
          metadata_text.innerHTML = note_cleaned;   
+
+         downloadButton(matrix);
    
 
 }
