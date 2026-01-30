@@ -6,6 +6,7 @@ import { map } from "./plotMap.js";
  * - loading overlay
  * - cancel button (does NOT truly abort html2canvas; it prevents download + hides overlay)
  * - excludes `.card-footer` from capture
+ * - gracefully skips map snapshot/replace when `map` is not available (null/undefined) or not rendered
  */
 
 let activeCaptureToken = null;
@@ -27,14 +28,17 @@ export function downloadButton(matrix) {
 
     const cardEl = document.getElementById(capture.id);
     const mapContainerEl = document.getElementById("map-container");
-    const rawText = document.getElementById("map-title").textContent;
+    const rawText =
+      document.getElementById("map-title")?.textContent?.trim() ||
+      document.getElementById("chart-title")?.textContent?.trim() ||
+      "capture";
 
     const fileName = rawText
       .toLowerCase()
       .trim()
       .replace(/[^a-z0-9\s-]/g, "")
       .replace(/\s+/g, "-")
-      .replace(/-+/g, "-");
+      .replace(/-+/g, "-") || "capture";
 
     // Cancellation token for this run
     const token = { cancelled: false, done: false };
@@ -59,24 +63,44 @@ export function downloadButton(matrix) {
   });
 }
 
-async function exportCardWithMap(cardEl, map, mapContainerEl, filename, token) {
+async function exportCardWithMap(cardEl, mapInstance, mapContainerEl, filename, token) {
   // Allow cancel before starting any heavy work
   if (token?.cancelled) return;
 
-  // Wait until map is fully rendered
-  await new Promise((resolve) => map.once("idle", resolve));
-  if (token?.cancelled) return;
+  // Detect whether we should attempt a map snapshot/replace
+  const hasMap =
+    !!mapInstance &&
+    typeof mapInstance.once === "function" &&
+    typeof mapInstance.getCanvas === "function";
 
-  // Snapshot the WebGL canvas
-  const mapCanvas = map.getCanvas();
-  let dataUrl;
-  try {
-    dataUrl = mapCanvas.toDataURL("image/png");
-  } catch (err) {
-    console.error("Map canvas export failed (likely CORS taint):", err);
-    throw err;
+  const mapContainerVisible = (() => {
+    if (!mapContainerEl) return false;
+    // If container or its parents are display:none, offsetParent will be null (except for fixed pos; not the case here)
+    if (mapContainerEl.offsetParent === null) return false;
+    // Also treat 0x0 as "not rendered"
+    if (mapContainerEl.clientWidth === 0 || mapContainerEl.clientHeight === 0) return false;
+    return true;
+  })();
+
+  let dataUrl = null;
+
+  // Only do map-specific work if a map exists AND the container is visible/rendered
+  if (hasMap && mapContainerVisible) {
+    // Wait until map is fully rendered
+    await new Promise((resolve) => mapInstance.once("idle", resolve));
+    if (token?.cancelled) return;
+
+    // Snapshot the WebGL canvas
+    const mapCanvas = mapInstance.getCanvas();
+    try {
+      dataUrl = mapCanvas.toDataURL("image/png");
+    } catch (err) {
+      // If the map snapshot fails, we still want to capture the rest of the card
+      console.warn("Map canvas export failed (continuing without map snapshot):", err);
+      dataUrl = null;
+    }
+    if (token?.cancelled) return;
   }
-  if (token?.cancelled) return;
 
   // Capture WITHOUT touching the live DOM
   const canvas = await html2canvas(cardEl, {
@@ -96,19 +120,29 @@ async function exportCardWithMap(cardEl, map, mapContainerEl, filename, token) {
       // If user cancelled, skip clone manipulation
       if (token?.cancelled) return;
 
-      // Find the equivalents in the cloned DOM
+      // Always lock the cloned card width (keeps Bootstrap breakpoint/layout consistent)
       const clonedCard = clonedDoc.getElementById(cardEl.id);
-      const clonedMapContainer = clonedDoc.getElementById(mapContainerEl.id);
+      if (clonedCard) {
+        clonedCard.style.width = `${cardEl.getBoundingClientRect().width}px`;
+      }
 
-      if (!clonedCard || !clonedMapContainer) return;
+      // Only replace the cloned map container if we actually got a snapshot
+      if (!dataUrl) return;
 
-      // Make sure the cloned map container keeps its size
+      const clonedMapContainer = mapContainerEl
+        ? clonedDoc.getElementById(mapContainerEl.id)
+        : null;
+
+      if (!clonedMapContainer) return;
+
+      // If the cloned container is not visible / has no size, skip
       const w = mapContainerEl.clientWidth;
       const h = mapContainerEl.clientHeight;
+      if (!w || !h) return;
+
       clonedMapContainer.style.width = `${w}px`;
       clonedMapContainer.style.height = `${h}px`;
 
-      // Replace the cloned map container contents with the snapshot image
       clonedMapContainer.innerHTML = "";
       const img = clonedDoc.createElement("img");
       img.src = dataUrl;
@@ -116,9 +150,6 @@ async function exportCardWithMap(cardEl, map, mapContainerEl, filename, token) {
       img.style.height = "100%";
       img.style.display = "block";
       clonedMapContainer.appendChild(img);
-
-      // Lock the cloned card width to the real rendered width (keeps Bootstrap breakpoint/layout consistent)
-      clonedCard.style.width = `${cardEl.getBoundingClientRect().width}px`;
     }
   });
 
