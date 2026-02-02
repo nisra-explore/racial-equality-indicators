@@ -152,40 +152,48 @@ async function exportCardWithMap(cardEl, mapInstance, mapContainerEl, filename, 
     ignoreElements: (el) => el.classList?.contains("card-footer"),
 
     onclone: (clonedDoc) => {
-      // If user cancelled, skip clone manipulation
-      if (token?.cancelled) return;
+  if (token?.cancelled) return;
 
-      // Always lock the cloned card width (keeps Bootstrap breakpoint/layout consistent)
-      const clonedCard = clonedDoc.getElementById(cardEl.id);
-      if (clonedCard) {
-        clonedCard.style.width = `${cardEl.getBoundingClientRect().width}px`;
-      }
+  // Lock the cloned capture width for responsive consistency
+  const clonedCard = clonedDoc.getElementById(cardEl.id);
+  if (clonedCard) clonedCard.style.width = `${cardEl.getBoundingClientRect().width}px`;
 
-      // Only replace the cloned map container if we actually got a snapshot
-      if (!dataUrl) return;
+  // If no map snapshot, don’t replace anything
+  if (!dataUrl) return;
 
-      const clonedMapContainer = mapContainerEl
-        ? clonedDoc.getElementById(mapContainerEl.id)
-        : null;
+  // --- Replace ONLY #map, not #map-container ---
+  const originalMapDiv = document.getElementById("map");
+  const clonedMapDiv = clonedDoc.getElementById("map");
+  if (originalMapDiv && clonedMapDiv) {
+    const w = originalMapDiv.clientWidth;
+    const h = originalMapDiv.clientHeight;
 
-      if (!clonedMapContainer) return;
+    clonedMapDiv.style.width = `${w}px`;
+    clonedMapDiv.style.height = `${h}px`;
+    clonedMapDiv.innerHTML = "";
 
-      // If the cloned container is not visible / has no size, skip
-      const w = mapContainerEl.clientWidth;
-      const h = mapContainerEl.clientHeight;
-      if (!w || !h) return;
+    const img = clonedDoc.createElement("img");
+    img.src = dataUrl;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.display = "block";
+    clonedMapDiv.appendChild(img);
+  }
 
-      clonedMapContainer.style.width = `${w}px`;
-      clonedMapContainer.style.height = `${h}px`;
+  // --- Ensure legend is visible in cloned DOM ---
+  const originalLegend = document.getElementById("map-legend");
+  const clonedLegend = clonedDoc.getElementById("map-legend");
+  if (originalLegend && clonedLegend) {
+    // Force it to render as a block with a real width (avoid Bootstrap col quirks in clone)
+    const lw = originalLegend.getBoundingClientRect().width;
+    clonedLegend.style.display = "block";
+    clonedLegend.style.width = `${Math.max(1, Math.floor(lw))}px`;
+    clonedLegend.style.maxWidth = "100%";
+    clonedLegend.style.marginLeft = "auto";
+    clonedLegend.style.marginRight = "auto";
+  }
+}
 
-      clonedMapContainer.innerHTML = "";
-      const img = clonedDoc.createElement("img");
-      img.src = dataUrl;
-      img.style.width = "100%";
-      img.style.height = "100%";
-      img.style.display = "block";
-      clonedMapContainer.appendChild(img);
-    }
   });
 
   // If cancelled while html2canvas was running, do not download
