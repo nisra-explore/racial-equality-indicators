@@ -135,6 +135,7 @@ for (i in seq_along(data_portal$label)) {
 
   name <- gsub("\u2013", "-", data_portal$label[i], fixed = TRUE)
   if (name == "Life Expectancy at age 65") name <- "Life Expectancy at Age 65"
+  if (name == "Births registered") name <- "Births Registered"
 
   theme <- data_portal_structure %>%
     filter(Product_code == product_code)
