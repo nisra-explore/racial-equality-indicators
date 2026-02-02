@@ -138,7 +138,7 @@ async function exportCardWithMap(cardEl, mapInstance, mapContainerEl, filename, 
 
 
   // Capture WITHOUT touching the live DOM
-  const canvas = await html2canvas(cardEl, {
+  let canvas = await html2canvas(cardEl, {
     backgroundColor: "#ffffff",
     scale: 2,
     useCORS: true,
@@ -198,6 +198,11 @@ async function exportCardWithMap(cardEl, mapInstance, mapContainerEl, filename, 
 
   // If cancelled while html2canvas was running, do not download
   if (token?.cancelled) return;
+
+  canvas = await addLogoUnderCanvas(canvas, "assets/img/logo/nisra-only-colour.png", {
+    padding: 24,
+    logoHeight: 60
+  });
 
   // Download
   const link = document.createElement("a");
@@ -292,3 +297,52 @@ async function jiggleLayout(el) {
   el.style.height = prevHeight;
 }
 
+async function addLogoUnderCanvas(originalCanvas, logoSrc, options = {}) {
+  const {
+    padding = 24,
+    logoHeight = 60
+  } = options;
+
+  const logo = new Image();
+  logo.src = logoSrc;
+  logo.crossOrigin = "anonymous";
+
+  await new Promise((resolve, reject) => {
+    logo.onload = resolve;
+    logo.onerror = reject;
+  });
+
+  // Scale logo proportionally
+  const scale = logoHeight / logo.height;
+  const logoWidth = logo.width * scale;
+
+  const newCanvas = document.createElement("canvas");
+  newCanvas.width = originalCanvas.width;
+  newCanvas.height =
+    originalCanvas.height + padding * 2 + logoHeight;
+
+  const ctx = newCanvas.getContext("2d");
+
+  // White background
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+  // Draw original capture
+  ctx.drawImage(originalCanvas, 0, 0);
+
+  // Bottom-right position
+  const x =
+    newCanvas.width - logoWidth - padding;
+  const y =
+    originalCanvas.height + padding;
+
+  ctx.drawImage(
+    logo,
+    x,
+    y,
+    logoWidth,
+    logoHeight
+  );
+
+  return newCanvas;
+}
