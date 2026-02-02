@@ -754,7 +754,8 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             minZoom: initialZoom,
             maxZoom: initialZoom + 7,
             maxBounds: bounds,
-            attributionControl: false
+            attributionControl: false,
+            preserveDrawingBuffer: true
         });         
         
         

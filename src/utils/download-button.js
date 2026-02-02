@@ -84,23 +84,58 @@ async function exportCardWithMap(cardEl, mapInstance, mapContainerEl, filename, 
 
   let dataUrl = null;
 
-  // Only do map-specific work if a map exists AND the container is visible/rendered
   if (hasMap && mapContainerVisible) {
-    // Wait until map is fully rendered
-    await new Promise((resolve) => mapInstance.once("idle", resolve));
-    if (token?.cancelled) return;
+  // Trigger a real layout change first (what manual resize was doing)
+  await jiggleLayout(mapContainerEl);
 
-    // Snapshot the WebGL canvas
-    const mapCanvas = mapInstance.getCanvas();
-    try {
-      dataUrl = mapCanvas.toDataURL("image/png");
-    } catch (err) {
-      // If the map snapshot fails, we still want to capture the rest of the card
-      console.warn("Map canvas export failed (continuing without map snapshot):", err);
-      dataUrl = null;
-    }
-    if (token?.cancelled) return;
+  // Then force MapLibre to recalc + repaint
+  mapInstance.resize();
+  mapInstance.triggerRepaint?.();
+
+  // Never block forever waiting for idle
+  await waitMapIdleOrTimeout(mapInstance, 1500);
+  if (token?.cancelled) return;
+
+  // One more frame to ensure pixels are ready
+  mapInstance.triggerRepaint?.();
+  await new Promise(requestAnimationFrame);
+
+  // Snapshot the WebGL canvas
+  const mapCanvas = mapInstance.getCanvas();
+  try {
+    dataUrl = mapCanvas.toDataURL("image/png");
+  } catch (err) {
+    console.warn("Map canvas export failed (continuing without map snapshot):", err);
+    dataUrl = null;
   }
+  if (token?.cancelled) return;
+}
+
+
+  if (mapInstance && typeof mapInstance.resize === "function") {
+    // Programmatic equivalent of a window resize
+    mapInstance.resize();
+    mapInstance.triggerRepaint?.();
+
+    // Never block forever waiting for MapLibre to "settle"
+    await waitMapIdleOrTimeout(mapInstance, 1500);
+
+    // Ensure at least one frame of fresh pixels
+    mapInstance.triggerRepaint?.();
+    await new Promise(requestAnimationFrame);
+  }
+
+    // 1) Force a real ResizeObserver-triggering layout change
+  // Prefer the map container (this mirrors what manual window resize “fixes”)
+  await jiggleLayout(mapContainerEl);
+
+  // 2) Tell MapLibre to re-measure and repaint
+  if (mapInstance && typeof mapInstance.resize === "function") {
+    mapInstance.resize();
+    mapInstance.triggerRepaint?.();
+    await new Promise(requestAnimationFrame);
+  }
+
 
   // Capture WITHOUT touching the live DOM
   const canvas = await html2canvas(cardEl, {
@@ -215,3 +250,37 @@ function hideCaptureLoading() {
   const overlay = document.getElementById("capture-loading-overlay");
   if (overlay) overlay.style.display = "none";
 }
+
+function waitMapIdleOrTimeout(mapInstance, ms = 1500) {
+  return Promise.race([
+    new Promise((resolve) => mapInstance.once("idle", resolve)),
+    new Promise((resolve) => setTimeout(resolve, ms))
+  ]);
+}
+
+async function jiggleLayout(el) {
+  if (!el) return;
+
+  const prevWidth = el.style.width;
+  const prevHeight = el.style.height;
+
+  // Use computed size so we can reliably restore
+  const w = el.getBoundingClientRect().width;
+  const h = el.getBoundingClientRect().height;
+
+  // Only jiggle if we have a size
+  if (!w || !h) return;
+
+  el.style.width = `${Math.max(0, Math.floor(w) - 1)}px`;
+  el.style.height = `${Math.max(0, Math.floor(h) - 1)}px`;
+  await new Promise(requestAnimationFrame);
+
+  el.style.width = `${Math.floor(w)}px`;
+  el.style.height = `${Math.floor(h)}px`;
+  await new Promise(requestAnimationFrame);
+
+  // Restore inline styles exactly as before
+  el.style.width = prevWidth;
+  el.style.height = prevHeight;
+}
+
