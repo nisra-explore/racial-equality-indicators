@@ -43,5 +43,6 @@ export const headline_stat_label = document.getElementById("headline-stat-label"
 export const stat_info_text = document.getElementById("stat-info-text");
 export const download_btn = document.getElementById("download-btn");
 export const capture = document.getElementById("capture");
+export const headline_year = document.getElementById("headline-year");
 
 export const SIDEBAR_OPEN_KEY = "nisra:data-explorer:sidebarOpen";

@@ -13,7 +13,7 @@ import { themes_menu, map_container, stats_menu,
          chart_updated, nav_product, nav_subject, nav_theme,
          table_title, map_updated, map_title, headline_stat, headline_stat_label,
          additional_tables, table_tabs, table_tabs_content,
-         tables_title, table_updated, stat_info_text } from "./elements.js";     
+         tables_title, table_updated, stat_info_text, headline_year } from "./elements.js";     
 import { downloadButton } from "./download-button.js";
 
 
@@ -439,7 +439,8 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         
 
         var time_series = ni_result.result.dimension[time_var].category.index;
-        headline_stat.innerHTML = `Northern Ireland (<strong>${time_series[time_series.length - 1]}</strong>)<br>${other_headline}`
+        headline_year.textContent = time_series[time_series.length - 1];
+        headline_stat.innerHTML = other_headline;
 
         Chart.defaults.font.family = "'Roboto', Arial, sans-serif";
         Chart.defaults.color = "#212529"; // optional: match Bootstrap body color
