@@ -9,8 +9,8 @@ body {
 }
 
 /* Headings per style guide */
-h1 { font-size: 28px; line-height: 1.285; font-weight: 700; }
-@media (min-width: 992px) { h1 { font-size: 30px; line-height: 1.3; } }
+h1 { font-size: 3rem; line-height: 1.285; font-weight: 700; }
+@media (min-width: 1200px) { h1 { font-size: 3rem !important; line-height: 1.3;} }
 
 h2 { font-size: 24px; line-height: 1.333; font-weight: 400; }
 @media (min-width: 992px) { h2 { font-size: 25px; line-height: 1.32; } }
