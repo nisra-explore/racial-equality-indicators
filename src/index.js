@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       initCookieConsent({
         bannerId: 'cookie-banner',
         gtmId: 'GTM-KF6WGSG'
-  });
+      });
 
   } catch (e) {
     console.error("Startup failed:", e);
