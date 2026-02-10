@@ -326,3 +326,9 @@ a.cookiesbarlink {
   text-transform: none;
   font-size: 1.2em;
 }
+
+@media (min-width: 1200px) {
+  #buttons {
+    margin-bottom: -38px;
+  }
+}
