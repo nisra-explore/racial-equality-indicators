@@ -101,7 +101,7 @@ data portal maps.Rproj _RStudio project file for working with R scripts_
 
 ### Run locally
 1. Open **VS Code**. In the **Welcome** tab, click **Clone Git Repository**.  
-   - Paste in the repository URL (e.g. `https://github.com/NISRA-Tech-Lab/data-portal-maps`).  
+   - Paste in the repository URL (e.g. `https://github.com/nisra-explore/data-explorer`).  
    - Choose a local folder where you want the project saved.  
    - Once the clone finishes, VS Code will ask if you want to open the project — click **Open**.
 
