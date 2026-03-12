@@ -131,16 +131,13 @@ for (i in seq_along(data_portal$label)) {
   json_data <- fetch_dataset(matrix, api_key, data_portal$label[i])
 
   subject <- json_data$extension$subject$value
+  if (subject != "Racial equality") next
   product_code <- json_data$extension$product$code
 
   name <- gsub("\u2013", "-", data_portal$label[i], fixed = TRUE)
-  if (name == "Life Expectancy at age 65") name <- "Life Expectancy at Age 65"
-  if (name == "Births registered") name <- "Births Registered"
 
   theme <- data_portal_structure %>%
     filter(Product_code == product_code)
-  
-  if (theme$theme %in% c("Wellbeing framework", "Making life better", "Themed datasets")) next
 
   tables$tables[[matrix]] <- list(
     name = name,
@@ -158,44 +155,10 @@ for (i in seq_along(data_portal$label)) {
     rows = length(json_data$value)
   )
 
-  associated_product_code <- associated_tables %>%
-    filter(MtrCode == matrix) %>%
-    pull("prc_code")
-
-
-  if (length(associated_product_code) > 0) {
-
-    for (j in seq_along(associated_product_code)) {
-
-      associated_theme <- data_portal_structure %>%
-        filter(Product_code == associated_product_code[j])
-      
-      if (nrow(associated_theme) == 0) next
-      if (associated_theme$theme %in% c("Wellbeing framework", "Making life better", "Themed datasets")) next
-
-      tables$tables[[paste0(matrix, "_", j)]] <- list(
-        name = name,
-        updated = as.Date(substr(data_portal$updated[i], 1, 10)),
-        categories = json_data$dimension,
-        statistics = json_data$dimension$STATISTIC$category$label,
-        time = time_var,
-        time_series = time_series,
-        theme = associated_theme$theme,
-        theme_code = associated_theme$theme_code,
-        subject = associated_theme$Subject,
-        subject_code = associated_theme$subject_code,
-        product = associated_theme$product,
-        product_code = associated_product_code[j],
-        rows = length(json_data$value)
-      )
-
-    }
-
-  }
-
 }
 
 tables$tables <- tables$tables[order(names(tables$tables))]
+tables$table_count <- length(tables$tables)
 
 write_json(tables,
            "public/data/data-portal-tables.json",
