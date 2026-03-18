@@ -1,6 +1,6 @@
 import { wrapLabel } from "./wrapLabel.js";
 import { yAxisLabelPlugin } from "./yAxisLabelPlugin.js";
-import { palette, GEOG_PROPS } from "../config/config.js";
+import { palette, GEOG_PROPS, chart_colours } from "../config/config.js";
 import { loadShapes } from "./loadShapes.js";
 import { titleCase } from "./titleCase.js";
 import { getColour } from "./getColour.js";
@@ -66,11 +66,30 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
             let new_menu = document.createElement("div");
 
+            new_menu.innerHTML = `<label for = "${other_vars[i]}" class = "form-label">${tables[matrix].categories[other_vars[i]].label}</label><select id = "${other_vars[i]}" name = "${other_vars[i]}" class = "form-select"></select>`;
 
-            new_menu.innerHTML = `<label for = "${other_vars[i]}" class = "form-label">${tables[matrix].categories[other_vars[i]].label}</label><select id = "${other_vars[i]}" name = "${other_vars[i]}" class = "form-select"></select>`
+            let options = [];
+            let labels = [];
 
-            let options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
-            let labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
+            if (other_vars[i] == "EQGRP") {
+                const all_options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
+                const all_labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
+
+                for (let j = 0; j < all_labels.length; j ++) {
+                    const group_label = all_labels[j].indexOf(" -") > - 1 ? all_labels[j].slice(0, all_labels[j].indexOf(" -")) : all_labels[j];
+                    if (!labels.includes(group_label)) {
+                        labels.push(group_label);
+                        options.push(all_options[j])
+                    } else {
+                        options[options.length - 1] += `%22,%22${all_options[j]}`
+                    }
+                    
+                    
+                }
+            } else {
+                options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
+                labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
+            }
 
             other_menu.appendChild(new_menu);
 
@@ -111,13 +130,13 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
                 for (let j = 0; j < other_vars.length; j ++) {
                     search_string += `&${other_vars[j]}=${document.getElementById(other_vars[j]).value}`;
-                }                    
-
+                }
+                
                 window.location.search = search_string;
                 
             }
                  
-            other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value}"]}}`;
+            other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value.replaceAll("%22", '"')}"]}}`;
 
 
             subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
@@ -159,9 +178,17 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                 }
             }
 
-            let table_selections = other_selections.split(",");
-            table_selections = table_selections.filter(x => x.indexOf(other_vars[i]) == -1)
-            table_selections = table_selections.join(",");
+            let table_selections;
+
+            if (other_vars[i] == "EQGRP") {
+                table_selections = other_selections;
+            } else {
+                table_selections = other_selections.split(",");
+                table_selections = table_selections.filter(x => x.indexOf(other_vars[i]) == -1)
+                table_selections = table_selections.join(",");
+            }
+            
+            
             if (geog_type != "none") table_selections += `,"${geog_type}":{"category":{"index":["N92000002"]}}`;
 
             let table_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
@@ -445,10 +472,32 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         Chart.defaults.font.family = "'Roboto', Arial, sans-serif";
         Chart.defaults.color = "#212529"; // optional: match Bootstrap body color
 
-        // Chart data
-        const chart_data = {
-            labels: [...time_series],
-            datasets: [{
+        let chart_datasets = [];
+        let legend_display = false;
+
+        if (ni_result.result.id.includes("EQGRP")) {
+            let data_labels = Object.values(ni_result.result.dimension.EQGRP.category.label);
+            for (let i = 0; i < data_labels.length; i ++) {
+                data_labels[i] = data_labels[i].slice(data_labels[i].indexOf("-") + 2);
+                let line_values = [];
+                for (let j = 0; j < values.length; j ++) {
+                    if (j % data_labels.length == i) {
+                        line_values.push(values[j]);
+                    }
+                }
+                chart_datasets.push({
+                    label: data_labels[i],
+                    data: line_values,
+                    borderColor: chart_colours[i],
+                    backgroundColor: chart_colours[i],
+                    fillColor: chart_colours[i],
+                    pointBackgroundColor: chart_colours[i],
+                    tension: 0
+                });
+            }
+            legend_display = true;
+        } else {
+            chart_datasets = [{
                 label: stat_label,
                 data: [...values],
                 borderColor: "#00205b",
@@ -457,7 +506,13 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                 fill: false,
                 pointBackgroundColor: "#00205b",
                 tension: 0
-            }]
+            }];
+        }
+
+        // Chart data
+        const chart_data = {
+            labels: [...time_series],
+            datasets: chart_datasets
         };
 
         // Decide chart type dynamically
@@ -502,7 +557,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                     }
                 },
                 plugins: {
-                    legend: { display: false },
+                    legend: { display: legend_display },
                     yAxisLabel: {
                         text: yAxisTitle,
                         color: "#6c757d",
