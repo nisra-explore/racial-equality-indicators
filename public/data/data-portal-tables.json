@@ -1,5 +1,5 @@
 {
-  "table_count": 17,
+  "table_count": 18,
   "tables": {
     "ACCMEPREI": {
       "name": "Acceptance of minority ethnic people",
@@ -516,6 +516,124 @@
       "product": "Racial equality indicators",
       "product_code": "REREI",
       "rows": 308
+    },
+    "HATELGD": {
+      "name": "Hate motivated incidents and crimes",
+      "updated": "2026-03-13",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["allsoinc", "allsocrm", "allracinc", "allraccrm", "allsectinc", "allsectcrm"],
+            "label": {
+              "allsoinc": "All incidents with a sexual orientation motivation",
+              "allsocrm": "All crimes with a sexual orientation motivation",
+              "allracinc": "All incidents with a racist motivation",
+              "allraccrm": "All crimes with a racist motivation",
+              "allsectinc": "All incidents with a sectarian motivation",
+              "allsectcrm": "All crimes with a sectarian motivation"
+            },
+            "unit": {
+              "allsoinc": {
+                "decimals": 0,
+                "label": "number",
+                "position": "end"
+              },
+              "allsocrm": {
+                "decimals": 0,
+                "label": "number",
+                "position": "end"
+              },
+              "allracinc": {
+                "decimals": 0,
+                "label": "number",
+                "position": "end"
+              },
+              "allraccrm": {
+                "decimals": 0,
+                "label": "number",
+                "position": "end"
+              },
+              "allsectinc": {
+                "decimals": 0,
+                "label": "number",
+                "position": "end"
+              },
+              "allsectcrm": {
+                "decimals": 0,
+                "label": "number",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2004/05", "2005/06", "2006/07", "2007/08", "2008/09", "2009/10", "2010/11", "2011/12", "2012/13", "2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
+            "label": {
+              "2004/05": "2004/05",
+              "2005/06": "2005/06",
+              "2006/07": "2006/07",
+              "2007/08": "2007/08",
+              "2008/09": "2008/09",
+              "2009/10": "2009/10",
+              "2010/11": "2010/11",
+              "2011/12": "2011/12",
+              "2012/13": "2012/13",
+              "2013/14": "2013/14",
+              "2014/15": "2014/15",
+              "2015/16": "2015/16",
+              "2016/17": "2016/17",
+              "2017/18": "2017/18",
+              "2018/19": "2018/19",
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22",
+              "2022/23": "2022/23",
+              "2023/24": "2023/24",
+              "2024/25": "2024/25"
+            }
+          },
+          "label": "Financial year"
+        },
+        "LGD2014": {
+          "category": {
+            "index": ["N09000001", "N09000002", "N09000003", "N09000004", "N09000005", "N09000006", "N09000007", "N09000008", "N09000009", "N09000010", "N09000011", "N92000002"],
+            "label": {
+              "N09000001": "Antrim and Newtownabbey",
+              "N09000002": "Armagh City, Banbridge and Craigavon",
+              "N09000003": "Belfast",
+              "N09000004": "Causeway Coast and Glens",
+              "N09000005": "Derry City and Strabane",
+              "N09000006": "Fermanagh and Omagh",
+              "N09000007": "Lisburn and Castlereagh",
+              "N09000008": "Mid and East Antrim",
+              "N09000009": "Mid Ulster",
+              "N09000010": "Newry, Mourne and Down",
+              "N09000011": "Ards and North Down",
+              "N92000002": "Northern Ireland"
+            }
+          },
+          "label": "Local Government District"
+        }
+      },
+      "statistics": {
+        "allsoinc": "All incidents with a sexual orientation motivation",
+        "allsocrm": "All crimes with a sexual orientation motivation",
+        "allracinc": "All incidents with a racist motivation",
+        "allraccrm": "All crimes with a racist motivation",
+        "allsectinc": "All incidents with a sectarian motivation",
+        "allsectcrm": "All crimes with a sectarian motivation"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2004/05", "2005/06", "2006/07", "2007/08", "2008/09", "2009/10", "2010/11", "2011/12", "2012/13", "2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 1512
     },
     "LEAVQUAREI": {
       "name": "School leavers by qualifications",

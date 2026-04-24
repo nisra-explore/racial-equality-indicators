@@ -116,7 +116,6 @@ data_portal <- jsonlite::fromJSON(
     )
 )$link$item
 
-associated_tables <- read.csv("public/data/associated-tables.csv")
 
 tables <- list(table_count = nrow(data_portal),
                tables = list())
@@ -131,7 +130,7 @@ for (i in seq_along(data_portal$label)) {
   json_data <- fetch_dataset(matrix, api_key, data_portal$label[i])
 
   subject <- json_data$extension$subject$value
-  if (subject != "Racial equality") next
+  if (subject != "Racial equality" & matrix != "HATELGD") next
   product_code <- json_data$extension$product$code
 
   name <- gsub("\u2013", "-", data_portal$label[i], fixed = TRUE)
@@ -146,12 +145,12 @@ for (i in seq_along(data_portal$label)) {
     statistics = json_data$dimension$STATISTIC$category$label,
     time = time_var,
     time_series = time_series,
-    theme = theme$theme,
-    theme_code = theme$theme_code,
-    subject = subject,
-    subject_code = theme$subject_code,
-    product = json_data$extension$product$value,
-    product_code = product_code,
+    theme = "Themed datasets",
+    theme_code = 65,
+    subject = "Racial equality",
+    subject_code = 168,
+    product = "Racial equality indicators",
+    product_code = "REREI",
     rows = length(json_data$value)
   )
 
