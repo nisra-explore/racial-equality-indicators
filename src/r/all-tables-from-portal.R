@@ -131,9 +131,19 @@ for (i in seq_along(data_portal$label)) {
 
   subject <- json_data$extension$subject$value
   if (subject != "Racial equality" & matrix != "HATELGD") next
+  
+  note_text <- json_data$note
+  
+  if (matrix == "HATELGD") {
+    name <- "Indicator 2.d -  Number of racial incidents and crimes reported."
+  } else {
+    name <- sub(".*Indicator ", "Indicator ", note_text) %>% 
+      sub("\\[b\\].*", "", .) %>% 
+      trimws()
+  }
+  
   product_code <- json_data$extension$product$code
 
-  name <- gsub("\u2013", "-", data_portal$label[i], fixed = TRUE)
 
   theme <- data_portal_structure %>%
     filter(Product_code == product_code)

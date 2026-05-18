@@ -2,8 +2,8 @@
   "table_count": 18,
   "tables": {
     "ACCMEPREI": {
-      "name": "Acceptance of minority ethnic people",
-      "updated": "2026-02-23",
+      "name": "Indicator 2.a - Percentage who would accept minority ethnic people as residents in their area; as a work colleague; as part of their family",
+      "updated": "2026-05-15",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -78,7 +78,7 @@
       "rows": 132
     },
     "BELNGHREI": {
-      "name": "People who say they feel like they belong to their neighbourhood",
+      "name": "Indicator 3.d - Percentage of people who say they feel like they belong to their neighbourhood",
       "updated": "2026-03-03",
       "categories": {
         "STATISTIC": {
@@ -153,7 +153,7 @@
       "rows": 154
     },
     "BELNIREI": {
-      "name": "People who say they feel like they belong to Northern Ireland",
+      "name": "Indicator 3.d - Percentage of people who say they feel like they belong to Northern Ireland",
       "updated": "2026-03-03",
       "categories": {
         "STATISTIC": {
@@ -228,7 +228,7 @@
       "rows": 154
     },
     "CREDSEREI": {
-      "name": "Children and young people (aged 16) indicating schools are covering issues of diversity",
+      "name": "Indicator 4.d - Percentage of children and young people (aged 16) indicating schools are covering issues of diversity",
       "updated": "2026-03-04",
       "categories": {
         "STATISTIC": {
@@ -287,7 +287,7 @@
       "rows": 18
     },
     "CULRICREI": {
-      "name": "Culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland",
+      "name": "Indicator 4.a - Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland",
       "updated": "2026-03-03",
       "categories": {
         "STATISTIC": {
@@ -360,7 +360,7 @@
       "rows": 132
     },
     "CULTIRTRREI": {
-      "name": "The culture of Irish Travellers is more respected than it once was",
+      "name": "Indicator 4.b - Percentage of people who believe that the culture of Irish Travellers is more respected than it once was",
       "updated": "2026-03-03",
       "categories": {
         "STATISTIC": {
@@ -433,7 +433,7 @@
       "rows": 132
     },
     "DESTREI": {
-      "name": "Destination of school leavers",
+      "name": "Indicator 1.c - Percentage of students from minority ethnic communities who go on to Higher, Further Education, employment, unemployment, training compared with the general population",
       "updated": "2026-02-16",
       "categories": {
         "STATISTIC": {
@@ -518,7 +518,7 @@
       "rows": 308
     },
     "HATELGD": {
-      "name": "Hate motivated incidents and crimes",
+      "name": "Indicator 2d -  Number of racial incidents and crimes reported.",
       "updated": "2026-03-13",
       "categories": {
         "STATISTIC": {
@@ -636,7 +636,7 @@
       "rows": 1512
     },
     "LEAVQUAREI": {
-      "name": "School leavers by qualifications",
+      "name": "Indicator 1.b - Percentage (%) of pupils leaving school with no qualifications by ethnicity",
       "updated": "2026-02-16",
       "categories": {
         "STATISTIC": {
@@ -716,7 +716,7 @@
       "rows": 88
     },
     "MEGPALREI": {
-      "name": "People who have friends from minority ethnic communities",
+      "name": "Indicator 4.c - Percentage of people who have friends from minority ethnic communities",
       "updated": "2026-03-04",
       "categories": {
         "STATISTIC": {
@@ -789,8 +789,8 @@
       "rows": 132
     },
     "MEGPUBLIREI": {
-      "name": "People who think minority ethnic people participate 'a little' or 'a lot' in public life",
-      "updated": "2026-02-27",
+      "name": "Indicator 3.a - Percentage who think minority ethnic people participate ‘a little’ or ‘a lot’ in public life",
+      "updated": "2026-05-15",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -856,7 +856,7 @@
       "rows": 66
     },
     "ORGPUBLIREI": {
-      "name": "People who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life",
+      "name": "Indicator 3.b - Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life",
       "updated": "2026-03-03",
       "categories": {
         "STATISTIC": {
@@ -929,7 +929,7 @@
       "rows": 132
     },
     "PUBAPPREI": {
-      "name": "Applications for public appointments",
+      "name": "Indicator 3.c - Percentage and number of applications for public appointments from minority ethnic people; percentage and number of appointments made to minority ethnic people",
       "updated": "2026-02-25",
       "categories": {
         "STATISTIC": {
@@ -992,8 +992,8 @@
       "rows": 18
     },
     "PUBBODREI": {
-      "name": "Importance of public bodies taking into account the needs of minority ethnic communities",
-      "updated": "2026-03-03",
+      "name": "Indicator 1.e - Percentage of people who think it is important that public bodies take into account the needs of minority ethnic communities.",
+      "updated": "2026-05-15",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1065,8 +1065,8 @@
       "rows": 132
     },
     "RACEBULLREI": {
-      "name": "Young people who have witnessed racist bullying or harassment in their school",
-      "updated": "2026-03-04",
+      "name": "Indicator 2.e - Percentage of young people who have witnessed racist bullying or harassment in their school",
+      "updated": "2026-05-15",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1133,8 +1133,8 @@
       "rows": 72
     },
     "RACPREJREI": {
-      "name": "More racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago",
-      "updated": "2026-03-03",
+      "name": "Indicator 2.c - Percentage of people who think there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago",
+      "updated": "2026-05-15",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1206,8 +1206,8 @@
       "rows": 132
     },
     "SOCECREI": {
-      "name": "People in 'managerial' or 'professional' occupations",
-      "updated": "2026-02-16",
+      "name": "Indicator 1.d - Percentage (%) of minority ethnic people who are in ‘Managerial’ or ‘Professional’ occupations",
+      "updated": "2026-05-15",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1284,7 +1284,7 @@
       "rows": 40
     },
     "SOCMEGREI": {
-      "name": "Young people who socialise or play sport with people from a different ethnic background",
+      "name": "Indicator 3.e - Percentage of young people who socialise or play sport with people from a different ethnic background",
       "updated": "2026-03-04",
       "categories": {
         "STATISTIC": {
