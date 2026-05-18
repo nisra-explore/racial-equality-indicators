@@ -13,7 +13,8 @@ import { themes_menu, map_container, stats_menu,
          chart_updated, nav_product, nav_subject, nav_theme,
          table_title, map_updated, map_title, headline_stat, headline_stat_label,
          additional_tables, table_tabs, table_tabs_content,
-         tables_title, table_updated, stat_info_text, headline_year } from "./elements.js";     
+         tables_title, table_updated, stat_info_text, headline_year, 
+         names_menu} from "./elements.js";     
 import { downloadButton } from "./download-button.js";
 
 
@@ -478,7 +479,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         if (ni_result.result.id.includes("EQGRP")) {
             let data_labels = Object.values(ni_result.result.dimension.EQGRP.category.label);
             for (let i = 0; i < data_labels.length; i ++) {
-                data_labels[i] = data_labels[i].slice(data_labels[i].indexOf("-") + 2);
+                data_labels[i] = data_labels[i].indexOf("-") !== -1 ? data_labels[i].slice(data_labels[i].indexOf("-") + 2) : data_labels[i];
                 let line_values = [];
                 for (let j = 0; j < values.length; j ++) {
                     if (j % data_labels.length == i) {
@@ -987,7 +988,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             data = data_series;
         }
 
-        table_title.textContent = `${result.label}`;
+        table_title.textContent = `${names_menu.options[names_menu.selectedIndex].text}`;
         page_title.textContent += ` - ${result.label}`;
 
         nav_theme.textContent = tables[geo_menu.value].theme;        
