@@ -130,26 +130,42 @@ for (i in seq_along(data_portal$label)) {
   json_data <- fetch_dataset(matrix, api_key, data_portal$label[i])
 
   subject <- json_data$extension$subject$value
-  if (subject != "Racial equality" & matrix != "HATELGD") next
-  
-  note_text <- json_data$note
-  
-  if (matrix == "HATELGD") {
-    name <- "Indicator 2.d -  Number of racial incidents and crimes reported."
-  } else {
-    name <- sub(".*Indicator ", "Indicator ", note_text) %>% 
-      sub("\\[b\\].*", "", .) %>% 
-      trimws()
-  }
-  
-  product_code <- json_data$extension$product$code
+  if (subject != "Racial equality") next
 
+  note_text <- json_data$note
+
+  if (grepl("\\[b\\]Indicators\\[/b\\]", note_text)) {
+    name <- sub(".*\\[b\\]Indicators\\[/b\\]", "", note_text) %>%
+      sub("\\[b\\].*", "", .) %>% 
+      trimws() %>% 
+      gsub("\r\n", " and ", .)
+    
+    monitoring <- sub(".*?(\\[b\\]Monitoring)", "<strong>Monitoring", note_text) %>%
+      sub("\\[b\\]How do we measure this\\?\\[/b\\].*", "", .) %>%
+      gsub("\\[b\\]", "<strong>", .) %>%
+      gsub("\\[/b\\]", "</strong>", .) %>%
+      trimws() %>%
+      gsub("\r\n", "<br>", .)
+  } else {
+    name <- sub(".*Indicator ", "Indicator ", note_text) %>%
+      sub("\\[b\\].*", "", .) %>%
+      trimws()
+    
+    monitoring <- sub(".*\\[b\\]Monitoring", "<strong>Monitoring", note_text) %>% 
+      sub("\\[/b\\]", "</strong>", .) %>% 
+      sub("\\[b\\].*", "", .) %>% 
+      trimws() %>% 
+      gsub("\r\n", "<br>", .)
+  }
+
+  product_code <- json_data$extension$product$code
 
   theme <- data_portal_structure %>%
     filter(Product_code == product_code)
 
   tables$tables[[matrix]] <- list(
     name = name,
+    monitoring = monitoring,
     updated = as.Date(substr(data_portal$updated[i], 1, 10)),
     categories = json_data$dimension,
     statistics = json_data$dimension$STATISTIC$category$label,

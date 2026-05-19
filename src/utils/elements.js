@@ -44,5 +44,7 @@ export const stat_info_text = document.getElementById("stat-info-text");
 export const download_btn = document.getElementById("download-btn");
 export const capture = document.getElementById("capture");
 export const headline_year = document.getElementById("headline-year");
+export const summary_text = document.getElementById("summary-text");
+export const eq_figs = document.getElementById("eq-figs");
 
 export const SIDEBAR_OPEN_KEY = "nisra:data-explorer:sidebarOpen";

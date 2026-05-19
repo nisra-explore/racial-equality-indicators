@@ -14,7 +14,7 @@ import { themes_menu, map_container, stats_menu,
          table_title, map_updated, map_title, headline_stat, headline_stat_label,
          additional_tables, table_tabs, table_tabs_content,
          tables_title, table_updated, stat_info_text, headline_year, 
-         names_menu} from "./elements.js";     
+         names_menu, summary_text, eq_figs} from "./elements.js";     
 import { downloadButton } from "./download-button.js";
 
 
@@ -139,9 +139,15 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                  
             other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value.replaceAll("%22", '"')}"]}}`;
 
+            console.log(other_vars.includes("EQGRP"));
 
-            subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
-            
+            if (other_vars[i] == "EQGRP") {
+                if (EQGRP.value != "N92000002") {
+                    subtitle_text += `<strong>Equal group:</strong> ${new_select.options[new_select.selectedIndex].text}`;
+                }
+            } else {
+                subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
+            }           
 
             other_headline += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong> category: <em>"${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}"</em>`;
              if (i != other_vars.length - 1) {
@@ -478,8 +484,9 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
         if (ni_result.result.id.includes("EQGRP")) {
             let data_labels = Object.values(ni_result.result.dimension.EQGRP.category.label);
+            
             for (let i = 0; i < data_labels.length; i ++) {
-                data_labels[i] = data_labels[i].indexOf("-") !== -1 ? data_labels[i].slice(data_labels[i].indexOf("-") + 2) : data_labels[i];
+                data_labels[i] = data_labels[i].indexOf("-") !== -1 ? data_labels[i].slice(data_labels[i].indexOf("-") + 2).trim() : data_labels[i];
                 let line_values = [];
                 for (let j = 0; j < values.length; j ++) {
                     if (j % data_labels.length == i) {
@@ -497,6 +504,23 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                 });
             }
             legend_display = true;
+
+            if (EQGRP.value != "N92000002") {                
+                const group_value = EQGRP.options[EQGRP.selectedIndex].text;
+                eq_figs.classList.remove("d-none");
+                eq_figs.classList.add("d-flex");
+                headline_fig.classList.add("d-none");
+                headline_stat.classList.add("d-none");
+                for (let i = 0; i < data_labels.length; i ++) {
+                    let div = document.createElement("div");
+                    div.classList.add("col");
+                    let value = chart_datasets[i].data[chart_datasets[i].data.length - 1];
+                    div.innerHTML = `<p><span class="h1">${value}</span> ${unit == "number" ? "": unit}</p><p class="text-secondary"><strong>${group_value}</strong> category: <em>"${data_labels[i]}"</em></p>`;
+                    eq_figs.appendChild(div);
+                }
+            }
+
+           
         } else {
             chart_datasets = [{
                 label: stat_label,
@@ -598,7 +622,10 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
         if (unit.toLowerCase() == "number") {
             unit_fixed = "";
         }
+
+   
         headline_fig.innerHTML = `<span class = "h1">${headline_value}</span> ${unit_fixed}`;
+        
 
         
 
@@ -988,12 +1015,13 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             data = data_series;
         }
 
-        table_title.textContent = `${names_menu.options[names_menu.selectedIndex].text}`;
+        table_title.textContent = tables[geo_menu.value].name;
         page_title.textContent += ` - ${result.label}`;
 
-        nav_theme.textContent = tables[geo_menu.value].theme;        
-        nav_subject.textContent = tables[geo_menu.value].subject;    
-        nav_product.textContent = tables[geo_menu.value].product;   
+     
+     
+     
+        summary_text.innerHTML = tables[geo_menu.value].monitoring;
 
         chart_updated.innerHTML = `Last updated: <strong>${result.updated.substr(8, 2)}/${result.updated.substr(5, 2)}/${result.updated.substr(0, 4)}</strong>. See this full dataset on <a href = "https://data.nisra.gov.uk/table/${matrix}" target = "_blank">NISRA Data Portal.</a>`;
 

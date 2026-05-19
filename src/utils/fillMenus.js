@@ -170,10 +170,10 @@ export function fillGeoMenu (structure, tables) {
 
     }
 
-    if (num_options > 0) {
-        geo_menu.parentElement.classList.add("d-block");
-        geo_menu.parentElement.classList.remove("d-none");
-    }
+    // if (num_options > 0) {
+    //     geo_menu.parentElement.classList.add("d-block");
+    //     geo_menu.parentElement.classList.remove("d-none");
+    // }
 
     let selected_geo;
 
