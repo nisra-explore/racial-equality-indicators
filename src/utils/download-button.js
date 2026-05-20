@@ -16,7 +16,7 @@ export function downloadButton(matrix) {
     <ul class="dropdown-menu" aria-labelledby="capture-dropdown">
       <li><a class="dropdown-item" href="https://ws-data.nisra.gov.uk/public/api.restful/PxStat.Data.Cube_API.ReadDataset/${matrix}/CSV/1.0/">data (in CSV format)</a></li>
       <li><a class="dropdown-item" href="https://ws-data.nisra.gov.uk/public/api.restful/PxStat.Data.Cube_API.ReadDataset/${matrix}/XLSX/2007/">data (in Excel format)</a></li>
-      <li><a class="dropdown-item" href="#" id="download-capture">charts (as image)</a></li>
+      <li><a class="dropdown-item" href="#" id="download-capture">chart (as image)</a></li>
     </ul>
   `;
 

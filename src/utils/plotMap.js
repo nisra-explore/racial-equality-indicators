@@ -139,8 +139,6 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                  
             other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value.replaceAll("%22", '"')}"]}}`;
 
-            console.log(other_vars.includes("EQGRP"));
-
             if (other_vars[i] == "EQGRP") {
                 if (EQGRP.value != "N92000002") {
                     subtitle_text += `<strong>Equal group:</strong> ${new_select.options[new_select.selectedIndex].text}`;
@@ -515,7 +513,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
                     let div = document.createElement("div");
                     div.classList.add("col");
                     let value = chart_datasets[i].data[chart_datasets[i].data.length - 1];
-                    div.innerHTML = `<p><span class="h1">${value}</span> ${unit == "number" ? "": unit}</p><p class="text-secondary"><strong>${group_value}</strong> category: <em>"${data_labels[i]}"</em></p>`;
+                    div.innerHTML = `<p><span class="h1">${value.toLocaleString()}</span> ${unit.toLowerCase() == "number"  ? "": unit}</p><p class="text-secondary"><strong>${group_value}</strong> category: <em>"${data_labels[i]}"</em></p>`;
                     eq_figs.appendChild(div);
                 }
             }
