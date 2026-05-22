@@ -1,5 +1,5 @@
 {
-  "table_count": 19,
+  "table_count": 20,
   "tables": {
     "ACCMEPREI": {
       "name": "Indicator 2.a - Percentage who would accept minority ethnic people as residents in their area; as a work colleague; as part of their family",
@@ -292,8 +292,8 @@
     },
     "CULRICREI": {
       "name": "Indicator 4.a - Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland",
-      "monitoring": "",
-      "updated": "2026-03-03",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>Since the baseline there has been a significant increase in the proportion of respondents who agreed that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland (2014: 59%; 2024: 65%); however, there was no change between 2024 and the previous year (2023: 65%).",
+      "updated": "2026-05-21",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -525,16 +525,16 @@
       "rows": 308
     },
     "LEAVQUAREI": {
-      "name": "Indicator 1.a - Percentage (%) of children with 5 GCSEs with grades A*-C by ethnicity and Indicator 1.b - Percentage (%) of pupils leaving school with no qualifications by ethnicity",
-      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) - Indicator 1.a <\/strong><br>Compared with the baseline year (2013/14), by 2023/24 there has been an overall increase of 8.8 percentage points for white and 10.9 percentage points for minority ethnic young people leaving school with five or more GCSEs (Grade A* - C).  <br>In 2023/24, there was a 1.1 percentage point difference between the two groups; at baseline there was a 3.2 percentage point difference, and the largest gap between the two groups was in 2019/20 (6.8 percentage point difference).  <br><strong>Monitoring from baseline (2013/14 - 2023/24) - Indicator 1.b <\/strong><br>To consider these findings, and those of Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,598 in 2023/24, the total number of minority ethnic school leavers more than doubled (from 465 to 1,143) over the same period. <br> <br>In 2023/24, the proportion of white school leavers with no qualifications (0.9%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period.  <br> <br>Young people from minority ethnic groups represented 4.8% of all school leavers in 2023/24 but make up 8.3% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
-      "updated": "2026-05-19",
+      "name": "Indicator 1.a - Percentage (%) of children with 5 GCSEs with grades A*-C by ethnicity",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24)<\/strong><br>Compared with the baseline year (2013/14), by 2023/24 there has been an overall increase of 8.8 percentage points for white and 10.9 percentage points for minority ethnic young people leaving school with five or more GCSEs (Grade A* - C). <br>In 2023/24, there was a 1.1 percentage point difference between the two groups; at baseline there was a 3.2 percentage point difference, and the largest gap between the two groups was in 2019/20 (6.8 percentage point difference).",
+      "updated": "2026-05-22",
       "categories": {
         "STATISTIC": {
           "category": {
             "index": ["LEAVQUANREI", "LEAVQUAPREI"],
             "label": {
-              "LEAVQUANREI": "Number of school leavers",
-              "LEAVQUAPREI": "Percentage of school leavers"
+              "LEAVQUANREI": "Number of  of children with 5 GCSEs with grades A*- C",
+              "LEAVQUAPREI": "Percentage of  of children with 5 GCSEs with grades A*- C"
             },
             "unit": {
               "LEAVQUANREI": {
@@ -579,21 +579,11 @@
             }
           },
           "label": "Ethnic group"
-        },
-        "ATTAIN": {
-          "category": {
-            "index": ["1", "2"],
-            "label": {
-              "1": "At least 5 GCSEs A* - C",
-              "2": "No formal qualifications"
-            }
-          },
-          "label": "Attainment"
         }
       },
       "statistics": {
-        "LEAVQUANREI": "Number of school leavers",
-        "LEAVQUAPREI": "Percentage of school leavers"
+        "LEAVQUANREI": "Number of  of children with 5 GCSEs with grades A*- C",
+        "LEAVQUAPREI": "Percentage of  of children with 5 GCSEs with grades A*- C"
       },
       "time": "TLIST(A1)",
       "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
@@ -603,7 +593,7 @@
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 88
+      "rows": 44
     },
     "MEGPALREI": {
       "name": "Indicator 4.c - Percentage of people who have friends from minority ethnic communities",
@@ -746,6 +736,77 @@
       "product": "Racial equality indicators",
       "product_code": "REREI",
       "rows": 66
+    },
+    "NOQUAREI": {
+      "name": "Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,598 in 2023/24, the total number of minority ethnic school leavers more than doubled (from 465 to 1,143) over the same period. \r\n\r\nIn 2023/24, the proportion of white school leavers with no qualifications (0.9%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period. \r\n\r\nYoung people from minority ethnic groups represented 4.8% of all school leavers in 2023/24 but make up 8.3% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) <\/strong><br>To consider these findings, and those of Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,598 in 2023/24, the total number of minority ethnic school leavers more than doubled (from 465 to 1,143) over the same period. <br><br>In 2023/24, the proportion of white school leavers with no qualifications (0.9%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period. <br><br>Young people from minority ethnic groups represented 4.8% of all school leavers in 2023/24 but make up 8.3% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
+      "updated": "2026-05-22",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["NOQUANREI", "NOQUAPREI"],
+            "label": {
+              "NOQUANREI": "Number of pupils leaving school with no qualifications",
+              "NOQUAPREI": "Percentage of pupils leaving school with no qualifications"
+            },
+            "unit": {
+              "NOQUANREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "NOQUAPREI": {
+                "decimals": 1,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "label": {
+              "2013/14": "2013/14",
+              "2014/15": "2014/15",
+              "2015/16": "2015/16",
+              "2016/17": "2016/17",
+              "2017/18": "2017/18",
+              "2018/19": "2018/19",
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22",
+              "2022/23": "2022/23",
+              "2023/24": "2023/24"
+            }
+          },
+          "label": "Academic year"
+        },
+        "MEG": {
+          "category": {
+            "index": ["1", "2"],
+            "label": {
+              "1": "White",
+              "2": "Minority ethnic group"
+            }
+          },
+          "label": "Ethnic group"
+        }
+      },
+      "statistics": {
+        "NOQUANREI": "Number of pupils leaving school with no qualifications",
+        "NOQUAPREI": "Percentage of pupils leaving school with no qualifications"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 44
     },
     "ORGPUBLIREI": {
       "name": "Indicator 3.b - Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life",
@@ -1249,8 +1310,8 @@
     },
     "SOCECREI": {
       "name": "Indicator 1.d - Percentage (%) of minority ethnic people who are in ‘Managerial’ or ‘Professional’ occupations",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2021)  <\/strong><br>The Northern Ireland Census is undertaken every ten years. The 2021 Census was the first one conducted since the baseline year (2014).  <br><br>In 2021, 26.9% of minority ethnic people were in ‘Managerial’ or ‘Professional’ occupations, compared with 29.0% of white people. Directly comparable figures for this indicator are not available from the 2011 Census.",
-      "updated": "2026-05-15",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2021) <\/strong><br>The Northern Ireland Census is undertaken every ten years. The 2021 Census was the first one conducted since the baseline year (2014). <br><br>In 2021, 26.9% of minority ethnic people were in ‘Managerial’ or ‘Professional’ occupations, compared with 29.0% of white people. Directly comparable figures for this indicator are not available from the 2011 Census.",
+      "updated": "2026-05-22",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1301,15 +1362,15 @@
           },
           "label": "Socio-economic classification"
         },
-        "EQGRP": {
+        "MEG": {
           "category": {
-            "index": ["EQ1001", "EQ1002"],
+            "index": ["1", "2"],
             "label": {
-              "EQ1001": "White",
-              "EQ1002": "Other"
+              "1": "White",
+              "2": "Minority ethnic group"
             }
           },
-          "label": "Equality group"
+          "label": "Ethnic group"
         }
       },
       "statistics": {
