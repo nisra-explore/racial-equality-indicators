@@ -134,29 +134,17 @@ for (i in seq_along(data_portal$label)) {
 
   note_text <- json_data$note
 
-  if (grepl("\\[b\\]Indicators\\[/b\\]", note_text)) {
-    name <- sub(".*\\[b\\]Indicators\\[/b\\]", "", note_text) %>%
-      sub("\\[b\\].*", "", .) %>% 
-      trimws() %>% 
-      gsub("\r\n", " and ", .)
-    
-    monitoring <- sub(".*?(\\[b\\]Monitoring)", "<strong>Monitoring", note_text) %>%
-      sub("\\[b\\]How do we measure this\\?\\[/b\\].*", "", .) %>%
-      gsub("\\[b\\]", "<strong>", .) %>%
-      gsub("\\[/b\\]", "</strong>", .) %>%
-      trimws() %>%
-      gsub("\r\n", "<br>", .)
-  } else {
-    name <- sub(".*Indicator ", "Indicator ", note_text) %>%
-      sub("\\[b\\].*", "", .) %>%
-      trimws()
-    
-    monitoring <- sub(".*\\[b\\]Monitoring", "<strong>Monitoring", note_text) %>% 
-      sub("\\[/b\\]", "</strong>", .) %>% 
-      sub("\\[b\\].*", "", .) %>% 
-      trimws() %>% 
-      gsub("\r\n", "<br>", .)
-  }
+
+  name <- sub(".*?(Indicator )", "Indicator ", note_text) %>%
+    sub("\\[b\\].*", "", .) %>%
+    trimws()
+
+  monitoring <- sub(".*\\[b\\]Monitoring", "<strong>Monitoring", note_text) %>%
+    sub("\\[/b\\]", "</strong>", .) %>%
+    sub("\\[b\\].*", "", .) %>%
+    trimws() %>%
+    gsub("\r\n", "<br>", .)
+
 
   product_code <- json_data$extension$product$code
 
