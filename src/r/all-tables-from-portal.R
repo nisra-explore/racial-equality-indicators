@@ -134,8 +134,8 @@ for (i in seq_along(data_portal$label)) {
 
   note_text <- json_data$note
 
-
-  name <- sub(".*?(Indicator )", "Indicator ", note_text) %>%
+  name <- sub("Indicator \\[/b\\]", "", note_text) %>%
+    sub(".*?(Indicator )", "Indicator ", .) %>%
     sub("\\[b\\].*", "", .) %>%
     trimws()
 
@@ -144,7 +144,6 @@ for (i in seq_along(data_portal$label)) {
     sub("\\[b\\].*", "", .) %>%
     trimws() %>%
     gsub("\r\n", "<br>", .)
-
 
   product_code <- json_data$extension$product$code
 
