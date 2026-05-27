@@ -758,6 +758,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             }
         }
 
+
         let legend_div = document.createElement("div");
         legend_div.id = "map-legend";
         legend_div.classList.add("map-legend");
@@ -1031,6 +1032,7 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             table_preview.removeChild(table_preview.firstChild)
          }
 
+
          let header_row = document.createElement("tr");
 
          let headers = Object.keys(result.dimension);
@@ -1065,7 +1067,10 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             tr.appendChild(stat_cell);
 
             let year_cell = document.createElement("td");
-            if (["none", "NI"].includes(geog_type)) {
+            if (other_vars.includes("EQGRP")) {
+                let num_categories = Object.keys(result.dimension.EQGRP.category.label).length;
+                year_cell.textContent = time_series[Math.floor(i / num_categories)];
+            } else if (["none", "NI"].includes(geog_type)) {
                 year_cell.textContent = time_series[i];
             } else {
                 year_cell.textContent = year;
@@ -1080,7 +1085,8 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
 
             for (let j = 0; j < other_vars.length; j ++) {
                 let other_cell = document.createElement("td");
-                other_cell.textContent = Object.values(result.dimension[other_vars[j]].category.label)[0];
+                let num_categories = Object.keys(result.dimension[other_vars[j]].category.label).length;
+                other_cell.textContent = Object.values(result.dimension[other_vars[j]].category.label)[i % num_categories];
                 tr.append(other_cell);
             }
 
