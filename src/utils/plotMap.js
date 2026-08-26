@@ -8,7 +8,7 @@ import { themes_menu, map_container, stats_menu,
          map_card, nav_product, nav_subject, nav_theme,
          table_title, map_title, headline_stat_label,
          table_updated, stat_info_text, headline_year,
-         headline_stat, chart_card, headline_fig } from "./elements.js";     
+         headline_stat, chart_card, headline_fig, summary_text } from "./elements.js";     
 import { downloadButton } from "./download-button.js";
 import { buildCharts } from "./buildCharts.js";
 import { buildTables } from "./buildTables.js";
@@ -451,11 +451,10 @@ export async function plotMap (tables, geog_type) {
             data = data_series;
         }
 
-        table_title.textContent = tables[matrix].name;
+        table_title.textContent = tables[geo_menu.value].name;
 
         page_title.textContent = renamePage(tables[matrix].name);
-        
-        // page_title.textContent = `NISRA Data Explorer - ${tables[matrix].name}`;
+        summary_text.innerHTML = tables[geo_menu.value].monitoring;
 
         nav_theme.textContent = tables[geo_menu.value].theme;        
         nav_subject.textContent = tables[geo_menu.value].subject;    

@@ -51,10 +51,33 @@ export function addOtherMenus (tables, matrix, geog_type, time_var, search) {
 
             let new_menu = document.createElement("div");
 
-            new_menu.innerHTML = `<label for = "${other_vars[i]}" class = "form-label">${tables[matrix].categories[other_vars[i]].label}</label><select id = "${other_vars[i]}" name = "${other_vars[i]}" class = "form-select" aria-label="Select ${tables[matrix].categories[other_vars[i]].label}"></select>`
+            new_menu.innerHTML = `
+                <label for = "${other_vars[i]}" class = "form-label">${tables[matrix].categories[other_vars[i]].label}</label>
+                <select id = "${other_vars[i]}" name = "${other_vars[i]}" class = "form-select"></select>
+            `;
 
-            let options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
-            let labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
+            let options = [];
+            let labels = [];
+
+            if (other_vars[i] == "EQGRP") {
+                const all_options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
+                const all_labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
+
+                for (let j = 0; j < all_labels.length; j ++) {
+                    const group_label = all_labels[j].indexOf(" -") > - 1 ? all_labels[j].slice(0, all_labels[j].indexOf(" -")) : all_labels[j];
+                    if (!labels.includes(group_label)) {
+                        labels.push(group_label);
+                        options.push(all_options[j])
+                    } else {
+                        options[options.length - 1] += `%22,%22${all_options[j]}`
+                    }
+                    
+                    
+                }
+            } else {
+                options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
+                labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
+            }
 
             other_menu.appendChild(new_menu);
 
@@ -103,10 +126,16 @@ export function addOtherMenus (tables, matrix, geog_type, time_var, search) {
                 
             }
                     
-            other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value}"]}}`;
+            other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value.replaceAll("%22", '"')}"]}}`;
 
 
-            subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
+            if (other_vars[i] == "EQGRP") {
+                if (EQGRP.value != "N92000002") {
+                    subtitle_text += `<strong>Equal group:</strong> ${new_select.options[new_select.selectedIndex].text}`;
+                }
+            } else {
+                subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
+            } 
             
 
             other_headline += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong> category: <em>"${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}"</em>`;

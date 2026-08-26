@@ -37,9 +37,16 @@ export async function buildTables(tables, matrix, statistic, geog_type, year, ti
                 }
             }
 
-            let table_selections = other_selections.split(",");
-            table_selections = table_selections.filter(x => x.indexOf(other_vars[i]) == -1)
-            table_selections = table_selections.join(",");
+            let table_selections;
+
+            if (other_vars[i] == "EQGRP") {
+                table_selections = other_selections;
+            } else {
+                table_selections = other_selections.split(",");
+                table_selections = table_selections.filter(x => x.indexOf(other_vars[i]) == -1)
+                table_selections = table_selections.join(",");
+            }
+            
             if (geog_type != "none") table_selections += `,"${geog_type}":{"category":{"index":["N92000002"]}}`;
 
             let table_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
