@@ -16,6 +16,29 @@ body {
   font-weight: 400;
 }
 
+/* ===========================
+   Sticky footer layout
+   Makes footer sit at bottom when page content is short.
+   Body is a column flex container; direct .container or main grows.
+   =========================== */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Make the main content area expand to fill available space.
+   Targets direct children commonly used as page containers. */
+body > main,
+body > .container,
+body > .content {
+  flex: 1 0 auto;
+}
+
 /* Headings per style guide */
 h1 { font-size: 3rem; line-height: 1.285; font-weight: 700; }
 @media (min-width: 1200px) { h1 { font-size: 3rem !important; line-height: 1.3;} }

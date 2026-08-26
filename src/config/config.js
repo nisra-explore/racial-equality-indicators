@@ -1,8 +1,8 @@
 // Metadata json file name. If forking do not use "data-portal-tables"
-export const meta_name = "data-portal-tables";
+export const meta_name = "rei-tables";
 
 // Default data to show on page load
-export const default_table = "MYE01T04";
+export const default_table = "LEAVQUAREI";
 
 // Lookup for geojson files
 export const GEOG_PROPS= {
@@ -107,5 +107,6 @@ export const GEOG_PROPS= {
 
 }
 
-  // Colour palette for charts
+  // Colour palette for maps
 export const palette = ["#d6e4f6", "#8db2e0", "#3878c5", "#22589c", "#00205b"];
+export const chart_colours = ["#3878c5", "#00205B", "#68A41E", "#732777", "#ce70d2", "#434700", "#a88f8f", "#3b3b3b", "#e64791", "#400b23"];

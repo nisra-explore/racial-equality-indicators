@@ -52,3 +52,7 @@ export const SIDEBAR_OPEN_KEY = "nisra:data-explorer:sidebarOpen";
 export function getSearch() {
     return window.location.search.replace("?", "").split("&");
 }
+export const summary_text = document.getElementById("summary-text");
+export const eq_figs = document.getElementById("eq-figs");
+
+

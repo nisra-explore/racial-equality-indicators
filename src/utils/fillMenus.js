@@ -181,13 +181,10 @@ export function fillGeoMenu (structure, tables, search) {
 
     }
 
-    if (num_options > 1) {
-        geo_menu.parentElement.classList.add("d-block");
-        geo_menu.parentElement.classList.remove("d-none");
-    } else {
-        geo_menu.parentElement.classList.add("d-none");
-        geo_menu.parentElement.classList.remove("d-block");
-    }
+    // if (num_options > 0) {
+    //     geo_menu.parentElement.classList.add("d-block");
+    //     geo_menu.parentElement.classList.remove("d-none");
+    // }
 
 
     let selected_geo;

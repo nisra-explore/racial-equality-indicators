@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NISRA Data Explorer</title>
+  <title>Racial Equality Indicators</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
@@ -22,7 +22,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/img/icon/favicon.svg" />
   <link rel="shortcut icon" href="assets/img/icon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="NISRA Data Explorer" />
+  <meta name="apple-mobile-web-app-title" content="Racial Equality Indicators" />
 
   <!-- MapLibre GL -->
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css">
@@ -46,7 +46,7 @@
     <div id="skip-link" class="container-fluid bg-warning py-2 d-none"><a class="text-black" href="#content">Skip to main content</a></div>
     <div class="w-100 bg-blue">
       <div class="text-white text-center py-2 px-3">
-        <strong>We welcome feedback from users through our <a href="https://dttselfserve.nidirect.gov.uk/NISRA/RateIt#/Data_Explorer" target="_blank" rel="noopener" title="RateIt Survey (opens in new tab)">short survey</a></use></strong>
+        <strong>We welcome feedback from users through our <a href="https://dttselfserve.nidirect.gov.uk/NISRA/RateIt#/Racial_Equality_Indicators" target="_blank">short survey</a></use></strong>
       </div>
     </div>
 
@@ -62,7 +62,7 @@
       <!-- Heading (right) -->
        <div class="col">
         <h1 class="mb-0 pe-2 text-white app-title ms-2 text-center text-lg-end">
-          Data Explorer
+          Racial Equality Indicators
       </h1>
       </div>
 
@@ -131,6 +131,7 @@
                 Select topic
               </div>
               <div class="card-body pt-3 px-1 vstack gap-3">
+                <div class="d-none">
               <div>
                 <label for="theme" class="form-label">Theme</label>
                 <select id="theme" name="theme" class="form-select" aria-label="Select theme"></select>
@@ -143,8 +144,9 @@
                 <label for="product" class="form-label">Subject</label>
                 <select id="product" name="product" class="form-select" aria-label="Select subject"></select>
               </div>
+              </div>
               <div>
-                <label for="name" class="form-label">Table</label>
+                <label for="name" class="form-label">Indicator</label>
                 <select id="name" name="name" class="form-select" aria-label="Select table"></select>
               </div>
               <div class="d-none">
@@ -218,11 +220,14 @@
                   </div>
                   <p class="text-secondary">Northern Ireland (<strong id="headline-year"></strong>)</p>
                   <p id="headline-fig"></p>
+                  <div id="eq-figs" class="d-none align-items-stretch d-flex flex-wrap gap-2"></div>
                   <p class="text-secondary" id="headline-stat"></p>
                 </div>
               </div>
             </div>
           </div>
+
+          
 
           <!-- Map & Chart row -->
           <div id="capture" class="row g-4 align-items-stretch">
@@ -260,6 +265,19 @@
               </div>
             </div>
           </div>
+
+          <div class="row g-4 align-items-stretch my-2">
+            <div id="summary-card" class="col-12">
+              <div class="card h-100">
+                <div class="card-header">
+                  <h3 class ="h5 mb-0">Indicator monitoring</h3>
+                </div>
+                <div class="card-body">
+                  <p id="summary-text" class="mb-0"></p>
+                </div>
+              </div>
+            </div>
+            </div>
 
           <!-- Additional tables -->
           <div id="additional-tables" class="row g-4 mt-1">

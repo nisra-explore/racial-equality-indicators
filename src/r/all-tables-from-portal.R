@@ -134,7 +134,6 @@ data_portal <- jsonlite::fromJSON(
     )
 )$link$item
 
-associated_tables <- read.csv("public/data/associated-tables.csv")
 
 tables <- list(table_count = nrow(data_portal),
                tables = list())
@@ -149,79 +148,48 @@ for (i in seq_along(data_portal$label)) {
   json_data <- fetch_dataset(matrix, api_key, data_portal$label[i])$result
 
   subject <- json_data$extension$subject$value
-  product_code <- json_data$extension$product$code
+  if (subject != "Racial equality") next
 
-  name <- gsub("\u2013", "-", data_portal$label[i], fixed = TRUE)
-  if (name == "Life Expectancy at age 65") name <- "Life Expectancy at Age 65"
-  if (name == "Births registered") name <- "Births Registered"
+  note_text <- json_data$note
+
+  name <- sub("Indicator \\[/b\\]", "", note_text) %>%
+    sub(".*?(Indicator )", "Indicator ", .) %>%
+    sub("\\[b\\].*", "", .) %>%
+    trimws()
+
+  monitoring <- sub(".*\\[b\\]Monitoring", "<strong>Monitoring", note_text) %>%
+    sub("\\[/b\\]", "</strong>", .) %>%
+    sub("\\[b\\].*", "", .) %>%
+    trimws() %>%
+    gsub("\r\n", "<br>", .)
+
+  product_code <- json_data$extension$product$code
 
   theme <- data_portal_structure %>%
     filter(Product_code == product_code)
 
-  if (
-    theme$theme %in% c(
-      "Wellbeing framework", "Making life better", "Themed datasets"
-    )
-  ) next
-
   tables$tables[[matrix]] <- list(
     name = name,
+    monitoring = monitoring,
     updated = as.Date(substr(data_portal$updated[i], 1, 10)),
     categories = json_data$dimension,
     statistics = json_data$dimension$STATISTIC$category$label,
     time = time_var,
     time_series = time_series,
-    theme = theme$theme,
-    theme_code = theme$theme_code,
-    subject = subject,
-    subject_code = theme$subject_code,
-    product = json_data$extension$product$value,
-    product_code = product_code,
+    theme = "Themed datasets",
+    theme_code = 65,
+    subject = "Racial equality",
+    subject_code = 168,
+    product = "Racial equality indicators",
+    product_code = "REREI",
     rows = length(json_data$value)
   )
 
-  associated_product_code <- associated_tables %>%
-    filter(MtrCode == matrix) %>%
-    pull("prc_code")
-
-
-  if (length(associated_product_code) > 0) {
-
-    for (j in seq_along(associated_product_code)) {
-
-      associated_theme <- data_portal_structure %>%
-        filter(Product_code == associated_product_code[j])
-
-      if (nrow(associated_theme) == 0) next
-      if (
-        associated_theme$theme %in% c(
-          "Wellbeing framework", "Making life better", "Themed datasets"
-        )
-      ) next
-
-      tables$tables[[paste0(matrix, "_", j)]] <- list(
-        name = name,
-        updated = as.Date(substr(data_portal$updated[i], 1, 10)),
-        categories = json_data$dimension,
-        statistics = json_data$dimension$STATISTIC$category$label,
-        time = time_var,
-        time_series = time_series,
-        theme = associated_theme$theme,
-        theme_code = associated_theme$theme_code,
-        subject = associated_theme$Subject,
-        subject_code = associated_theme$subject_code,
-        product = associated_theme$product,
-        product_code = associated_product_code[j],
-        rows = length(json_data$value)
-      )
-
-    }
-
-  }
 
 }
 
 tables$tables <- tables$tables[order(names(tables$tables))]
+tables$table_count <- length(tables$tables)
 
 write_json(tables,
            paste0("public/data/", meta_name, ".json"),
