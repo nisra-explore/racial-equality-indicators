@@ -231,12 +231,8 @@ export async function buildCharts(tables, matrix, statistic, geog_type, result, 
             unit_fixed = "";
         }
 
-        if (id_vars.includes("EQGRP") & other_selections.indexOf("N92000002") >-1 ) {
-            headline_fig.innerHTML = `<span class = "headline-value" style="font-size: 2.5rem; font-weight: 500;">${headline_value}</span> ${unit_fixed}`;
-        } else {
-            headline_fig.innerHTML = ``;
-        }
-
+        headline_fig.innerHTML = `<span class = "headline-value" style="font-size: 2.5rem; font-weight: 500;">${headline_value}</span> ${unit_fixed}`;
+        
     }
 
     return {
