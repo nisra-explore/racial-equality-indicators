@@ -207,10 +207,6 @@ export async function buildCharts(tables, matrix, statistic, geog_type, result, 
             plugins: [yAxisLabelPlugin]
         };
 
-
-
-
-
         if (time_series.length == 1) {
             chart_title.textContent = `${stat_label}, ${time_series[0]}`;
         } else {
@@ -240,9 +236,6 @@ export async function buildCharts(tables, matrix, statistic, geog_type, result, 
         } else {
             headline_fig.innerHTML = ``;
         }
-
-        
-
 
     }
 
