@@ -1,0 +1,1460 @@
+{
+  "table_count": 20,
+  "tables": {
+    "ACCMEPREI": {
+      "name": "Indicator 2.a - Percentage who would accept minority ethnic people as residents in their area; as a work colleague; as part of their family",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024)  <\/strong><br>Only comparisons of levels of acceptance of Eastern Europeans, Irish Travellers and Muslims between the baseline and current year is appropriate. Prior to 2017, instead of 'Other minority ethnic groups', this question asked about 'Chinese or Asian people'; and therefore, data from 2017 onwards is not directly comparable with previous years for this group.  <br><br>For Eastern Europeans, Irish Travellers and Muslims, willingness to accept each as residents, as work colleagues, or as family members, increased significantly between 2014 and 2024. No significant changes were observed between 2023 and 2024.",
+      "updated": "2026-05-15",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "ACCMEPREI",
+            "label": {
+              "ACCMEPREI": "Percentage who would accept minority ethnic people"
+            },
+            "unit": {
+              "ACCMEPREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "MEG": {
+          "category": {
+            "index": ["1", "2", "3", "4"],
+            "label": {
+              "1": "Eastern European",
+              "2": "Irish Traveller",
+              "3": "Muslim",
+              "4": "Other"
+            }
+          },
+          "label": "Minority ethnic group"
+        },
+        "ACCEPT": {
+          "category": {
+            "index": ["1", "2", "3"],
+            "label": {
+              "1": "Residents in their area",
+              "2": "Work colleague",
+              "3": "Part of their family"
+            }
+          },
+          "label": "Acceptance"
+        }
+      },
+      "statistics": {
+        "ACCMEPREI": "Percentage who would accept minority ethnic people"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "BELNGHREI": {
+      "name": "Indicator 3.d - Percentage of people who say they feel like they belong to their neighbourhood",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>There was a significant decrease in respondents’ sense of belonging to their neighbourhood when compared with baseline (2014: 87%; 2024: 82%).    <br>There was no significant change when compared with the previous year (2023: 81%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "BELNGHREI",
+            "label": {
+              "BELNGHREI": "Percentage of people who say they feel like they belong to their neighbourhood"
+            },
+            "unit": {
+              "BELNGHREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504", "1", "2"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion",
+              "1": "Member of minority ethnic community - Yes",
+              "2": "Member of minority ethnic community - No"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "BELNGHREI": "Percentage of people who say they feel like they belong to their neighbourhood"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 154
+    },
+    "BELNIREI": {
+      "name": "Indicator 3.d - Percentage of people who say they feel like they belong to Northern Ireland",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>There was a significant decrease in respondents’ sense of belonging to Northern Ireland from the time series peak and current year (2017: 86%; 2024: 78%). <br>There was no significant change in sense of belonging to Northern Ireland when compared with both the baseline and the previous year (2014: 78%; 2023: 79%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "BELNIREI",
+            "label": {
+              "BELNIREI": "Percentage of people who say they feel like they belong to Northern Ireland"
+            },
+            "unit": {
+              "BELNIREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504", "1", "2"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion",
+              "1": "Member of minority ethnic community - Yes",
+              "2": "Member of minority ethnic community - No"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "BELNIREI": "Percentage of people who say they feel like they belong to Northern Ireland"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 154
+    },
+    "CREDSEREI": {
+      "name": "Indicator 4.d - Percentage of children and young people (aged 16) indicating schools are covering issues of diversity",
+      "monitoring": "<strong>Monitoring from baseline  <\/strong><br>Comparisons across all years are not appropriate due to differences in question wording and therefore it is not possible to monitor progress since 2014. <br> <br>In 2025, 43% of young people indicated that their school covered issues of diversity. There was no change between the current year and previous year (2024: 43%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "CREDSEREI",
+            "label": {
+              "CREDSEREI": "Percentage of children and young people (aged 16) indicating schools are covering issues of diversity"
+            },
+            "unit": {
+              "CREDSEREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2023", "2024", "2025"],
+            "label": {
+              "2023": "2023",
+              "2024": "2024",
+              "2025": "2025"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ1102", "EQ1101", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ1102": "Gender - Female",
+              "EQ1101": "Gender - Male",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "CREDSEREI": "Percentage of children and young people (aged 16) indicating schools are covering issues of diversity"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2023", "2024", "2025"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 18
+    },
+    "CULRICREI": {
+      "name": "Indicator 4.a - Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>Since the baseline there has been a significant increase in the proportion of respondents who agreed that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland (2014: 59%; 2024: 65%); however, there was no change between 2024 and the previous year (2023: 65%).",
+      "updated": "2026-05-21",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "CULRICREI",
+            "label": {
+              "CULRICREI": "Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland"
+            },
+            "unit": {
+              "CULRICREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "CULRICREI": "Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "CULTIRTRREI": {
+      "name": "Indicator 4.b - Percentage of people who believe that the culture of Irish Travellers is more respected than it once was",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>Since the baseline, there has been a significant increase in the proportion of respondents who agreed that the culture of Irish Travellers is more respected than it once was (2024: 26%; 2014: 18%). There was no significant difference from the previous year (2023: 24%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "CULTIRTRREI",
+            "label": {
+              "CULTIRTRREI": "Percentage of people who believe that the culture of Irish Travellers is more respected than it once was"
+            },
+            "unit": {
+              "CULTIRTRREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "CULTIRTRREI": "Percentage of people who believe that the culture of Irish Travellers is more respected than it once was"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "DESTREI": {
+      "name": "Indicator 1.c - Percentage of students from minority ethnic communities who go on to Higher, Further Education, employment, unemployment, training compared with the general population",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) <\/strong><br>At baseline, the biggest difference between white and minority ethnic school leavers was just under seven percentage points, when a lower proportion of minority ethnic school leavers went on to Further Education (white: 35.5%; minority ethnic: 28.6%). By 2023/24, the biggest difference, at 7 percentage points, was in school leavers going on to Higher Education; a higher proportion of minority ethnic school leavers went on to Higher Education compared with white school leavers (white: 39.9%; minority ethnic: 46.9%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["DESTNREI", "DESTPREI"],
+            "label": {
+              "DESTNREI": "Number of school leavers by destination",
+              "DESTPREI": "Percentage of school leavers by destination"
+            },
+            "unit": {
+              "DESTNREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "DESTPREI": {
+                "decimals": 1,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "label": {
+              "2013/14": "2013/14",
+              "2014/15": "2014/15",
+              "2015/16": "2015/16",
+              "2016/17": "2016/17",
+              "2017/18": "2017/18",
+              "2018/19": "2018/19",
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22",
+              "2022/23": "2022/23",
+              "2023/24": "2023/24"
+            }
+          },
+          "label": "Academic year"
+        },
+        "MEG": {
+          "category": {
+            "index": ["1", "2"],
+            "label": {
+              "1": "White",
+              "2": "Minority ethnic group"
+            }
+          },
+          "label": "Ethnic group"
+        },
+        "DEST": {
+          "category": {
+            "index": ["1", "2", "3", "4", "5", "6", "7"],
+            "label": {
+              "1": "Institution of Higher Education",
+              "2": "Institution of Further Education",
+              "3": "Employment",
+              "4": "Training",
+              "5": "Unemployment",
+              "6": "Destination unknown",
+              "7": "Total leavers"
+            }
+          },
+          "label": "Destination"
+        }
+      },
+      "statistics": {
+        "DESTNREI": "Number of school leavers by destination",
+        "DESTPREI": "Percentage of school leavers by destination"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 308
+    },
+    "LEAVQUAREI": {
+      "name": "Indicator 1.a - Percentage of children with 5 GCSEs with grades A*-C by ethnicity",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24)<\/strong><br>Compared with the baseline year (2013/14), by 2023/24 there has been an overall increase of 8.8 percentage points for white and 10.9 percentage points for minority ethnic young people leaving school with five or more GCSEs (Grade A* - C). <br>In 2023/24, there was a 1.1 percentage point difference between the two groups; at baseline there was a 3.2 percentage point difference, and the largest gap between the two groups was in 2019/20 (6.8 percentage point difference).",
+      "updated": "2026-08-26",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["LEAVQUANREI", "LEAVQUAPREI"],
+            "label": {
+              "LEAVQUANREI": "Number of children with 5 GCSEs with grades A*-C",
+              "LEAVQUAPREI": "Percentage of children with 5 GCSEs with grades A*-C"
+            },
+            "unit": {
+              "LEAVQUANREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "LEAVQUAPREI": {
+                "decimals": 1,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "label": {
+              "2013/14": "2013/14",
+              "2014/15": "2014/15",
+              "2015/16": "2015/16",
+              "2016/17": "2016/17",
+              "2017/18": "2017/18",
+              "2018/19": "2018/19",
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22",
+              "2022/23": "2022/23",
+              "2023/24": "2023/24"
+            }
+          },
+          "label": "Academic year"
+        },
+        "MEG": {
+          "category": {
+            "index": ["1", "2"],
+            "label": {
+              "1": "White",
+              "2": "Minority ethnic group"
+            }
+          },
+          "label": "Ethnic group"
+        }
+      },
+      "statistics": {
+        "LEAVQUANREI": "Number of children with 5 GCSEs with grades A*-C",
+        "LEAVQUAPREI": "Percentage of children with 5 GCSEs with grades A*-C"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 44
+    },
+    "MEGPALREI": {
+      "name": "Indicator 4.c - Percentage of people who have friends from minority ethnic communities",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>In 2024, the percentage of people with friends from at least one minority ethnic community (58%) was significantly higher than the baseline position (2014: 42%). There was no significant change from the previous year (2023: 56%). <br> <br>At baseline, respondents were most likely to have friends from the Polish (22%), Black (18%) and Chinese (16%) minority ethnic communities. In 2024, respondents were most likely to have friends from similar minority ethnic communities:  Black (28%), Polish (26%), and South Asian (22%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "MEGPALREI",
+            "label": {
+              "MEGPALREI": "Percentage of people who have friends from minority ethnic communities"
+            },
+            "unit": {
+              "MEGPALREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "FRIEND": {
+          "category": {
+            "index": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+            "label": {
+              "1": "Black",
+              "2": "Chinese",
+              "3": "South Asian",
+              "4": "Irish Traveller",
+              "5": "Portugese",
+              "6": "Polish",
+              "7": "Bulgarian",
+              "8": "Romanian",
+              "9": "Other Eastern European",
+              "10": "Filipino",
+              "11": "Other",
+              "12": "Combined"
+            }
+          },
+          "label": "Minority ethnic community"
+        }
+      },
+      "statistics": {
+        "MEGPALREI": "Percentage of people who have friends from minority ethnic communities"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "MEGPUBLIREI": {
+      "name": "Indicator 3.a - Percentage who think minority ethnic people participate ‘a little’ or ‘a lot’ in public life",
+      "monitoring": "<strong>Monitoring from baseline (2014 – 2024) <\/strong><br>The proportion of respondents who thought minority ethnic people participated ‘a little’ or ‘a lot’ in public life (i.e., in at least one of the roles presented) increased significantly in 2024 (76%) from both the baseline and the previous year (2014: 71%; 2023: 70%).   <br> <br>Considering the five roles individually, there were significant decreases in the proportions who thought minority ethnic people participated ‘a little’ or ‘a lot’ as media commentators, politicians, school governors and prominent business leaders between the baseline and the current year.  There was a significant increase between the proportion who thought minority ethnic people participated ‘a little’ or ‘a lot’ as faith leaders from 2024 (61%) to the previous year (2023: 55%).",
+      "updated": "2026-05-15",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "MEGPUBLIREI",
+            "label": {
+              "MEGPUBLIREI": "Percentage of people who think minority ethnic people participate 'a little' or 'a lot' in public life"
+            },
+            "unit": {
+              "MEGPUBLIREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistics"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "RIS": {
+          "category": {
+            "index": ["1", "2", "3", "4", "5", "6"],
+            "label": {
+              "1": "Business people",
+              "2": "Faith leaders",
+              "3": "Media commentators",
+              "4": "Politicians",
+              "5": "School governors",
+              "6": "Combined"
+            }
+          },
+          "label": "Role in public life"
+        }
+      },
+      "statistics": {
+        "MEGPUBLIREI": "Percentage of people who think minority ethnic people participate 'a little' or 'a lot' in public life"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 66
+    },
+    "NOQUAREI": {
+      "name": "Indicator 1.b - Percentage (%) of pupils leaving school with no qualifications by ethnicity",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) <\/strong><br>To consider these findings, and those of Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,598 in 2023/24, the total number of minority ethnic school leavers more than doubled (from 465 to 1,143) over the same period. <br><br>In 2023/24, the proportion of white school leavers with no qualifications (0.9%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period. <br><br>Young people from minority ethnic groups represented 4.8% of all school leavers in 2023/24 but make up 8.3% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
+      "updated": "2026-05-22",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["NOQUANREI", "NOQUAPREI"],
+            "label": {
+              "NOQUANREI": "Number of pupils leaving school with no qualifications",
+              "NOQUAPREI": "Percentage of pupils leaving school with no qualifications"
+            },
+            "unit": {
+              "NOQUANREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "NOQUAPREI": {
+                "decimals": 1,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "label": {
+              "2013/14": "2013/14",
+              "2014/15": "2014/15",
+              "2015/16": "2015/16",
+              "2016/17": "2016/17",
+              "2017/18": "2017/18",
+              "2018/19": "2018/19",
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22",
+              "2022/23": "2022/23",
+              "2023/24": "2023/24"
+            }
+          },
+          "label": "Academic year"
+        },
+        "MEG": {
+          "category": {
+            "index": ["1", "2"],
+            "label": {
+              "1": "White",
+              "2": "Minority ethnic group"
+            }
+          },
+          "label": "Ethnic group"
+        }
+      },
+      "statistics": {
+        "NOQUANREI": "Number of pupils leaving school with no qualifications",
+        "NOQUAPREI": "Percentage of pupils leaving school with no qualifications"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 44
+    },
+    "ORGPUBLIREI": {
+      "name": "Indicator 3.b - Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life",
+      "monitoring": "<strong>Monitoring from baseline (2014 – 2024) <\/strong><br>There was a significant increase in the proportion of respondents who agreed that organisations and leaders should encourage members of minority ethnic communities to participate in public life from the 2014 baseline (67%) and 2024 (79%). The 2024 figure was, however, a significant decrease from the time series peak in 2022 (82%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "ORGPUBLIREI",
+            "label": {
+              "ORGPUBLIREI": "Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life"
+            },
+            "unit": {
+              "ORGPUBLIREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "ORGPUBLIREI": "Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "PREJUDREI": {
+      "name": "Indicator 2.b - Percentage of people who are prejudiced against people from minority ethnic communities",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>In 2024, 29% of respondents reported that they were prejudiced against people from minority ethnic communities. This was not significantly different when compared with the previous year (2023: 28%) but was a significant increase from the proportion reported in the baseline year (2014: 24%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "PREJUDREI",
+            "label": {
+              "PREJUDREI": "Percentage who self-report being prejudiced against people from minority ethnic communities"
+            },
+            "unit": {
+              "PREJUDREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "PREJUDREI": "Percentage who self-report being prejudiced against people from minority ethnic communities"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "PUBAPPREI": {
+      "name": "Indicator 3.c - Percentage and number of applications for public appointments from minority ethnic people; percentage and number of appointments made to minority ethnic people",
+      "monitoring": "<strong>Monitoring from baseline (2019/20 – 2021/22)<\/strong><br>Due to a change in methodology, data is not presented prior to 2019/20.  <br>The proportion of applications from minority ethnic people was 3% in 2019/20 and 2020/21 and had decreased by one percentage point, to 2%, by 2021/22.",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["PUBAPPNREI", "PUBAPPPREI"],
+            "label": {
+              "PUBAPPNREI": "Number of applications for public appointments",
+              "PUBAPPPREI": "Percentage of applications for public appointments"
+            },
+            "unit": {
+              "PUBAPPNREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "PUBAPPPREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2019/20", "2020/21", "2021/22"],
+            "label": {
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22"
+            }
+          },
+          "label": "Financial Year"
+        },
+        "APPLICATION": {
+          "category": {
+            "index": ["1", "2", "3"],
+            "label": {
+              "1": "Total applications",
+              "2": "Total applications where ethnicity is known",
+              "3": "Applications from minority ethnic people"
+            }
+          },
+          "label": "Applications"
+        }
+      },
+      "statistics": {
+        "PUBAPPNREI": "Number of applications for public appointments",
+        "PUBAPPPREI": "Percentage of applications for public appointments"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2019/20", "2020/21", "2021/22"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 18
+    },
+    "PUBBODREI": {
+      "name": "Indicator 1.e - Percentage of people who think it is important that public bodies take into account the needs of minority ethnic communities.",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>The proportion of respondents thinking it is important that public bodies take into account the needs of minority ethnic communities has increased significantly in the most recent year (2024: 73%) when compared with the baseline year (2014: 65%) and the peak in (2022: 78%). There was no significant change from the previous year (2023: 72%).",
+      "updated": "2026-05-15",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "PUBBODREI",
+            "label": {
+              "PUBBODREI": "Percentage of people who think it is important that public bodies take into account the needs of minority ethnic communities"
+            },
+            "unit": {
+              "PUBBODREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "PUBBODREI": "Percentage of people who think it is important that public bodies take into account the needs of minority ethnic communities"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "RACEBULLREI": {
+      "name": "Indicator 2.e - Percentage of young people who have witnessed racist bullying or harassment in their school",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>In 2025, a significantly higher proportion of respondents reported they had witnessed racist bullying or harassment in their school than in the baseline year (2014: 39%; 2025: 56%). The proportion in 2025 was similar to that in 2024 (54%).",
+      "updated": "2026-05-15",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "RACEBULLREI",
+            "label": {
+              "RACEBULLREI": "Percentage of young people who have witnessed racist bullying or harassment in their school"
+            },
+            "unit": {
+              "RACEBULLREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistics"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024",
+              "2025": "2025"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ1102", "EQ1101", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ1102": "Gender - Female",
+              "EQ1101": "Gender - Male",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "RACEBULLREI": "Percentage of young people who have witnessed racist bullying or harassment in their school"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 72
+    },
+    "RACEREI": {
+      "name": "Indicator 2.d - The number of racial incidents and crimes reported",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2024/25)<\/strong><br>Comparing the baseline (2013/14) with 2024/25, the number of racist incidents recorded increased, as did the number of racist crimes recorded. Both racist incidents and racist crimes have also increased since the previous year (2023/24).<br><br>It is not known how willingness to report to the PSNI, or other contextual factors, contribute to the fluctuations in numbers of racist incidents and crimes.",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["RACEINREI", "RACECRREI"],
+            "label": {
+              "RACEINREI": "All incidents with a racist motivation",
+              "RACECRREI": "All crimes with a racist motivation"
+            },
+            "unit": {
+              "RACEINREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "RACECRREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
+            "label": {
+              "2013/14": "2013/14",
+              "2014/15": "2014/15",
+              "2015/16": "2015/16",
+              "2016/17": "2016/17",
+              "2017/18": "2017/18",
+              "2018/19": "2018/19",
+              "2019/20": "2019/20",
+              "2020/21": "2020/21",
+              "2021/22": "2021/22",
+              "2022/23": "2022/23",
+              "2023/24": "2023/24",
+              "2024/25": "2024/25"
+            }
+          },
+          "label": "Financial year"
+        },
+        "NI": {
+          "category": {
+            "index": "N92000002",
+            "label": {
+              "N92000002": "Northern Ireland"
+            }
+          },
+          "label": "Northern Ireland"
+        }
+      },
+      "statistics": {
+        "RACEINREI": "All incidents with a racist motivation",
+        "RACECRREI": "All crimes with a racist motivation"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 24
+    },
+    "RACPREJREI": {
+      "name": "Indicator 2.c - Percentage of people who think there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2024)  <\/strong><br>Compared with the baseline, there was no significant difference in the proportion of respondents thinking there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago (2014: 52%; 2024: 56%. There was a significant increase between 2024 and the previous year (2023; 31%).",
+      "updated": "2026-05-15",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "RACPREJREI",
+            "label": {
+              "RACPREJREI": "Percentage of people who think there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago"
+            },
+            "unit": {
+              "RACPREJREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistics"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ201", "EQ202", "EQ115", "EQ111", "EQ112", "EQ113", "EQ114", "EQ110", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ201": "Sex - Female",
+              "EQ202": "Sex - Male",
+              "EQ115": "Age - 18-24",
+              "EQ111": "Age -  25-34",
+              "EQ112": "Age - 35-44",
+              "EQ113": "Age - 45-54",
+              "EQ114": "Age - 55-64",
+              "EQ110": "Age - 65+",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "RACPREJREI": "Percentage of people who think there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 132
+    },
+    "SOCECREI": {
+      "name": "Indicator 1.d - Percentage (%) of minority ethnic people who are in ‘Managerial’ or ‘Professional’ occupations",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2021) <\/strong><br>The Northern Ireland Census is undertaken every ten years. The 2021 Census was the first one conducted since the baseline year (2014). <br><br>In 2021, 26.9% of minority ethnic people were in ‘Managerial’ or ‘Professional’ occupations, compared with 29.0% of white people. Directly comparable figures for this indicator are not available from the 2011 Census.",
+      "updated": "2026-05-22",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": ["SOCECNREI", "SOCECPREI"],
+            "label": {
+              "SOCECNREI": "Number of people in ‘managerial’ or ‘professional’ occupations",
+              "SOCECPREI": "Percentage of people in ‘managerial’ or ‘professional’ occupations"
+            },
+            "unit": {
+              "SOCECNREI": {
+                "decimals": 0,
+                "label": "Number",
+                "position": "end"
+              },
+              "SOCECPREI": {
+                "decimals": 1,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistics"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": "2021",
+            "label": {
+              "2021": "2021"
+            }
+          },
+          "label": "Census year"
+        },
+        "SOCEN": {
+          "category": {
+            "index": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+            "label": {
+              "1": "Higher managerial, administrative and professional occupations",
+              "2": "Lower managerial, administrative and professional occupations",
+              "3": "Intermediate occupations",
+              "4": "Small employers and own account workers",
+              "5": "Lower supervisory and technical occupations",
+              "6": "Semi-routine occupations",
+              "7": "Routine occupations",
+              "8": "Never worked and long-term unemployed",
+              "9": "Full-time students",
+              "10": "Total"
+            }
+          },
+          "label": "Socio-economic classification"
+        },
+        "MEG": {
+          "category": {
+            "index": ["1", "2"],
+            "label": {
+              "1": "White",
+              "2": "Minority ethnic group"
+            }
+          },
+          "label": "Ethnic group"
+        }
+      },
+      "statistics": {
+        "SOCECNREI": "Number of people in ‘managerial’ or ‘professional’ occupations",
+        "SOCECPREI": "Percentage of people in ‘managerial’ or ‘professional’ occupations"
+      },
+      "time": "TLIST(A1)",
+      "time_series": "2021",
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 40
+    },
+    "SOCMEGREI": {
+      "name": "Indicator 3.e - Percentage of young people who socialise or play sport with people from a different ethnic background",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>A significantly higher proportion of respondents in 2025 (63%) said they socialised or played sport with people from a different ethnic background than in 2014 (54%).  There was no change between 2025 and the previous year (2024: 63%).",
+      "updated": "2026-05-19",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "SOCMEGREI",
+            "label": {
+              "SOCMEGREI": "Percentage of young people who socialise or play sport with people from a different ethnic background"
+            },
+            "unit": {
+              "SOCMEGREI": {
+                "decimals": 0,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+            "label": {
+              "2014": "2014",
+              "2015": "2015",
+              "2016": "2016",
+              "2017": "2017",
+              "2018": "2018",
+              "2019": "2019",
+              "2020": "2020",
+              "2021": "2021",
+              "2022": "2022",
+              "2023": "2023",
+              "2024": "2024",
+              "2025": "2025"
+            }
+          },
+          "label": "Year"
+        },
+        "EQGRP": {
+          "category": {
+            "index": ["N92000002", "EQ1102", "EQ1101", "EQ501", "EQ507", "EQ504"],
+            "label": {
+              "N92000002": "Northern Ireland",
+              "EQ1102": "Gender - Female",
+              "EQ1101": "Gender - Male",
+              "EQ501": "Religion - Catholic",
+              "EQ507": "Religion - Protestant",
+              "EQ504": "Religion - No religion"
+            }
+          },
+          "label": "Equality group"
+        }
+      },
+      "statistics": {
+        "SOCMEGREI": "Percentage of young people who socialise or play sport with people from a different ethnic background"
+      },
+      "time": "TLIST(A1)",
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+      "theme": "Themed datasets",
+      "theme_code": 65,
+      "subject": "Racial equality",
+      "subject_code": 168,
+      "product": "Racial equality indicators",
+      "product_code": "REREI",
+      "rows": 72
+    }
+  }
+}

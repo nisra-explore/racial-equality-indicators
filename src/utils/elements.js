@@ -5,7 +5,6 @@ export const products_menu = document.getElementById("product");
 export const names_menu = document.getElementById("name");
 export const geo_menu = document.getElementById("geo");
 export const stats_menu = document.getElementById("stat");
-export const search = window.location.search.replace("?", "").split("&");
 export const chart_container = document.getElementById("chart-container");
 export const map_container = document.getElementById("map-container");
 export const map_subtitle = document.getElementById("map-subtitle");
@@ -44,7 +43,16 @@ export const stat_info_text = document.getElementById("stat-info-text");
 export const download_btn = document.getElementById("download-btn");
 export const capture = document.getElementById("capture");
 export const headline_year = document.getElementById("headline-year");
+export const skip_link = document.getElementById("skip-link");
+export const SIDEBAR_OPEN_KEY = "nisra:data-explorer:sidebarOpen";
+/**
+ * Re-reads query string on call
+ * @returns 
+ */
+export function getSearch() {
+    return window.location.search.replace("?", "").split("&");
+}
 export const summary_text = document.getElementById("summary-text");
 export const eq_figs = document.getElementById("eq-figs");
 
-export const SIDEBAR_OPEN_KEY = "nisra:data-explorer:sidebarOpen";
+

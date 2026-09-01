@@ -1,366 +1,41 @@
-import { wrapLabel } from "./wrapLabel.js";
-import { yAxisLabelPlugin } from "./yAxisLabelPlugin.js";
-import { palette, GEOG_PROPS, chart_colours } from "../config/config.js";
+import { palette, GEOG_PROPS } from "../config/config.js";
 import { loadShapes } from "./loadShapes.js";
 import { titleCase } from "./titleCase.js";
 import { getColour } from "./getColour.js";
 import { quantile} from "./quantile.js";
 import { themes_menu, map_container, stats_menu,
-         other_menu, map_subtitle, page_title, chart_container, 
-         table_preview, metadata_text, search, geo_menu,
-         SIDEBAR_OPEN_KEY, map_card, chart_card,
-         chart_title, chart_subtitle, headline_fig, dp_link,
-         chart_updated, nav_product, nav_subject, nav_theme,
-         table_title, map_updated, map_title, headline_stat, headline_stat_label,
-         additional_tables, table_tabs, table_tabs_content,
-         tables_title, table_updated, stat_info_text, headline_year, 
-         names_menu, summary_text, eq_figs} from "./elements.js";     
+         page_title, getSearch, geo_menu,
+         map_card, nav_product, nav_subject, nav_theme,
+         table_title, map_title, headline_stat_label,
+         table_updated, stat_info_text, headline_year,
+         headline_stat, chart_card, headline_fig, summary_text } from "./elements.js";     
 import { downloadButton } from "./download-button.js";
-
+import { buildCharts } from "./buildCharts.js";
+import { buildTables } from "./buildTables.js";
+import { addOtherMenus, id_vars, other_selections, other_headline,
+         other_vars, subtitle_text } from "./addOtherMenus.js";
+import { dataPortalPreview } from "./dataPortalPreview.js";
+import { chartDownload } from "./chart-download.js";
+import { renamePage } from "./renamePage.js";
 
 export let map;
 
-export async function plotMap (tables, matrix, statistic, geog_type) {   
+export async function plotMap (tables, geog_type) {   
 
-    let time_var = tables[matrix].time;
+    const search = getSearch();
+
+    const matrix = geo_menu.value.replace(/_[0-9]+/, "");
+    const statistic = stats_menu.value;
+
+    const time_var = tables[matrix].time;
     
     let year = tables[matrix].time_series[tables[matrix].time_series.length - 1];
 
     if (!Array.isArray(tables[matrix].time_series)) {
         year = tables[matrix].time_series;
     }
-    
-    const normal_vars = ["STATISTIC", geog_type, time_var];
-    if (geog_type == "COB_BASIC") {
-        normal_vars.push("NI")
-    } 
 
-    let other_vars = Object.keys(tables[matrix].categories);
-    other_vars = other_vars.filter(x => !normal_vars.includes(x));
-
-    let other_selections = "";
-    var other_headline = "";
-    let id_vars;
-
-    if (["none", "NI"].includes(geog_type)) {
-        map_card.classList.add("d-none");
-        chart_card.classList.remove("col-xl-6");
-        
-        id_vars = `["STATISTIC", "${time_var}"`;
-
-    } else {
-
-        id_vars = `["STATISTIC", "${time_var}", "${geog_type}"`;
-
-    }
-
-    let subtitle_text = "";
-
-    if (other_vars.length > 0) {
-        
-        additional_tables.classList.remove("d-none");
-
-
-        for (let i = 0; i < other_vars.length; i ++) {
-            
-            id_vars += `, "${other_vars[i]}"`;
-
-            let new_menu = document.createElement("div");
-
-            new_menu.innerHTML = `<label for = "${other_vars[i]}" class = "form-label">${tables[matrix].categories[other_vars[i]].label}</label><select id = "${other_vars[i]}" name = "${other_vars[i]}" class = "form-select"></select>`;
-
-            let options = [];
-            let labels = [];
-
-            if (other_vars[i] == "EQGRP") {
-                const all_options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
-                const all_labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
-
-                for (let j = 0; j < all_labels.length; j ++) {
-                    const group_label = all_labels[j].indexOf(" -") > - 1 ? all_labels[j].slice(0, all_labels[j].indexOf(" -")) : all_labels[j];
-                    if (!labels.includes(group_label)) {
-                        labels.push(group_label);
-                        options.push(all_options[j])
-                    } else {
-                        options[options.length - 1] += `%22,%22${all_options[j]}`
-                    }
-                    
-                    
-                }
-            } else {
-                options = Object.keys(tables[matrix].categories[other_vars[i]].category.label);
-                labels = Object.values(tables[matrix].categories[other_vars[i]].category.label);
-            }
-
-            other_menu.appendChild(new_menu);
-
-            const new_select = document.getElementById(other_vars[i]);
-
-            for (let j = 0; j < labels.length; j ++) {
-                let option = document.createElement("option");
-                option.value = options[j];
-                option.textContent = labels[j];
-                new_select.appendChild(option);
-            }
-
-            
-            let selected_option = options[0];
-
-            const other_defaults = ["All", "ALL", "N92000002"];
-            
-            for (let j = 0; j < other_defaults.length; j ++) {
-                if (options.includes(other_defaults[j])) {
-                    selected_option = other_defaults[j];
-                }
-            }                
-
-            for (let j = 0; j < search.length; j ++) {
-                if (search[j].includes(`${other_vars[i]}=`)) {
-                    let search_split = search[j].split("=");
-                    selected_option = search_split[1];
-                    break;
-                }
-            }
-
-            new_select.value = selected_option;              
-
-            new_menu.onchange = function () {
-
-                localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
-                let search_string = `?table=${geo_menu.value}&stat=${stats_menu.value}`;
-
-                for (let j = 0; j < other_vars.length; j ++) {
-                    search_string += `&${other_vars[j]}=${document.getElementById(other_vars[j]).value}`;
-                }
-                
-                window.location.search = search_string;
-                
-            }
-                 
-            other_selections += `,"${other_vars[i]}":{"category":{"index":["${new_select.value.replaceAll("%22", '"')}"]}}`;
-
-            if (other_vars[i] == "EQGRP") {
-                if (EQGRP.value != "N92000002") {
-                    subtitle_text += `<strong>Equal group:</strong> ${new_select.options[new_select.selectedIndex].text}`;
-                }
-            } else {
-                subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
-            }           
-
-            other_headline += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong> category: <em>"${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}"</em>`;
-             if (i != other_vars.length - 1) {
-                    other_headline += "<br>"
-                }
-
-        }
-
-        map_subtitle.innerHTML = subtitle_text;
-
-         // Add new tables
-         tables_title.textContent = `${tables[matrix].statistics[stats_menu.value]} in Northern Ireland (${year}) by:`;
-
-        for (let i = 0; i < other_vars.length; i ++) {   
-
-            let li = document.createElement("li");
-            li.classList.add("nav-item");
-            li.role = "presentation";
-            li.innerHTML = `<button class="nav-link ${i == 0 ? "active" : ""}" id="data-tab-${i}" data-bs-toggle="tab" data-bs-target="#table-tab-${i}" type="button" role="tab" aria-controls="data-preview-${i}" aria-selected="${i == 0 ? "true" : "false"}">${tables[matrix].categories[other_vars[i]].label}</button>`;
-
-            table_tabs.appendChild(li);
-
-            let div = document.createElement("div");
-            div.classList.add("tab-pane");
-            div.classList.add("fade");
-            if (i == 0) div.classList.add("show");
-            if (i == 0) div.classList.add("active");
-            div.role = "tabpanel";
-            div.id = `table-tab-${i}`;
-
-            for (let j = 0; j < other_vars.length; j ++) {
-                if (j != i) {
-                    div.innerHTML += `<p class="text-secondary"><strong>${tables[matrix].categories[other_vars[j]].label}:</strong> ${tables[matrix].categories[other_vars[j]].category.label[document.getElementById(other_vars[j]).value]}</p>`;
-                    div.innerHTML += `<p class="text-secondary"><em>Use the menus on the left to see the <strong>${tables[matrix].categories[other_vars[i]].label}</strong> breakdown for other <strong>${tables[matrix].categories[other_vars[j]].label}</strong> categories.</em></p>`;
-                }
-            }
-
-            let table_selections;
-
-            if (other_vars[i] == "EQGRP") {
-                table_selections = other_selections;
-            } else {
-                table_selections = other_selections.split(",");
-                table_selections = table_selections.filter(x => x.indexOf(other_vars[i]) == -1)
-                table_selections = table_selections.join(",");
-            }
-            
-            
-            if (geog_type != "none") table_selections += `,"${geog_type}":{"category":{"index":["N92000002"]}}`;
-
-            let table_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
-                encodeURIComponent('{"jsonrpc":"2.0","method":"PxStat.Data.Cube_API.ReadDataset","params":{"class":"query","id":' +
-                    id_vars + '],"dimension":{"STATISTIC":{"category":{"index":["' +
-                    statistic + '"]}},"' + time_var + '":{"category":{"index":["' + year +
-                    '"]}}' + table_selections +
-                    '},"extension":{"pivot":null,"codes":false,"language":{"code":"en"},"format":{"type":"JSON-stat","version":"2.0"},"matrix":"' +
-                    matrix + '"},"version":"2.0"}}');
-
-            const response = await fetch(table_url);
-            const { result } = await response.json();
-            
-            let table_div = document.createElement("div");
-            table_div.classList.add("table-responsive");
-
-            let table = document.createElement("table");
-            table.classList.add("table");
-            table.classList.add("table-sm");
-            table.classList.add("table-bordered");
-            table.classList.add("mb-0");
-
-            let tr = document.createElement("tr");
-
-            let var_header = document.createElement("th");
-            var_header.textContent = tables[matrix].categories[other_vars[i]].label;
-            tr.appendChild(var_header);
-
-            let stat_header = document.createElement("th");
-            stat_header.textContent = result.dimension.STATISTIC.category.label[statistic];
-            stat_header.style = "text-align: right;"
-            tr.appendChild(stat_header);
-
-            table.appendChild(tr);
-
-            let values = result.value;
-
-            if (values.length == 0) {
-                additional_tables.classList.add("d-none");
-            }
-
-            for (let j = 0; j < values.length; j ++) {
-                let tr = document.createElement("tr");
-
-                let td_0 = document.createElement("td");
-                td_0.textContent = Object.values(result.dimension[other_vars[i]].category.label)[j];
-                tr.appendChild(td_0);
-
-                let td_1 = document.createElement("td");
-                if (values[j] == null) {
-                    td_1.textContent = "..";
-                } else {
-                    let decimals = result.dimension.STATISTIC.category.unit[stats_menu.value].decimals;
-                    td_1.textContent = values[j].toLocaleString("en-GB", {
-                        minimumFractionDigits: decimals,
-                        maximumFractionDigts: decimals
-                    });
-                }
-                td_1.style = "text-align: right;"
-                if (["all", "ni", "n92000002"].includes(Object.keys(result.dimension[other_vars[i]].category.label)[j].toLowerCase())) {
-                    td_0.style = "font-weight: bold;"
-                    td_1.style = "text-align: right; font-weight: bold;"
-                }
-                tr.appendChild(td_1);
-
-                table.appendChild(tr);
-            }
-
-            table_div.appendChild(table);
-            div.appendChild(table_div);
-            table_tabs_content.appendChild(div);
-        }
-
-    }  else {
-
-        let statistic_categories = tables[matrix].categories.STATISTIC.category.index;        
-        
-        if (Array.isArray(statistic_categories)) {
-
-            additional_tables.classList.remove("d-none");
-
-            tables_title.textContent = `${tables[matrix].name} - Northern Ireland Summary (${year})`;
-
-            let div = document.createElement("div");
-            div.classList.add("tab-pane");
-            div.classList.add("fade");
-            div.classList.add("show");
-            div.classList.add("active");
-            div.role = "tabpanel";
-            div.id = `table-tab-statistic`;
-
-            let table_selections = "";
-            if (geog_type != "none") table_selections += `,"${geog_type}":{"category":{"index":["N92000002"]}}`;
-
-            
-
-            let table_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
-                encodeURIComponent('{"jsonrpc":"2.0","method":"PxStat.Data.Cube_API.ReadDataset","params":{"class":"query","id":["' +
-                    time_var + '", "' + geog_type + '"],"dimension":{"' + time_var + '":{"category":{"index":["' + year +
-                    '"]}}' + table_selections + 
-                    '},"extension":{"pivot":null,"codes":false,"language":{"code":"en"},"format":{"type":"JSON-stat","version":"2.0"},"matrix":"' +
-                    matrix + '"},"version":"2.0"}}');
-
-
-            const response = await fetch(table_url);
-            const { result } = await response.json();
-                
-            let table_div = document.createElement("div");
-            table_div.classList.add("table-responsive");
-
-            let table = document.createElement("table");
-            table.classList.add("table");
-            table.classList.add("table-sm");
-            table.classList.add("table-bordered");
-            table.classList.add("mb-0");
-
-            let tr = document.createElement("tr");
-
-            let var_header = document.createElement("th");
-            var_header.textContent = "Statistic";
-            tr.appendChild(var_header);
-
-
-            let stat_header = document.createElement("th");
-            stat_header.textContent = `Northern Ireland`;
-            stat_header.style = "text-align: right;"
-            tr.appendChild(stat_header);
-
-            table.appendChild(tr);
-
-            let values = result.value;
-
-            for (let j = 0; j < values.length; j ++) {
-                let tr = document.createElement("tr");
-
-                let td_0 = document.createElement("td");
-                td_0.textContent = Object.values(result.dimension.STATISTIC.category.label)[j];
-                tr.appendChild(td_0);
-
-                let td_1 = document.createElement("td");
-                if (values[j] == null) {
-                    td_1.textContent = "..";
-                } else {
-                    let decimals = result.dimension.STATISTIC.category.unit[stats_menu.value].decimals;
-                    td_1.textContent = values[j].toLocaleString("en-GB", {
-                        minimumFractionDigits: decimals,
-                        maximumFractionDigts: decimals
-                    });
-                }
-                td_1.style = "text-align: right;"
-                if (["all", "ni", "n92000002"].includes(Object.keys(result.dimension.STATISTIC.category.label)[j].toLowerCase())) {
-                    td_0.style = "font-weight: bold;"
-                    td_1.style = "text-align: right; font-weight: bold;"
-                }
-                tr.appendChild(td_1);
-
-                table.appendChild(tr);
-            }
-
-            table_div.appendChild(table);
-            div.appendChild(table_div);
-            table_tabs_content.appendChild(div);
-        }
-
-    }
-    
-    id_vars += `]`;   
+    addOtherMenus(tables, matrix, geog_type, time_var, search);
 
     let api_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
         encodeURIComponent('{"jsonrpc":"2.0","method":"PxStat.Data.Cube_API.ReadDataset","params":{"class":"query","id":' +
@@ -370,28 +45,38 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             '},"extension":{"pivot":null,"codes":false,"language":{"code":"en"},"format":{"type":"JSON-stat","version":"2.0"},"matrix":"' +
             matrix + '"},"version":"2.0"}}');
 
-
     const response = await fetch(api_url);
     const {result} = await response.json();
 
-    var stat_label = Object.values(result.dimension.STATISTIC.category.label)[0];
-    var unit = result.dimension.STATISTIC.category.unit[statistic].label;
+    const stat_label = Object.values(result.dimension.STATISTIC.category.label)[0];
+    const unit = result.dimension.STATISTIC.category.unit[statistic].label;
 
     let plot_ni = false;
 
     if (geog_type == "none") {
         plot_ni = true;
     } else {
-        if (result.dimension[geog_type].category.index.includes("N92000002") | themes_menu.value == "67") {
+        if (result.dimension[geog_type].category.index.includes("N92000002") || themes_menu.value == "67") {
             plot_ni = true;
         }
+    }    
+
+    const niHeadline = headline_year.closest("p");
+
+    if (plot_ni) {
+        headline_fig.classList.remove("d-none");
+        headline_stat.classList.remove("d-none");
+        niHeadline.classList.remove("d-none");
+    } else {
+        headline_stat.classList.add("d-none");
+        headline_fig.classList.add("d-none");
+        niHeadline.classList.add("d-none");
     }
 
-    let headline_value = "Not available";       
 
         headline_stat_label.innerHTML = `
             ${stat_label}
-            <img class="i-button" src="assets/img/icon/i-button.svg" alt="Information button"
+            <img class="i-button" src="assets/img/icon/info-circle.svg" alt="Information button"
                 data-bs-toggle="collapse" data-bs-target="#stat-info" aria-expanded="false"
                 aria-controls="stat-info">
         `;
@@ -402,300 +87,25 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             <div><a href="mailto:${result.extension.contact.email}">Email for more information</a></div>
         `;
 
+        const chartData = await buildCharts(tables, matrix, statistic, geog_type, result, plot_ni, time_var, subtitle_text, other_headline, other_selections, id_vars, stat_label, unit);
+        await buildTables(tables, matrix, statistic, geog_type, year, time_var, other_vars, other_selections, id_vars, unit);
+        const data_series = chartData?.data_series ?? [];
+        const time_series = chartData?.time_series ?? [];
+
+    if (!plot_ni) {
         
-
-    if (plot_ni) {
-
-        chart_card.classList.remove("d-none");
-        chart_card.classList.add("d-block");
-
-        if (themes_menu.value != "67" & geog_type != "none") {
-            const NI_position = result.dimension[geog_type].category.index.indexOf("N92000002");
-            result.value.splice(NI_position, 1);
-            result.dimension[geog_type].category.index.splice(NI_position, 1);
-            delete result.dimension[geog_type].category.label["N92000002"];
-        }
-
-        while(chart_container.firstChild) {
-            chart_container.removeChild(chart_container.firstChild)
-        }
-
-        let ni_url;
-
-        let categories = Object.keys(tables[matrix].categories);
-
-        if (themes_menu.value == "67") {
-            if (categories.includes("NI")) {
-                ni_url = "https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=%7B%22jsonrpc%22:%222.0%22,%22method%22:%22PxStat.Data.Cube_API.ReadDataset%22,%22params%22:%7B%22class%22:%22query%22,%22id%22:%5B%5D,%22dimension%22:%7B%7D,%22extension%22:%7B%22pivot%22:null,%22codes%22:false,%22language%22:%7B%22code%22:%22en%22%7D,%22format%22:%7B%22type%22:%22JSON-stat%22,%22version%22:%222.0%22%7D,%22matrix%22:%22" + matrix + "%22%7D,%22version%22:%222.0%22%7D%7D";
-            } else if (matrix == "INDEXSALELGD") {
-                ni_url = "https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=%7B%22jsonrpc%22:%222.0%22,%22method%22:%22PxStat.Data.Cube_API.ReadDataset%22,%22params%22:%7B%22class%22:%22query%22,%22id%22:%5B%5D,%22dimension%22:%7B%7D,%22extension%22:%7B%22pivot%22:null,%22codes%22:false,%22language%22:%7B%22code%22:%22en%22%7D,%22format%22:%7B%22type%22:%22JSON-stat%22,%22version%22:%222.0%22%7D,%22matrix%22:%22INDEXSALENI%22%7D,%22version%22:%222.0%22%7D%7D";
-            } else {
-                let eq_matrix = matrix;
-                 if (geog_type == "LGD2014") {
-                    eq_matrix = matrix.replace("LGD", "EQ");
-                } else if (geog_type == "AA") {
-                    eq_matrix = matrix.replace("AA", "EQ");
-                }
-
-                ni_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' + 
-                    encodeURIComponent('{"jsonrpc": "2.0", "method": "PxStat.Data.Cube_API.ReadDataset", "params": {"class": "query","id": ["EQUALGROUPS"],"dimension": {"EQUALGROUPS": {"category": {"index": ["N92000002"]}}},"extension": {"pivot": null,"codes": false,"language": {"code": "en"},"format": {"type": "JSON-stat","version": "2.0"},"matrix": "' +
-                        eq_matrix + '"},"version": "2.0"}}')
-                }
-
-        } else if (geog_type == "none") {
-
-            ni_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
-            encodeURIComponent('{"jsonrpc":"2.0", "method": "PxStat.Data.Cube_API.ReadDataset", "params": {"class": "query", "id": ' + id_vars + ', "dimension": { "STATISTIC": {"category": {"index": ["' + statistic +
-                '"]}}' + other_selections + '},"extension": {"pivot": null,"codes": false,"language": {"code":"en"},"format":{"type": "JSON-stat","version": "2.0"},"matrix": "'+
-                matrix + '"},"version": "2.0"}}');
-
-        } else {
-
-        ni_url = 'https://ws-data.nisra.gov.uk/public/api.jsonrpc?data=' +
-            encodeURIComponent('{"jsonrpc": "2.0", "method": "PxStat.Data.Cube_API.ReadDataset", "params": {"class": "query", "id": ' + id_vars + ', "dimension": { "STATISTIC": {"category": {"index": ["' + statistic +
-                '"]}}, "' + geog_type + 
-                '": {"category": {"index": ["N92000002"]}}' + other_selections + '},"extension": {"pivot": null,"codes": false,"language": {"code":"en"},"format":{"type": "JSON-stat","version": "2.0"},"matrix": "'+
-                matrix + '"},"version": "2.0"}}');   
-        }
-
-        
-
-        const ni_response = await fetch(ni_url);
-        const ni_result = await ni_response.json();
-        
-        var data_series = ni_result.result.value;
-        // Make sure values are numbers
-        const values = data_series.map(v => (v === null || v === undefined ? null : Number(v)));
-        if (values[values.length - 1] != null) headline_value = values[values.length - 1].toLocaleString();
-        
-        
-
-        var time_series = ni_result.result.dimension[time_var].category.index;
-        headline_year.textContent = time_series[time_series.length - 1];
-        headline_stat.innerHTML = other_headline;
-
-        Chart.defaults.font.family = "'Roboto', Arial, sans-serif";
-        Chart.defaults.color = "#212529"; // optional: match Bootstrap body color
-
-        let chart_datasets = [];
-        let legend_display = false;
-
-        if (ni_result.result.id.includes("EQGRP")) {
-            let data_labels = Object.values(ni_result.result.dimension.EQGRP.category.label);
-            
-            for (let i = 0; i < data_labels.length; i ++) {
-                data_labels[i] = data_labels[i].indexOf("-") !== -1 ? data_labels[i].slice(data_labels[i].indexOf("-") + 2).trim() : data_labels[i];
-                let line_values = [];
-                for (let j = 0; j < values.length; j ++) {
-                    if (j % data_labels.length == i) {
-                        line_values.push(values[j]);
-                    }
-                }
-                chart_datasets.push({
-                    label: data_labels[i],
-                    data: line_values,
-                    borderColor: chart_colours[i],
-                    backgroundColor: chart_colours[i],
-                    fillColor: chart_colours[i],
-                    pointBackgroundColor: chart_colours[i],
-                    tension: 0
-                });
-            }
-            legend_display = true;
-
-            if (EQGRP.value != "N92000002") {                
-                const group_value = EQGRP.options[EQGRP.selectedIndex].text;
-                eq_figs.classList.remove("d-none");
-                eq_figs.classList.add("d-flex");
-                headline_fig.classList.add("d-none");
-                headline_stat.classList.add("d-none");
-                for (let i = 0; i < data_labels.length; i ++) {
-                    let div = document.createElement("div");
-                    div.classList.add("col");
-                    let value = chart_datasets[i].data[chart_datasets[i].data.length - 1];
-                    div.innerHTML = `<p><span class="h1">${value.toLocaleString()}</span> ${unit.toLowerCase() == "number"  ? "": unit}</p><p class="text-secondary"><strong>${group_value}</strong> category: <em>"${data_labels[i]}"</em></p>`;
-                    eq_figs.appendChild(div);
-                }
-            }
-
-           
-        } else {
-            chart_datasets = [{
-                label: stat_label,
-                data: [...values],
-                borderColor: "#00205b",
-                backgroundColor: "#00205b",
-                barPercentage: 0.4,
-                fill: false,
-                pointBackgroundColor: "#00205b",
-                tension: 0
-            }];
-        }
-
-        // Chart data
-        const chart_data = {
-            labels: [...time_series],
-            datasets: chart_datasets
-        };
-
-        // Decide chart type dynamically
-        const chart_type = (values.length === 1) ? "bar" : "line";
-
-        // Axis titles
-        const xAxisTitle = result.dimension[time_var].label || "";
-        const yAxisTitle = unit || "";
-
-        // Chart config
-        const chart_config = {
-            type: chart_type,
-            data: chart_data,
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                layout: { padding: { top: wrapLabel(yAxisTitle).length * 25, left: 30 } }, // space for Y label
-                interaction: { intersect: false, mode: "index" },
-                scales: {
-                    x: {
-                        grid: { lineWidth: 0, drawTicks: true, tickWidth: 1 },
-                        ticks: { minRotation: 0, maxRotation: 0, autoSkip: true, maxTicksLimit: 8 },
-                        title: {
-                            display: !!xAxisTitle,
-                            text: xAxisTitle,
-                            color: "#6c757d",
-                            padding: { top: 10 },
-                            font: { size: 14, weight: "500", family: "'Roboto', Arial, sans-serif" }
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            minRotation: 0,
-                            maxRotation: 0,
-                            callback: (v) => {
-                                try { return Number(v).toLocaleString("en-GB"); }
-                                catch { return v; }
-                            }
-                        },
-                        title: { display: false } // plugin draws the label
-                    }
-                },
-                plugins: {
-                    legend: { display: legend_display },
-                    yAxisLabel: {
-                        text: yAxisTitle,
-                        color: "#6c757d",
-                        offset: 10,
-                        font: { size: 14, weight: "500", family: "'Roboto', Arial, sans-serif" },
-                        maxChars: 12 // wrap threshold
-                    }
-                }
-            },
-            plugins: [yAxisLabelPlugin]
-        };
-
-
-
-        
-
-        if (time_series.length == 1) {
-            chart_title.textContent = `${stat_label} in Northern Ireland ${time_series[0]}`;
-        } else {
-            chart_title.textContent = `${stat_label} in Northern Ireland (${time_series[0]} to ${time_series[time_series.length - 1]})`;
-        }
-
-        chart_subtitle.innerHTML = subtitle_text;
-
-        // Create a new canvas and render
-        const chart_canvas = document.createElement("canvas");
-        chart_canvas.id = "line-canvas";
-        chart_container.appendChild(chart_canvas);
-
-        // Prefer element or 2D context, not just the id string
-        const ctx = chart_canvas.getContext('2d');
-        new Chart(ctx, chart_config);
-
-        let unit_fixed = unit;
-        
-
-        if (unit.toLowerCase() == "number") {
-            unit_fixed = "";
-        }
-
-   
-        headline_fig.innerHTML = `<span class = "h1">${headline_value}</span> ${unit_fixed}`;
-        
-
-        
-
-        if (additional_tables.classList.contains("d-none")) {
-
-            additional_tables.classList.remove("d-none");
-
-            tables_title.textContent = chart_title.textContent;
-
-            let table_div = document.createElement("div");
-            table_div.classList.add("table-responsive");
-
-            let table = document.createElement("table");
-            table.classList.add("table");
-            table.classList.add("table-sm");
-            table.classList.add("table-bordered");
-            table.classList.add("mb-0");
-
-            let tr = document.createElement("tr");
-
-            let var_header = document.createElement("th");
-            var_header.textContent = xAxisTitle;
-            tr.appendChild(var_header);
-
-            let stat_header = document.createElement("th");
-            stat_header.textContent = `Northern Ireland (${yAxisTitle})`;
-            stat_header.style = "text-align: right;"
-            tr.appendChild(stat_header);
-
-            table.appendChild(tr);
-
-            for (let i = 0; i < values.length; i ++) {
-                let tr = document.createElement("tr");
-
-                let td_0 = document.createElement("td");
-                td_0.textContent = time_series[i];
-                tr.appendChild(td_0);
-
-                let td_1 = document.createElement("td");
-                if (values[i] == null) {
-                    td_1.textContent = "..";
-                } else {
-                    let decimals = ni_result.result.dimension.STATISTIC.category.unit[stats_menu.value].decimals;
-                    td_1.textContent = values[i].toLocaleString("en-GB", {
-                        minimumFractionDigits: decimals,
-                        maximumFractionDigts: decimals
-                    });
-                }
-                td_1.style = "text-align: right;"
-                tr.appendChild(td_1);
-
-                table.appendChild(tr);
-            }
-
-            table_div.appendChild(table);
-            table_tabs_content.appendChild(table_div);
-
-        }
-
-        table_updated.innerHTML = `Last updated: <strong>${result.updated.substr(8, 2)}/${result.updated.substr(5, 2)}/${result.updated.substr(0, 4)}</strong>. See this full dataset on <a href = "https://data.nisra.gov.uk/table/${matrix}" target = "_blank">NISRA Data Portal.</a>`;
-
-    } else {
-
         map_card.classList.remove("col-xl-6")
+        chart_card.classList.add("d-none");
+
         if (geog_type == "COB_BASIC") {
             const spacer = document.createElement("div");
             spacer.classList.add("col-xl-2");
             map_card.classList.remove("col-xl-6");
             map_card.classList.add("col-xl-8");
             map_card.parentElement.insertBefore(spacer, map_card);
-        }
-        
+        } 
+    } else {
+        map_card.classList.add("col-xl-6")
     }
 
     let data;
@@ -758,70 +168,95 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             }
         }
 
+        let min_value;
+        let max_value;
 
-        let legend_div = document.createElement("div");
-        legend_div.id = "map-legend";
-        legend_div.classList.add("map-legend");
-        legend_div.classList.add("align-self-center");
-        legend_div.classList.add("col-6");
+        if (!document.getElementById("map-legend")) {
 
-        let legend_row_1 = document.createElement("div");
-        legend_row_1.classList.add("row");
+            let legend_div = document.createElement("div");
+            legend_div.id = "map-legend";
+            legend_div.classList.add("map-legend");
+            legend_div.classList.add("align-self-center");
+            legend_div.classList.add("col-6");
 
-        let min_value = document.createElement("div");
-        min_value.classList.add("legend-min");
-        legend_row_1.appendChild(min_value);
+            let legend_row_1 = document.createElement("div");
+            legend_row_1.classList.add("row");
 
-        let unit_value = document.createElement("div");
-        unit_value.classList.add("legend-unit");
-        if (unit.toLowerCase() != "number") {
-            unit_value.innerHTML = `(${unit})`;
-        }
-        legend_row_1.appendChild(unit_value);
+            min_value = document.createElement("div");
+            min_value.id = "legend-min";
+            min_value.classList.add("legend-min");
+            legend_row_1.appendChild(min_value);
 
-        let max_value = document.createElement("div");
+            let unit_value = document.createElement("div");
+            unit_value.classList.add("legend-unit");
+            if (unit.toLowerCase() != "number") {
+                unit_value.innerHTML = `(${unit})`;
+            }
+            legend_row_1.appendChild(unit_value);
 
-        max_value.classList.add("legend-max");
-        legend_row_1.appendChild(max_value);
+            max_value = document.createElement("div");
+            max_value.id = "legend-max";
+            max_value.classList.add("legend-max");
+            legend_row_1.appendChild(max_value);
 
-        legend_div.appendChild(legend_row_1);
+            legend_div.appendChild(legend_row_1);
 
-        let legend_row_2 = document.createElement("div");
-        legend_row_2.classList.add("row");
+            let legend_row_2 = document.createElement("div");
+            legend_row_2.classList.add("row");
 
-        for (let i = 0; i < palette.length; i++) {
-            let colour_block = document.createElement("div");
-            colour_block.style.backgroundColor = palette[i];
-            colour_block.style.opacity = "0.8";
-            colour_block.classList.add("colour-block");
-        
-            if (i == palette.length - 1) {
-                colour_block.style.borderRight = "1px #555555 solid;"
+            for (let i = 0; i < palette.length; i++) {
+                let colour_block = document.createElement("div");
+                colour_block.style.backgroundColor = palette[i];
+                colour_block.style.opacity = "0.8";
+                colour_block.classList.add("colour-block");
+            
+                if (i == palette.length - 1) {
+                    colour_block.style.borderRight = "1px #555555 solid;"
+                }
+
+                legend_row_2.appendChild(colour_block);
             }
 
-            legend_row_2.appendChild(colour_block);
+            legend_div.appendChild(legend_row_2);
+
+            map_container.appendChild(legend_div);
+
+
+        } else {
+
+            min_value = document.getElementById("legend-min");
+            max_value = document.getElementById("legend-max");
+
         }
 
-        legend_div.appendChild(legend_row_2);
-
-        map_container.appendChild(legend_div);
-
-            
+        
 
         // Create a div for map to sit in
-        let map_div = document.createElement("div");
-        map_div.id ="map";
+
+        let map_div;
+
+        if (!document.getElementById("map")) {
+
+            map_div = document.createElement("div");
+            map_div.id ="map";
+            map_container.appendChild(map_div);
+
+        } else {
+            map_div = document.getElementById("map");
+        }
+
+        
+        
         map_div.classList.add("map");
 
         let map_title_text = `${stat_label} by ${result.dimension[geog_type].label} (${year})`;
         map_title.textContent = map_title_text;
 
         
-        map_container.classList.add("d-block");
-        map_container.appendChild(map_div);
+        
 
         let initialZoom = window.innerWidth < 768 ? 6 : 7; 
-        let bounds = [[-9.20, 53.58], [-4.53, 55.72]];
+        let bounds = [[-12.0, 52.0], [-2.0, 56.5]];
 
         if (geog_type == "COB_BASIC") {
             initialZoom = 1;
@@ -834,13 +269,17 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             style: 'public/map/style-omt.json',
             center: [-6.85, 54.67],
             zoom: initialZoom,
-            minZoom: initialZoom,
+            minZoom: initialZoom - 7,
             maxZoom: initialZoom + 7,
             maxBounds: bounds,
             attributionControl: false,
-            preserveDrawingBuffer: true
+            dragRotate: false,
+            preserveDrawingBuffer: true,
+            cooperativeGestures: true,
+            disableRotation: false
         });         
         
+        map.dragPan.disable();
         
         // After creating `map`
         map.addControl(
@@ -1007,129 +446,67 @@ export async function plotMap (tables, matrix, statistic, geog_type) {
             
             min_value.innerHTML = range_min.toLocaleString("en-GB");       
             max_value.innerHTML = range_max.toLocaleString("en-GB"); 
-            
-            map_updated.innerHTML = table_updated.innerHTML;
 
         } else {
             data = data_series;
         }
 
         table_title.textContent = tables[geo_menu.value].name;
-        page_title.textContent += ` - ${result.label}`;
 
-     
-     
-     
+        page_title.textContent = renamePage(tables[matrix].name);
         summary_text.innerHTML = tables[geo_menu.value].monitoring;
 
-        chart_updated.innerHTML = `Last updated: <strong>${result.updated.substr(8, 2)}/${result.updated.substr(5, 2)}/${result.updated.substr(0, 4)}</strong>. See this full dataset on <a href = "https://data.nisra.gov.uk/table/${matrix}" target = "_blank">NISRA Data Portal.</a>`;
+        nav_theme.textContent = tables[geo_menu.value].theme;        
+        nav_subject.textContent = tables[geo_menu.value].subject;    
+        nav_product.textContent = tables[geo_menu.value].product;
+        
+        const updated_text = `${result.updated.substr(8, 2)}/${result.updated.substr(5, 2)}/${result.updated.substr(0, 4)}`;
+        
+        table_updated.innerHTML = `<strong>Data last updated:</strong> ${updated_text}`;
 
-        let rows = tables[matrix].rows;
+        dataPortalPreview(tables, matrix, data, result, stat_label, geog_type, year, unit, time_series);       
 
-        dp_link.innerHTML = `Showing rows 1-${Math.min(data.length, 10)} of ${rows.toLocaleString("en-GB")}. See this full dataset on <a href = "https://data.nisra.gov.uk/table/${matrix}" target = "_blank">NISRA Data Portal</a> or download it in <a href = "https://ws-data.nisra.gov.uk/public/api.restful/PxStat.Data.Cube_API.ReadDataset/${matrix}/CSV/1.0/en">CSV format</a>.`
+        // Handle download button at top of page
+        downloadButton(matrix);
 
-         while (table_preview.firstChild) {
-            table_preview.removeChild(table_preview.firstChild)
-         }
+        // Download button for map
+        let map_query = {
+            "STATISTIC": statistic,
+            [time_var]: year
+        };
 
+        let chart_query = {
+            "STATISTIC": statistic,
+            [geog_type]: "N92000002",
+            [time_var]: time_series
+        };
 
-         let header_row = document.createElement("tr");
+        const other_selections_parsed = JSON.parse(`{${other_selections.replace(/^,/, '')}}`);
 
-         let headers = Object.keys(result.dimension);
+        other_vars.forEach(v => {
+            map_query[v] = other_selections_parsed[v].category.index;
+            chart_query[v] = other_selections_parsed[v].category.index;
+        });
 
-         for (let i = 0; i < headers.length; i ++) {
-            if (headers[i] != "NI") {
-                let th = document.createElement("th");
-                th.textContent = result.dimension[headers[i]].label;
-                header_row.appendChild(th);
-            }
-          
-
-         }
-
-         let unit_header = document.createElement("th");
-         let value_header = document.createElement("th");
-
-         unit_header.textContent = "Unit";
-         value_header.textContent = "Value";
-         value_header.classList.add("text-end");
-
-         header_row.appendChild(unit_header);
-         header_row.appendChild(value_header);
-
-         table_preview.appendChild(header_row);
-
-         for (let i = 0; i < Math.min(data.length, 10); i ++) {
-            let tr = document.createElement("tr");
-
-            let stat_cell = document.createElement("td");
-            stat_cell.textContent = stat_label;
-            tr.appendChild(stat_cell);
-
-            let year_cell = document.createElement("td");
-            if (other_vars.includes("EQGRP")) {
-                let num_categories = Object.keys(result.dimension.EQGRP.category.label).length;
-                year_cell.textContent = time_series[Math.floor(i / num_categories)];
-            } else if (["none", "NI"].includes(geog_type)) {
-                year_cell.textContent = time_series[i];
-            } else {
-                year_cell.textContent = year;
-            }
-            tr.appendChild(year_cell);
-
-            if (!["none", "NI"].includes(geog_type)) {
-                let geog_cell = document.createElement("td");
-                geog_cell.textContent = titleCase(Object.values(result.dimension[geog_type].category.label)[i]);
-                tr.appendChild(geog_cell);
-            }
-
-            for (let j = 0; j < other_vars.length; j ++) {
-                let other_cell = document.createElement("td");
-                let num_categories = Object.keys(result.dimension[other_vars[j]].category.label).length;
-                other_cell.textContent = Object.values(result.dimension[other_vars[j]].category.label)[i % num_categories];
-                tr.append(other_cell);
-            }
-
-            let unit_cell = document.createElement("td");
-            unit_cell.textContent = unit;
-            tr.appendChild(unit_cell);
-
-            let value_cell = document.createElement("td");
-            if (data[i] == null) {
-                value_cell.textContent = "..";
-            } else {
-                let decimals = result.dimension.STATISTIC.category.unit[stats_menu.value].decimals;
-                value_cell.textContent = data[i].toLocaleString("en-GB", {
-                    minimumFractionDigits: decimals,
-                    maximumFractionDigts: decimals
-                });
-            }
-            
-            value_cell.style = "text-align: right;";
-            tr.appendChild(value_cell);
-
-            table_preview.appendChild(tr);
-         }
-
-         let note_cleaned = result.note[0].replaceAll("\r", "<br>").replaceAll("[b]", "<strong>").replaceAll("[/b]", "</strong>").replaceAll("[i]", "<em>").replaceAll("[/i]", "</em>").replaceAll("[u]", "<u>").replaceAll("[/u]", "</u>");
-
-         // Convert [url=...]...[/url] into <a href="...">...</a>
-        note_cleaned = note_cleaned.replace(
-            /\[url=([a-zA-Z][a-zA-Z0-9+.-]*:[^\]]+)\](.*?)\[\/url\]/gi,
-            (match, url, text) => {
-                if (url.toLowerCase().startsWith("mailto:")) {
-                return `<a href="${url}">${text}</a>`;
-                } else {
-                return `<a href="${url}" target="_blank">${text}</a>`;
-                }
-            }
+        chartDownload(
+            "map-capture",
+            matrix,
+            tables[geo_menu.value].subject_code,
+            tables[geo_menu.value].product_code,
+            map_query,
+            "map",
+            updated_text
         );
 
-
-
-         metadata_text.innerHTML = note_cleaned;   
-
-         downloadButton(matrix);
-   
+        // Download button for chart
+        chartDownload(
+            "chart-capture",
+            matrix,
+            tables[geo_menu.value].subject_code,
+            tables[geo_menu.value].product_code,
+            chart_query,
+            "chart",
+            updated_text
+        );
 
 }

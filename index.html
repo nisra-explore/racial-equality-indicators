@@ -39,13 +39,14 @@
   <div id="cookie-banner"></div>
 
   <!-- Top Navbar -->
-<nav class="navbar p-0" style="background-color:#00205b;">
+<nav class="navbar p-0 bg-navy">
   <div class="container-fluid d-flex flex-column align-items-stretch p-0">
     
     <!-- Banner row (full width) -->
-    <div class="w-100" style="background-color:#3878c5;">
+    <div id="skip-link" class="container-fluid bg-warning py-2 d-none"><a class="text-black" href="#content">Skip to main content</a></div>
+    <div class="w-100 bg-blue">
       <div class="text-white text-center py-2 px-3">
-        <strong>We welcome feedback from users through our <a href="https://dttselfserve.nidirect.gov.uk/NISRA/RateIt#/Racial_Equality_Indicators" target="_blank">short survey</a></use></strong>
+        <strong>We welcome feedback from users through our <a href="https://dttselfserve.nidirect.gov.uk/NISRA/RateIt#/Racial_Equality_Indicators" target="_blank" rel="noopener">short survey</a></strong>
       </div>
     </div>
 
@@ -53,8 +54,8 @@
     <div class="d-flex row align-items-center w-100 py-3 px-2">
       <!-- Logo (left) -->
       <div class="col d-flex justify-content-center justify-content-lg-start">
-        <a class="navbar-brand ps-2 d-flex align-items-center me-auto" href="https://www.nisra.gov.uk/">
-          <img src="assets/img/logo/nisra-only-white.svg" alt="NISRA logo" title="NISRA Website" height="60" class="me-3">
+        <a class="navbar-brand ps-2 d-flex align-items-center me-auto" href="https://nisra.gov.uk/">
+          <img src="assets/img/logo/nisra-only-white.svg" alt="NISRA homepage" title="NISRA website (opens in new tab)" height="60" class="me-3">
         </a>
       </div>
 
@@ -65,12 +66,16 @@
       </h1>
       </div>
 
+      
+
       <!-- Mobile: sidebar trigger (hidden ≥ lg) -->
       
     </div>
     
 
   </div>
+
+  
 <div class="d-flex justify-content-center w-100 mb-2">
   <button class="btn btn-outline-light d-lg-none mt-2 w-auto"
           type="button"
@@ -81,6 +86,8 @@
     <i class="bi bi-list"></i><span class="ms-1">Select Data</span>
   </button>
 </div>
+
+<div class="bg-green w-100 h-16px"></div>
 
 </nav>
 
@@ -112,7 +119,7 @@
                 <div class="card-body">
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-search"></i></span>
-                    <input id="global-search" type="search" class="form-control" placeholder="Search" autocomplete="off">
+                    <input id="global-search" type="search" class="form-control" placeholder="Search" aria-label="Search by keyword" autocomplete="off">
                   </div>
                   <div id="global-search-results" class="list-group mt-2"></div>
                 </div>
@@ -127,28 +134,28 @@
                 <div class="d-none">
               <div>
                 <label for="theme" class="form-label">Theme</label>
-                <select id="theme" name="theme" class="form-select"></select>
+                <select id="theme" name="theme" class="form-select" aria-label="Select theme"></select>
               </div>
               <div>
                 <label for="subject" class="form-label">Subtheme</label>
-                <select id="subject" name="subject" class="form-select"></select>
+                <select id="subject" name="subject" class="form-select" aria-label="Select subtheme"></select>
               </div>
               <div>
                 <label for="product" class="form-label">Subject</label>
-                <select id="product" name="product" class="form-select"></select>
+                <select id="product" name="product" class="form-select" aria-label="Select subject"></select>
               </div>
               </div>
               <div>
                 <label for="name" class="form-label">Indicator</label>
-                <select id="name" name="name" class="form-select"></select>
+                <select id="name" name="name" class="form-select" aria-label="Select table"></select>
               </div>
               <div class="d-none">
                 <label for="geo" class="form-label">Geography/Type</label>
-                <select id="geo" name="geo" class="form-select"></select>
+                <select id="geo" name="geo" class="form-select" aria-label="Select geography or type"></select>
               </div>
-              <div>
+              <div class="d-none">
                 <label for="stat" class="form-label">Statistic</label>
-                <select id="stat" name="stat" class="form-select"></select>
+                <select id="stat" name="stat" class="form-select" aria-label="Select statistic"></select>
               </div>
 
               <div id="other-vars" class="vstack gap-3"></div>
@@ -168,21 +175,33 @@
       </aside>
 
       <!-- Main Content -->
-      <main class="col-12 col-lg-9 col-xxl-10">
+      <main id="content" tabindex="-1" class="col-12 col-lg-9 col-xxl-10">
         <div class="py-4">
 
-          <div id="buttons" class="d-flex gap-2 justify-content-end my-2">
-              <button class="btn btn-primary" type="about" alt="About this dashboard" onclick="window.location.href='./about.html'">About</button>
-              <div id="download-btn" class="dropdown">
-                <button class="btn dropdown-toggle btn-primary" type="download" id="capture-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  Download
-                </button>
-              </div>
-              <button class="btn btn-primary" type="share" alt="Share this page">Share</button>
+          <div id="buttons" class="d-flex gap-2 justify-content-end mt-2">
+                      <button class="btn btn-primary" type="button" alt="About this dashboard" aria-label="About this tool (opens About page)" onclick="window.location.href='./about.html'">About</button>
+                      <div id="download-btn" class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="capture-dropdown" aria-label="Download dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                          Download
+                        </button>
+                      </div>
+                      <button class="btn btn-primary" type="button" alt="Share this page" aria-label="Share this page">Share</button>
             </div>
 
-          <div class="d-flex justify-content-between align-items-center my-3">             
-              <p id="table-title" class="h2"></p>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <div>
+              <nav aria-label="breadcrumb">
+                        <ol id="breadcrumb" class="breadcrumb mb-0 mt-2 mb-2">
+                          <li id="nav-theme" class="breadcrumb-item"></li>
+                          <li id="nav-subject" class="breadcrumb-item"></li>
+                          <li id="nav-product" class="breadcrumb-item"></li>
+                        </ol>
+                      </nav>
+
+              <h2 id="table-title" class="fs-3 fw-bold"s></h2>
+            </div>
+
           </div>
 
           <!-- Titles -->
@@ -191,7 +210,7 @@
             <div id="headline" class="col-12">
               <div class="card h-100">
                 <div class="card-body">
-                  <div id ="headline-stat-label" class="text-secondary h4"></div>
+                  <h3 id ="headline-stat-label" class="text-secondary"></h3>
                   <div class="collapse" id="stat-info">
                     <div class="card">
                       <div class="card-body">
@@ -201,7 +220,7 @@
                   </div>
                   <p class="text-secondary">Northern Ireland (<strong id="headline-year"></strong>)</p>
                   <p id="headline-fig"></p>
-                  <div id="eq-figs" class="d-none align-items-stretch d-flex flex-wrap gap-2"></div>
+                  <div id="eq-figs" class="align-items-stretch d-flex flex-wrap gap-2"></div>
                   <p class="text-secondary" id="headline-stat"></p>
                 </div>
               </div>
@@ -214,33 +233,34 @@
           <div id="capture" class="row g-4 align-items-stretch">
             <div id="map-card" class="col-12 col-xl-6">
               <div class="card h-100">
-                <div class="card-header">
-                  <h3 id="map-title" class="h5 mb-0"></h3>
-                </div>
-                <div class="card-body">
-                  <div class="position-relative">
-                    <p id="map-subtitle" class="text-secondary mb-0"></p>
-                    <div id="map-container" class="rounded-2 justify-content-center mx-auto mt-3"></div>
+                <div id="map-capture">
+                  <div class="card-header">
+                    <h4 id="map-title" class="h5 mb-0"></h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="position-relative">
+                      <p id="map-subtitle" class="text-secondary mb-0"></p>
+                      <div id="map-container" class="rounded-2 justify-content-center mx-auto mt-3"></div>
+                    </div>
                   </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between small">
-                  <span id="map-updated" class="text-secondary"></span>
-                  <span></span>
                 </div>
               </div>
             </div>
 
-            <div id="chart-card" class="col-12 col-xl-6 d-none">
+            <div id="chart-card" class="col-12 col-xl-6">
               <div class="card h-100">
-                <div class="card-header">
-                  <h3 id="chart-title" class="h5 mb-0"></h3>
-                </div>
-                <div class="card-body d-flex flex-column">
-                  <p id="chart-subtitle" class="text-secondary mb-0"></p>
-                  <div id="chart-container" class="rounded-2 mt-auto"></div>
+                <div id="chart-capture">
+                  <div class="card-header">
+                    <h4 id="chart-title" class="h5 mb-0"></h4>
+                  </div>
+                  <div class="card-body d-flex flex-column">
+                    <p id="chart-subtitle" class="text-secondary mb-0"></p>
+                    <div id="chart-container" class="rounded-2"></div>
+                  </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between small">
-                  <span id="chart-updated" class="text-secondary"></span>
                 </div>
               </div>
             </div>
@@ -260,11 +280,11 @@
             </div>
 
           <!-- Additional tables -->
-          <div id="additional-tables" class="row g-4 mt-1 d-none">
+          <div id="additional-tables" class="row g-4 mt-1">
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 id="tables-title" class="h5 mb-2">Northern Ireland</h3>
+                  <h4 id="tables-title" class="h5 mb-2">Northern Ireland</h4>
                   <ul class="nav nav-tabs card-header-tabs" id="table-tabs" role="tablist">
                   </ul>
                 </div>
@@ -282,7 +302,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 id="tables-title" class="h5 mb-2">NISRA Data Portal</h3>
+                  <h4 id="tables-title" class="h5 mb-2">NISRA Data Portal</h4>
                   <ul class="nav nav-tabs card-header-tabs" id="previewTabs" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" id="data-tab" data-bs-toggle="tab" data-bs-target="#data-preview" type="button" role="tab" aria-controls="data-preview" aria-selected="true">
@@ -291,7 +311,7 @@
                     </li>
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" id="meta-tab" data-bs-toggle="tab" data-bs-target="#metadata" type="button" role="tab" aria-controls="metadata" aria-selected="false">
-                        Notes and defintions
+                        Notes and definitions
                       </button>
                     </li>
                   </ul>
@@ -347,27 +367,27 @@
           <ul class="list-inline">
             <li class="list-inline-item">
               <a href="https://www.facebook.com/nisra.gov.uk">
-                <img src="assets/img/logo/facebook-brands-solid-full.svg" title="Facebook" role="img" class="img-50"/>
+                <img src="assets/img/logo/facebook-brands-solid-full.svg" alt="NISRA on Facebook" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
               <a href="https://x.com/NISRA/">
-                <img src="assets/img/logo/x-twitter-brands-solid-full.svg" title="Twitter/X" role="img" class="img-50"/>
+                <img src="assets/img/logo/x-twitter-brands-solid-full.svg" alt="NISRA on Twitter/X" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
               <a href="https://www.youtube.com/user/nisrastats">
-                <img src="assets/img/logo/youtube-brands-solid-full.svg" title="YouTube" role="img" class="img-50"/>
+                <img src="assets/img/logo/youtube-brands-solid-full.svg" alt="NISRA on YouTube" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
               <a href="https://www.linkedin.com/company/northern-ireland-statistics-and-research-agency/">
-                <img src="assets/img/logo/linkedin-in-brands-solid-full.svg" title="LinkedIn" role="img" class="img-50"/>
+                <img src="assets/img/logo/linkedin-in-brands-solid-full.svg" alt="NISRA on LinkedIn" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
                 <a href="https://www.instagram.com/nisra.gov.uk/">
-                  <img src="assets/img/logo/instagram-brands-solid-full.svg" title="Instagram" role="img" class="img-50"/>
+                  <img src="assets/img/logo/instagram-brands-solid-full.svg" alt="NISRA on Instagram" role="img" class="img-50"/>
                 </a>
             </li>
           </ul>

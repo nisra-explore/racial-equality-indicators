@@ -1,5 +1,16 @@
 library(jsonlite)
 library(dplyr)
+library(V8)
+
+# Read configuration and extract meta file name
+config_file <- readLines("src/config/config.js", warn = FALSE) %>%
+  sub("export ", "", .) %>%
+  paste(., collapse = "\n")
+
+ctx <- V8::v8()
+ctx$eval(config_file)
+meta_name <- ctx$get("meta_name")
+
 
 api_key <- "801aaca4bcf0030599c019f4efa8b89032e5e6aa1de4a629a7f7e9a86db7fb8c"
 
@@ -14,11 +25,18 @@ fetch_dataset <- function(matrix,
   repeat {
     result <- tryCatch(
       {
+
         url <- paste0(
-          "https://ws-data.nisra.gov.uk/public/api.restful/",
-          "PxStat.Data.Cube_API.ReadDataset/",
+          "https://ws-data.nisra.gov.uk/public/api.jsonrpc",
+          "?data=%7B%22jsonrpc%22:%222.0%22,%22method%22:",
+          "%22PxStat.Data.Cube_API.ReadDataset%22,",
+          "%22params%22:%7B%22class%22:%22query%22,%22id%22:%5B%5D,",
+          "%22dimension%22:%7B%7D,%22extension%22:%7B%22pivot%22:null,",
+          "%22codes%22:false,%22language%22:%7B%22code%22:%22en%22%7D,",
+          "%22format%22:%7B%22type%22:%22JSON-stat%22,",
+          "%22version%22:%222.0%22%7D,%22matrix%22:%22",
           matrix,
-          "/JSON-stat/2.0/en?apiKey=",
+          "%22%7D,%22version%22:%222.0%22%7D%7D&apiKey=",
           api_key
         )
 
@@ -32,8 +50,8 @@ fetch_dataset <- function(matrix,
         return(json_data)  # ✅ success, return immediately
       },
       error = function(e) {
-        message(sprintf("Error fetching %s (attempt %d): %s", 
-                        ifelse(is.null(label), matrix, label), 
+        message(sprintf("Error fetching %s (attempt %d): %s",
+                        ifelse(is.null(label), matrix, label),
                         attempt, e$message))
         return(NULL)
       }
@@ -127,7 +145,7 @@ for (i in seq_along(data_portal$label)) {
 
   matrix <- data_portal$extension$matrix[i]
 
-  json_data <- fetch_dataset(matrix, api_key, data_portal$label[i])
+  json_data <- fetch_dataset(matrix, api_key, data_portal$label[i])$result
 
   subject <- json_data$extension$subject$value
   if (subject != "Racial equality") next
@@ -167,12 +185,13 @@ for (i in seq_along(data_portal$label)) {
     rows = length(json_data$value)
   )
 
+
 }
 
 tables$tables <- tables$tables[order(names(tables$tables))]
 tables$table_count <- length(tables$tables)
 
 write_json(tables,
-           "public/data/data-portal-tables.json",
+           paste0("public/data/", meta_name, ".json"),
            auto_unbox = TRUE,
            pretty = TRUE)

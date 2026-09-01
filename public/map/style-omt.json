@@ -671,7 +671,7 @@
         "text-field": "{name:latin} {name:nonlatin}"
       },
       "paint": {
-        "text-color": "#bbb",
+        "text-color": "#000",
         "text-halo-color": "#fff",
         "text-translate": [0, 0],
         "text-halo-width": 2,

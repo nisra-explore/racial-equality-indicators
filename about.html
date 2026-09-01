@@ -29,44 +29,41 @@
   <div id="cookie-banner"></div>
 
   <!-- Top Navbar -->
-<nav class="navbar p-0" style="background-color:#00205b;">
+<nav class="navbar p-0 bg-navy">
   <div class="container-fluid d-flex flex-column align-items-stretch p-0">
     
     <!-- Banner row (full width) -->
-    <div class="w-100" style="background-color:#3878c5;">
+    <div id="skip-link" class="container-fluid bg-warning py-2 d-none"><a class="text-black" href="#content">Skip to main content</a></div>
+    <div class="w-100 bg-blue">
       <div class="text-white text-center py-2 px-3">
-        <strong>We welcome feedback from users through our <a href="https://dttselfserve.nidirect.gov.uk/NISRA/RateIt#/Racial_Equality_Indicators" target="_blank">short survey</a></use></strong>
+        <strong>We welcome feedback from users through our <a href="https://dttselfserve.nidirect.gov.uk/NISRA/RateIt#/Racial_Equality_Indicators" target="_blank" rel="noopener">short survey</a></strong>
       </div>
     </div>
 
     <!-- Main navbar row -->
     <div class="d-flex row align-items-center w-100 py-3 px-2">
       <!-- Logo (left) -->
-      <div class="col d-flex justify-content-center justify-content-lg-start">
-        <a class="navbar-brand ps-2 d-flex align-items-center me-auto" href="https://www.nisra.gov.uk/">
-          <img src="assets/img/logo/nisra-only-white.svg" alt="NISRA logo" title="NISRA Website" height="60" class="me-3">
-        </a>
-      </div>
+      <a class="navbar-brand ps-2 d-flex align-items-center me-auto" href="https://nisra.gov.uk/">
+        <img src="assets/img/logo/nisra-only-white.svg" alt="NISRA homepage" title="NISRA website (opens in new tab)" height="60" class="me-3">
+      </a>
 
       <!-- Heading (right) -->
-       <div class="col">
-        <h1 class="mb-0 pe-2 text-white app-title ms-2 text-center text-lg-end">
-          Racial Equality Indicators
-      </h1>
-      </div>
+      <h1 class="mb-0 pe-2 text-white app-title ms-2 text-center text-lg-end">Racial Equality Indicators</h1>
 
       <!-- Mobile: sidebar trigger (hidden ≥ lg) -->
       
     </div>
   </div>
+
+  <div class="bg-green w-100 h-16px"></div>
 </nav>
   
-  <div class="container my-5">
+  <main id="content" tabindex="-1" class="container my-5 bg-white">
 
     
     <div class = "d-flex gap-2 justify-content-end mt-2">
-      <button class="btn btn-primary" type="button" alt="About this dashboard" onclick="window.location.href='./'">Home</button>
-      <button id = "share" class="btn btn-primary" type="share" alt="Share this page">Share</button>
+      <button class="btn btn-primary" type="button" alt="About this dashboard" aria-label="Home (opens Home page)" onclick="window.location.href='./'">Home</button>
+      <button id = "share" class="btn btn-primary" type="button" alt="Share this page">Share</button>
     </div>
 
    <h2>About the Racial Equality Indicators</h2>
@@ -94,10 +91,10 @@
 
 
    <div class = "d-flex gap-2 justify-content-center mt-2">
-      <button class="btn btn-primary" type="button" alt="About this dashboard" onclick="window.location.href='./'">Back to Data Explorer</button>
+      <button class="btn btn-primary" type="button" alt="Back to Data Explorer" aria-label="Back to Data Explorer (reopens Data Explorer)" onclick="window.location.href='./'">Back to Data Explorer</button>
     </div>
 
-  </div>
+  </main>
 
   <footer class="footer mt-auto py-4 bg-nisra text-white">
     <div class="container">
@@ -124,27 +121,27 @@
           <ul class="list-inline">
             <li class="list-inline-item">
               <a href="https://www.facebook.com/nisra.gov.uk">
-                <img src="assets/img/logo/facebook-brands-solid-full.svg" title="Facebook" role="img" class="img-50"/>
+                <img src="assets/img/logo/facebook-brands-solid-full.svg" alt="NISRA on Facebook" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
               <a href="https://x.com/NISRA/">
-                <img src="assets/img/logo/x-twitter-brands-solid-full.svg" title="Twitter/X" role="img" class="img-50"/>
+                <img src="assets/img/logo/x-twitter-brands-solid-full.svg" alt="NISRA on Twitter/X" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
               <a href="https://www.youtube.com/user/nisrastats">
-                <img src="assets/img/logo/youtube-brands-solid-full.svg" title="YouTube" role="img" class="img-50"/>
+                <img src="assets/img/logo/youtube-brands-solid-full.svg" alt="NISRA on YouTube" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
               <a href="https://www.linkedin.com/company/northern-ireland-statistics-and-research-agency/">
-                <img src="assets/img/logo/linkedin-in-brands-solid-full.svg" title="LinkedIn" role="img" class="img-50"/>
+                <img src="assets/img/logo/linkedin-in-brands-solid-full.svg" alt="NISRA on LinkedIn" role="img" class="img-50"/>
               </a>
             </li>
             <li class="list-inline-item">
                 <a href="https://www.instagram.com/nisra.gov.uk/">
-                  <img src="assets/img/logo/instagram-brands-solid-full.svg" title="Instagram" role="img" class="img-50"/>
+                  <img src="assets/img/logo/instagram-brands-solid-full.svg" alt="NISRA on Instagram" role="img" class="img-50"/>
                 </a>
             </li>
           </ul>
@@ -177,7 +174,7 @@
   }
 
   h2 {
-    color: #00205b;
+    color: var(--nisra_navy);
      font-weight: bold;
   }
 </style>

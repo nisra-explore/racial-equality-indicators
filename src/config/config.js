@@ -1,3 +1,6 @@
+// Metadata json file name. If forking do not use "data-portal-tables"
+export const meta_name = "rei-tables";
+
 // Default data to show on page load
 export const default_table = "LEAVQUAREI";
 
@@ -53,6 +56,11 @@ export const GEOG_PROPS= {
     code_var: "Ward_Code",
     label: "Ward"
   },
+  WARD2014:{ 
+    url: "public/map/Ward2014.geo.json",
+    code_var: "Ward_Code",
+    label: "Ward"
+  },
   SOA:     {
     url: "public/map/SOA2011.geo.json",
     code_var: "SOA_CODE",
@@ -95,10 +103,8 @@ export const GEOG_PROPS= {
   },
   EQUALGROUPS: {
     label: "Equality Groups"
-  },
-  NI: {
-    label: "Northern Ireland"
   }
+
 }
 
   // Colour palette for maps

@@ -3,7 +3,9 @@ import { sortObject } from "./sortObject.js";
 import { default_table } from "../config/config.js";
 import { fillSubjectsMenu, fillProductsMenu, fillNamesMenu, fillGeoMenu, fillStatMenu} from "./fillMenus.js";
 import { firstKey } from "./firstKey.js"
-import { themes_menu, subjects_menu, products_menu, names_menu, geo_menu, stats_menu, search, SIDEBAR_OPEN_KEY } from "./elements.js";
+import { themes_menu, subjects_menu, products_menu, names_menu, geo_menu, stats_menu, SIDEBAR_OPEN_KEY, getSearch } from "./elements.js";
+import { refreshRoute } from "./refreshRoute.js";
+import { meta_name } from "../config/config.js";
 
 let tables = {};
 let _searchIndex = [];
@@ -11,7 +13,7 @@ let _searchIndex = [];
 export async function createMenus () {
 
     try {
-    let data = await loadTables();  // ← cached load
+    let data = await loadTables(meta_name);  // ← cached load
     tables = data.tables;
     // Build global search index
     let searchIndex = Object.keys(tables).map(key => {
@@ -60,14 +62,28 @@ export async function createMenus () {
 
     structure = sortObject(structure);
 
+    const current_options = themes_menu.options;
+
     for (let i = 0; i < Object.keys(structure).length; i ++) {
         let option = document.createElement("option");
         option.value = structure[Object.keys(structure)[i]].code;
-        option.textContent = Object.keys(structure)[i];
-        themes_menu.appendChild(option);
+
+        let has_option = false;
+        for (let j = 0; j < current_options.length; j ++) {
+            if (current_options[j].value == option.value) {
+                has_option = true;
+            } 
+        }
+
+        if (!has_option) {
+            option.textContent = Object.keys(structure)[i];
+            themes_menu.appendChild(option);
+        }
     }
 
     let selected_theme = tables[default_table].theme_code;
+
+    const search = getSearch();
 
     for (let i = 0; i < search.length; i ++) {
         if (search[i].includes("table=")) {
@@ -79,13 +95,13 @@ export async function createMenus () {
 
     themes_menu.value = selected_theme;
 
-    fillSubjectsMenu(structure, tables);
-    fillProductsMenu(structure, tables);
-    fillNamesMenu(structure, tables);
-    fillGeoMenu(structure, tables);
-    fillStatMenu(tables);
+    fillSubjectsMenu(structure, tables, search);
+    fillProductsMenu(structure, tables, search);
+    fillNamesMenu(structure, tables, search);
+    fillGeoMenu(structure, tables, search);
+    fillStatMenu(tables, search);
 
-    themes_menu.onchange = function () {
+    themes_menu.onchange = async function () {
         localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
 
         const theme = structure[themes_menu.options[themes_menu.selectedIndex].text];
@@ -95,22 +111,36 @@ export async function createMenus () {
 
         const selected_geo = tables[firstKey(tables)][0];
 
-        window.location.search = `?table=${selected_geo}`;
+        window.history.pushState({}, "", `?table=${selected_geo}`);
+
+        await refreshRoute();
     }
 
-    subjects_menu.onchange = function() {
+    subjects_menu.onchange = async function() {
         localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
 
         const subject = structure[themes_menu.options[themes_menu.selectedIndex].text].subjects[subjects_menu.options[subjects_menu.selectedIndex].text];
         const products = subject.products;
-        const tables   = products[firstKey(products)].tables;
+
+        const subject_name = subjects_menu.options[subjects_menu.selectedIndex].text;
+
+        const census_product = subject_name === "Census"
+            ? Object.keys(products)
+                .filter(product => /^Census \d{4}$/.test(product))
+                .sort((a, b) => Number(b.match(/(\d{4})$/)[1]) - Number(a.match(/(\d{4})$/)[1]))[0]
+            : undefined;
+
+        const selected_product = subject_name === "Census" ? (census_product || firstKey(products)) : firstKey(products);
+        const tables = products[selected_product].tables;
 
         const selected_geo = tables[firstKey(tables)][0];
         
-        window.location.search = `?table=${selected_geo}`;
+        window.history.pushState({}, "", `?table=${selected_geo}`);
+
+        await refreshRoute();
     }
 
-    products_menu.onchange = function () {
+    products_menu.onchange = async function () {
         localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
 
         const product = structure[themes_menu.options[themes_menu.selectedIndex].text].subjects[subjects_menu.options[subjects_menu.selectedIndex].text].products[products_menu.options[products_menu.selectedIndex].text];
@@ -118,26 +148,34 @@ export async function createMenus () {
 
         const selected_geo = tables[firstKey(tables)][0];
 
-        window.location.search = `?table=${selected_geo}`;
+        window.history.pushState({}, "",`?table=${selected_geo}`);
+        
+        await refreshRoute();
     }
 
-    names_menu.onchange = function () {
+    names_menu.onchange = async function () {
         localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
 
         const tables = structure[themes_menu.options[themes_menu.selectedIndex].text].subjects[subjects_menu.options[subjects_menu.selectedIndex].text].products[products_menu.options[products_menu.selectedIndex].text].tables[names_menu.options[names_menu.selectedIndex].text];
         let selected_geo = tables[0];   
 
-        window.location.search = `?table=${selected_geo}`;
+        window.history.pushState({}, "", `?table=${selected_geo}`);
+
+        await refreshRoute();
     }
 
-    geo_menu.onchange = function () {
+    geo_menu.onchange = async function () {
         localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
-        window.location.search = `?table=${geo_menu.value}`;
+        window.history.pushState({}, "", `?table=${geo_menu.value}`);
+
+        await refreshRoute();
     }
 
-    stats_menu.onchange = function () {
+    stats_menu.onchange = async function () {
         localStorage.setItem(SIDEBAR_OPEN_KEY, "1");
-        window.location.search = `?table=${geo_menu.value}&stat=${stats_menu.value}`;
+        window.history.pushState({}, "",`?table=${geo_menu.value}&stat=${stats_menu.value}`);
+
+        await refreshRoute();
     }
 
     _searchIndex = Object.keys(tables).map(key => {

@@ -25,6 +25,8 @@ export function mapSelections (categories, tables) {
         geog_type = "DZ2021";
     } else if (categories.includes("Ward2014")) {
         geog_type = "Ward2014";
+    } else if (categories.includes("WARD2014")) {
+        geog_type = "WARD2014";
     } else if (categories.includes("SOA")) {
         geog_type = "SOA";
     } else if (categories.includes("SA")) {
@@ -47,6 +49,6 @@ export function mapSelections (categories, tables) {
         geog_type = "none";
     }
 
-    plotMap(tables, geo_menu.value.replace(/_[0-9]+/, ""), stats_menu.value, geog_type);
+    plotMap(tables, geog_type);
 
 }

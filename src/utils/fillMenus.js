@@ -1,19 +1,23 @@
 import { mapSelections } from "./mapSelections.js";
 import { default_table, GEOG_PROPS } from "../config/config.js";
-import {themes_menu, subjects_menu, search, products_menu, names_menu, geo_menu, stats_menu} from "./elements.js";
+import { themes_menu, subjects_menu, products_menu, names_menu, geo_menu, stats_menu } from "./elements.js";
 import { sortObject } from "./sortObject.js";
 
-export function fillSubjectsMenu (structure, tables) {
+export function fillSubjectsMenu (structure, tables, search) {
+
+    subjects_menu.replaceChildren();
 
     let subjects = structure[themes_menu.options[themes_menu.selectedIndex].text].subjects;
+
+    let current_options = subjects_menu.options;
 
     for (let i = 0; i < Object.keys(subjects).length; i ++) {
         let option = document.createElement("option");
         option.value = subjects[Object.keys(subjects)[i]].code;
-        option.textContent = Object.keys(subjects)[i];
-        subjects_menu.appendChild(option);
-    }
-
+            option.textContent = Object.keys(subjects)[i];
+            subjects_menu.appendChild(option);
+        }
+        
     let selected_subject = subjects[Object.keys(subjects)[0]].code;
 
     if (window.location.search == "") {
@@ -32,10 +36,11 @@ export function fillSubjectsMenu (structure, tables) {
 
 }
 
-export function fillProductsMenu (structure, tables) {
+export function fillProductsMenu (structure, tables, search) {
+
+    products_menu.replaceChildren();
 
     let products = structure[themes_menu.options[themes_menu.selectedIndex].text].subjects[subjects_menu.options[subjects_menu.selectedIndex].text].products;
-
 
     for (let i = 0; i < Object.keys(products).length; i ++) {
         let option = document.createElement("option");
@@ -62,7 +67,9 @@ export function fillProductsMenu (structure, tables) {
 
 }
 
-export function fillNamesMenu (structure, tables) {
+export function fillNamesMenu (structure, tables, search) {
+
+    names_menu.replaceChildren();
 
     let names = Object.keys(structure[themes_menu.options[themes_menu.selectedIndex].text].subjects[subjects_menu.options[subjects_menu.selectedIndex].text].products[products_menu.options[products_menu.selectedIndex].text].tables);
 
@@ -91,7 +98,9 @@ export function fillNamesMenu (structure, tables) {
 
 }
 
-export function fillGeoMenu (structure, tables) {
+export function fillGeoMenu (structure, tables, search) {
+
+    geo_menu.replaceChildren();
 
     let names = structure[themes_menu.options[themes_menu.selectedIndex].text].subjects[subjects_menu.options[subjects_menu.selectedIndex].text].products[products_menu.options[products_menu.selectedIndex].text].tables;
 
@@ -135,12 +144,10 @@ export function fillGeoMenu (structure, tables) {
         if (geo_types[geo_type].length == 1) {
             let option = document.createElement("option");
             option.value = geo_types[geo_type];
-            if (Object.keys(GEOG_PROPS).includes(geo_type)) {
-                option.text = GEOG_PROPS[geo_type].label;
-                num_options += 1;
-            }
-            geo_menu.appendChild(option)
             
+            option.text = GEOG_PROPS[geo_type]?.label ?? tables[geo_types[geo_type][0]].categories[geo_type]?.label ?? geo_type;
+            num_options += 1;
+            geo_menu.appendChild(option);
         } else {
             for (let j = 0; j < geo_types[geo_type].length; j ++) {
                 let option = document.createElement("option");
@@ -148,6 +155,10 @@ export function fillGeoMenu (structure, tables) {
                 let categories = tables[geo_types[geo_type][j]].categories;
                 let category_names = Object.keys(categories);
                 category_names = category_names.filter(x => !["STATISTIC", geo_type, tables[geo_types[geo_type][j]].time].includes(x));
+
+                if (category_names.length == 0) {
+                    category_names.push(tables[geo_types[geo_type][j]].time)
+                }
                 
                 let category_string = "";
                 for (let k = 0; k < category_names.length; k ++) {
@@ -159,10 +170,10 @@ export function fillGeoMenu (structure, tables) {
                         category_string += `, ${categories[category_names[k]].label}`;
                     }
                 }
-                if (Object.keys(GEOG_PROPS).includes(geo_type)) {
-                    option.text = `${GEOG_PROPS[geo_type].label} by ${category_string}`;
-                    num_options += 1;
-                }
+
+                const geoLabel = GEOG_PROPS[geo_type]?.label ?? tables[geo_types[geo_type][j]].categories[geo_type]?.label ?? geo_type;
+                option.text = `${geoLabel} by ${category_string}`;
+                num_options += 1;
                 geo_menu.appendChild(option);
             }
         }        
@@ -174,6 +185,7 @@ export function fillGeoMenu (structure, tables) {
     //     geo_menu.parentElement.classList.add("d-block");
     //     geo_menu.parentElement.classList.remove("d-none");
     // }
+
 
     let selected_geo;
 
@@ -192,11 +204,23 @@ export function fillGeoMenu (structure, tables) {
 
 }
 
-export function fillStatMenu (tables) {
+export function fillStatMenu (tables, search) {
 
-    let statistics = tables[geo_menu.value].statistics;
+    stats_menu.replaceChildren();
 
-    for (let i = 0; i < Object.keys(statistics).length; i ++) {
+    const statistics = tables[geo_menu.value].statistics;
+
+    const num_stats = Object.keys(statistics).length;
+
+    if (num_stats > 1) {
+        stats_menu.parentElement.classList.add("d-block");
+        stats_menu.parentElement.classList.remove("d-none");
+    } else {
+        stats_menu.parentElement.classList.add("d-none");
+        stats_menu.parentElement.classList.remove("d-block");
+    }
+
+    for (let i = 0; i < num_stats; i ++) {
         let option = document.createElement("option");
         option.value = Object.keys(statistics)[i];
         option.textContent = Object.values(statistics)[i];

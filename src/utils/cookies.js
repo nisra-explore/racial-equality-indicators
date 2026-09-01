@@ -1,7 +1,7 @@
 export function initCookieConsent(options = {}) {
   const {
     bannerId = 'cookie-banner',
-    gtmId = 'GTM-KF6WGSG',
+    gtmId = 'GTM-WKK8ZWP',
     cookieDomain = '.nisra.gov.uk',
     cookieDays = 365
   } = options;
@@ -76,7 +76,7 @@ export function initCookieConsent(options = {}) {
   cookieBanner.classList.add('cookies-infobar');
   cookieBanner.innerHTML = `
     <div class="container">
-      <p><strong>Cookies on the Wellbeing Framework webpage</strong></p>
+      <p><strong>Cookies on the NISRA Data Explorer</strong></p>
       <p>
         This prototype web page places small amounts of information known as cookies on your device.
         <a href="https://www.nisra.gov.uk/cookies"
