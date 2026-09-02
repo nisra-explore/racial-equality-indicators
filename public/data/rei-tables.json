@@ -738,9 +738,9 @@
       "rows": 66
     },
     "NOQUAREI": {
-      "name": "Indicator 1.b - Percentage (%) of pupils leaving school with no qualifications by ethnicity",
+      "name": "Indicator 1.b - Percentage of pupils leaving school with no qualifications by ethnicity",
       "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) <\/strong><br>To consider these findings, and those of Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,598 in 2023/24, the total number of minority ethnic school leavers more than doubled (from 465 to 1,143) over the same period. <br><br>In 2023/24, the proportion of white school leavers with no qualifications (0.9%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period. <br><br>Young people from minority ethnic groups represented 4.8% of all school leavers in 2023/24 but make up 8.3% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
-      "updated": "2026-05-22",
+      "updated": "2026-08-27",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1166,7 +1166,7 @@
     "RACEREI": {
       "name": "Indicator 2.d - The number of racial incidents and crimes reported",
       "monitoring": "<strong>Monitoring from baseline (2013/14 - 2024/25)<\/strong><br>Comparing the baseline (2013/14) with 2024/25, the number of racist incidents recorded increased, as did the number of racist crimes recorded. Both racist incidents and racist crimes have also increased since the previous year (2023/24).<br><br>It is not known how willingness to report to the PSNI, or other contextual factors, contribute to the fluctuations in numbers of racist incidents and crimes.",
-      "updated": "2026-05-19",
+      "updated": "2026-08-27",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1309,9 +1309,9 @@
       "rows": 132
     },
     "SOCECREI": {
-      "name": "Indicator 1.d - Percentage (%) of minority ethnic people who are in ‘Managerial’ or ‘Professional’ occupations",
+      "name": "Indicator 1.d - Percentage of minority ethnic people who are in ‘Managerial’ or ‘Professional’ occupations",
       "monitoring": "<strong>Monitoring from baseline (2014 - 2021) <\/strong><br>The Northern Ireland Census is undertaken every ten years. The 2021 Census was the first one conducted since the baseline year (2014). <br><br>In 2021, 26.9% of minority ethnic people were in ‘Managerial’ or ‘Professional’ occupations, compared with 29.0% of white people. Directly comparable figures for this indicator are not available from the 2011 Census.",
-      "updated": "2026-05-22",
+      "updated": "2026-08-27",
       "categories": {
         "STATISTIC": {
           "category": {
