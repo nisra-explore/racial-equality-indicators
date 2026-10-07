@@ -1,11 +1,11 @@
 {
-  "last_run": "2026-10-02T14:41:11.877Z",
+  "last_run": "2026-10-07T10:20:53.438Z",
   "table_count": 20,
   "tables": {
     "ACCMEPREI": {
       "name": "Indicator 2.a - Percentage who would accept minority ethnic people as residents in their area; as a work colleague; as part of their family",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024)  <\/strong><br>Only comparisons of levels of acceptance of Eastern Europeans, Irish Travellers and Muslims between the baseline and current year is appropriate. Prior to 2017, instead of 'Other minority ethnic groups', this question asked about 'Chinese or Asian people'; and therefore, data from 2017 onwards is not directly comparable with previous years for this group.  <br><br>For Eastern Europeans, Irish Travellers and Muslims, willingness to accept each as residents, as work colleagues, or as family members, increased significantly between 2014 and 2024. No significant changes were observed between 2023 and 2024.",
-      "updated": "2026-05-15",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>Only comparisons of levels of acceptance of Eastern Europeans, Irish Travellers and Muslims between the baseline and current year is appropriate. Prior to 2017, instead of 'Other minority ethnic groups', this question asked about 'Chinese or Asian people'; and therefore, data from 2017 onwards is not directly comparable with previous years for this group. <br><br>For Eastern Europeans, Irish Travellers and Muslims, willingness to accept each as residents, as work colleagues, or as family members, increased significantly between 2014 and 2025. No significant changes were observed between 2024 and 2025 for Eastern Europeans and Irish Travellers. However, there was a significant decrease in willingness to accept Muslims as residents in local area (2024: 91%; 2025: 84%) or as a family member (2024: 77%; 2025: 67%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -25,7 +25,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -37,7 +37,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -70,14 +71,14 @@
         "ACCMEPREI": "Percentage who would accept minority ethnic people"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "BELNGHREI": {
       "name": "Indicator 3.d - Percentage of people who say they feel like they belong to their neighbourhood",
@@ -157,8 +158,8 @@
     },
     "BELNIREI": {
       "name": "Indicator 3.d - Percentage of people who say they feel like they belong to Northern Ireland",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>There was a significant decrease in respondents’ sense of belonging to Northern Ireland from the time series peak and current year (2017: 86%; 2024: 78%). <br>There was no significant change in sense of belonging to Northern Ireland when compared with both the baseline and the previous year (2014: 78%; 2023: 79%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>There was a significant decrease in respondents’ sense of belonging to Northern Ireland from the time series peak and current year (2017: 86%; 2025: 77%). <br>There was no significant change in sense of belonging to Northern Ireland when compared with both the baseline and the previous year (2014: 78%; 2024: 78%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -178,7 +179,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -190,7 +191,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -222,14 +224,14 @@
         "BELNIREI": "Percentage of people who say they feel like they belong to Northern Ireland"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 154
+      "rows": 168
     },
     "CREDSEREI": {
       "name": "Indicator 4.d - Percentage of children and young people (aged 16) indicating schools are covering issues of diversity",
@@ -441,8 +443,8 @@
     },
     "DESTREI": {
       "name": "Indicator 1.c - Percentage of students from minority ethnic communities who go on to Higher, Further Education, employment, unemployment, training compared with the general population",
-      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) <\/strong><br>At baseline, the biggest difference between white and minority ethnic school leavers was just under seven percentage points, when a lower proportion of minority ethnic school leavers went on to Further Education (white: 35.5%; minority ethnic: 28.6%). By 2023/24, the biggest difference, at 7 percentage points, was in school leavers going on to Higher Education; a higher proportion of minority ethnic school leavers went on to Higher Education compared with white school leavers (white: 39.9%; minority ethnic: 46.9%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2024/25) <\/strong><br>At baseline, the biggest difference between white and minority ethnic school leavers was just under seven percentage points, when a lower proportion of minority ethnic school leavers went on to Further Education (white: 35.5%; minority ethnic: 28.6%). By 2024/25, the biggest difference, at 4.4 percentage points, was in school leavers going on to Training; (white: 12.9%; minority ethnic: 8.5%). <br>Also notable is the higher proportion of minority ethnic school leavers went on to Higher Education compared with white school leavers (white: 40.0%; minority ethnic: 43.8%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -468,7 +470,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
             "label": {
               "2013/14": "2013/14",
               "2014/15": "2014/15",
@@ -480,7 +482,8 @@
               "2020/21": "2020/21",
               "2021/22": "2021/22",
               "2022/23": "2022/23",
-              "2023/24": "2023/24"
+              "2023/24": "2023/24",
+              "2024/25": "2024/25"
             }
           },
           "label": "Academic year"
@@ -516,19 +519,19 @@
         "DESTPREI": "Percentage of school leavers by destination"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 308
+      "rows": 336
     },
     "LEAVQUAREI": {
       "name": "Indicator 1.a - Percentage of children with 5 GCSEs with grades A*-C by ethnicity",
-      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24)<\/strong><br>Compared with the baseline year (2013/14), by 2023/24 there has been an overall increase of 8.8 percentage points for white and 10.9 percentage points for minority ethnic young people leaving school with five or more GCSEs (Grade A* - C). <br>In 2023/24, there was a 1.1 percentage point difference between the two groups; at baseline there was a 3.2 percentage point difference, and the largest gap between the two groups was in 2019/20 (6.8 percentage point difference).",
-      "updated": "2026-08-26",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2024/25)<\/strong><br>Compared with the baseline year (2013/14), by 2024/25 there has been an overall increase of 9.2 percentage points for white and 9.4 percentage points for minority ethnic young people leaving school with five or more GCSEs (Grade A* - C). <br><br>In 2024/25, there was a 3.0 percentage point difference between the two groups; at baseline there was a 3.2 percentage point difference, and the largest gap between the two groups was in 2019/20 (6.8 percentage point difference).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -554,7 +557,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
             "label": {
               "2013/14": "2013/14",
               "2014/15": "2014/15",
@@ -566,7 +569,8 @@
               "2020/21": "2020/21",
               "2021/22": "2021/22",
               "2022/23": "2022/23",
-              "2023/24": "2023/24"
+              "2023/24": "2023/24",
+              "2024/25": "2024/25"
             }
           },
           "label": "Academic year"
@@ -587,14 +591,14 @@
         "LEAVQUAPREI": "Percentage of children with 5 GCSEs with grades A*-C"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 44
+      "rows": 48
     },
     "MEGPALREI": {
       "name": "Indicator 4.c - Percentage of people who have friends from minority ethnic communities",
@@ -672,8 +676,8 @@
     },
     "MEGPUBLIREI": {
       "name": "Indicator 3.a - Percentage who think minority ethnic people participate ‘a little’ or ‘a lot’ in public life",
-      "monitoring": "<strong>Monitoring from baseline (2014 – 2024) <\/strong><br>The proportion of respondents who thought minority ethnic people participated ‘a little’ or ‘a lot’ in public life (i.e., in at least one of the roles presented) increased significantly in 2024 (76%) from both the baseline and the previous year (2014: 71%; 2023: 70%).   <br> <br>Considering the five roles individually, there were significant decreases in the proportions who thought minority ethnic people participated ‘a little’ or ‘a lot’ as media commentators, politicians, school governors and prominent business leaders between the baseline and the current year.  There was a significant increase between the proportion who thought minority ethnic people participated ‘a little’ or ‘a lot’ as faith leaders from 2024 (61%) to the previous year (2023: 55%).",
-      "updated": "2026-05-15",
+      "monitoring": "<strong>Monitoring from baseline (2014 – 2025) <\/strong><br>The proportion of respondents who thought minority ethnic people participated ‘a little’ or ‘a lot’ in public life (i.e., in at least one of the roles presented) decreased significantly in 2025 (70%) from the previous year (2024: 76%;). There was no significant difference when compared with the baseline year (2014: 71%). <br><br>Considering the five roles individually, there were significant decreases across all roles in the proportions who thought minority ethnic people participated ‘a little’ or ‘a lot’ in public life, between the baseline and the current year. There was a significant decrease between the proportion who thought minority ethnic people participated ‘a little’ or ‘a lot’ as faith leaders and prominent business people from 2025 to the previous year.",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -693,7 +697,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -705,7 +709,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -729,19 +734,19 @@
         "MEGPUBLIREI": "Percentage of people who think minority ethnic people participate 'a little' or 'a lot' in public life"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 66
+      "rows": 72
     },
     "NOQUAREI": {
       "name": "Indicator 1.b - Percentage of pupils leaving school with no qualifications by ethnicity",
-      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2023/24) <\/strong><br>To consider these findings, and those of Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,598 in 2023/24, the total number of minority ethnic school leavers more than doubled (from 465 to 1,143) over the same period. <br><br>In 2023/24, the proportion of white school leavers with no qualifications (0.9%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period. <br><br>Young people from minority ethnic groups represented 4.8% of all school leavers in 2023/24 but make up 8.3% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
-      "updated": "2026-08-27",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2024/25) <\/strong><br>To consider these findings, and those of Indicator 1.c in context, it is important to be mindful that while the total number of white school leavers increased only slightly, from 22,171 in 2013/14 to 22,844 in 2024/25, the total number of minority ethnic school leavers more than doubled (from 465 to 1,301) over the same period. <br><br>In 2024/25, the proportion of white school leavers with no qualifications (1.2%) was slightly higher than the baseline (2013/14: 0.7%); the percentage of minority ethnic school leavers with no qualifications decreased from 5.8% to 1.7% over the same period. <br><br>Young people from minority ethnic groups represented 5.4% of all school leavers in 2024/25 but make up 7.6% of pupils leaving school with no qualifications, compared with 2.1% and 15.1% in 2013/14 respectively.",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -767,7 +772,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
             "label": {
               "2013/14": "2013/14",
               "2014/15": "2014/15",
@@ -779,7 +784,8 @@
               "2020/21": "2020/21",
               "2021/22": "2021/22",
               "2022/23": "2022/23",
-              "2023/24": "2023/24"
+              "2023/24": "2023/24",
+              "2024/25": "2024/25"
             }
           },
           "label": "Academic year"
@@ -800,19 +806,19 @@
         "NOQUAPREI": "Percentage of pupils leaving school with no qualifications"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24"],
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 44
+      "rows": 48
     },
     "ORGPUBLIREI": {
       "name": "Indicator 3.b - Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life",
-      "monitoring": "<strong>Monitoring from baseline (2014 – 2024) <\/strong><br>There was a significant increase in the proportion of respondents who agreed that organisations and leaders should encourage members of minority ethnic communities to participate in public life from the 2014 baseline (67%) and 2024 (79%). The 2024 figure was, however, a significant decrease from the time series peak in 2022 (82%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2014 – 2025) <\/strong><br>There was a significant increase in the proportion of respondents who agreed that organisations and leaders should encourage members of minority ethnic communities to participate in public life from the 2014 baseline (67%) and 2025 (74%). The 2025 figure was, however, a significant decrease from the previous year (2024: 79%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -832,7 +838,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -844,7 +850,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -874,19 +881,19 @@
         "ORGPUBLIREI": "Percentage of people who believe organisations and leaders should encourage members of minority ethnic communities to participate in public life"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "PREJUDREI": {
       "name": "Indicator 2.b - Percentage of people who are prejudiced against people from minority ethnic communities",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>In 2024, 29% of respondents reported that they were prejudiced against people from minority ethnic communities. This was not significantly different when compared with the previous year (2023: 28%) but was a significant increase from the proportion reported in the baseline year (2014: 24%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>In 2025, 32% of respondents reported that they were prejudiced against people from minority ethnic communities. This was not significantly different when compared with the previous year (2024: 29%) but was a significant increase from the proportion reported in the baseline year (2014: 24%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -906,7 +913,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -918,7 +925,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -948,14 +956,14 @@
         "PREJUDREI": "Percentage who self-report being prejudiced against people from minority ethnic communities"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "PUBAPPREI": {
       "name": "Indicator 3.c - Percentage and number of applications for public appointments from minority ethnic people; percentage and number of appointments made to minority ethnic people",
@@ -1023,8 +1031,8 @@
     },
     "PUBBODREI": {
       "name": "Indicator 1.e - Percentage of people who think it is important that public bodies take into account the needs of minority ethnic communities.",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>The proportion of respondents thinking it is important that public bodies take into account the needs of minority ethnic communities has increased significantly in the most recent year (2024: 73%) when compared with the baseline year (2014: 65%) and the peak in (2022: 78%). There was no significant change from the previous year (2023: 72%).",
-      "updated": "2026-05-15",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>The proportion of respondents thinking it is important that public bodies take into account the needs of minority ethnic communities has decreased significantly in the most recent year (2025: 64%) when compared with the previous year (2024: 73%) and the peak in (2022: 78%). There was no significant change from the baseline year (2014: 65%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1044,7 +1052,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -1056,7 +1064,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -1086,14 +1095,14 @@
         "PUBBODREI": "Percentage of people who think it is important that public bodies take into account the needs of minority ethnic communities"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "RACEBULLREI": {
       "name": "Indicator 2.e - Percentage of young people who have witnessed racist bullying or harassment in their school",
@@ -1166,8 +1175,8 @@
     },
     "RACEREI": {
       "name": "Indicator 2.d - The number of racial incidents and crimes reported",
-      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2024/25)<\/strong><br>Comparing the baseline (2013/14) with 2024/25, the number of racist incidents recorded increased, as did the number of racist crimes recorded. Both racist incidents and racist crimes have also increased since the previous year (2023/24).<br><br>It is not known how willingness to report to the PSNI, or other contextual factors, contribute to the fluctuations in numbers of racist incidents and crimes.",
-      "updated": "2026-08-27",
+      "monitoring": "<strong>Monitoring from baseline (2013/14 - 2025/26)<\/strong><br>Comparing the baseline (2013/14) with 2025/26, the number of racist incidents recorded increased, as did the number of racist crimes recorded. Both racist incidents and racist crimes have also increased since the previous year (2024/25). <br>It is not known how willingness to report to the PSNI, or other contextual factors, contribute to the fluctuations in numbers of racist incidents and crimes. <br><br>Source: [url=https://www.psni.police.uk/about-us/our-publications-and-reports/official-statistics/hate-motivation-statistics]Hate Motivation Statistics | PSNI[/url]",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1193,7 +1202,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
+            "index": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25", "2025/26"],
             "label": {
               "2013/14": "2013/14",
               "2014/15": "2014/15",
@@ -1206,7 +1215,8 @@
               "2021/22": "2021/22",
               "2022/23": "2022/23",
               "2023/24": "2023/24",
-              "2024/25": "2024/25"
+              "2024/25": "2024/25",
+              "2025/26": "2025/26"
             }
           },
           "label": "Financial year"
@@ -1226,19 +1236,19 @@
         "RACECRREI": "All crimes with a racist motivation"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25"],
+      "time_series": ["2013/14", "2014/15", "2015/16", "2016/17", "2017/18", "2018/19", "2019/20", "2020/21", "2021/22", "2022/23", "2023/24", "2024/25", "2025/26"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 24
+      "rows": 26
     },
     "RACPREJREI": {
       "name": "Indicator 2.c - Percentage of people who think there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024)  <\/strong><br>Compared with the baseline, there was no significant difference in the proportion of respondents thinking there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago (2014: 52%; 2024: 56%. There was a significant increase between 2024 and the previous year (2023; 31%).",
-      "updated": "2026-05-15",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>There was a significant increase in the proportion of respondents thinking there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago when compared with both the previous year (2025: 65%; 2024: 56%) and the baseline year (2014: 52%).",
+      "updated": "2026-10-07",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -1258,7 +1268,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -1270,7 +1280,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -1300,14 +1311,14 @@
         "RACPREJREI": "Percentage of people who think there is more racial prejudice against people from minority ethnic communities in Northern Ireland than 5 years ago"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "SOCECREI": {
       "name": "Indicator 1.d - Percentage of minority ethnic people who are in ‘Managerial’ or ‘Professional’ occupations",
