@@ -131,7 +131,7 @@ export function addOtherMenus (tables, matrix, geog_type, time_var, search) {
 
             if (other_vars[i] == "EQGRP") {
                 if (EQGRP.value != "N92000002") {
-                    subtitle_text += `<strong>Equal group:</strong> ${new_select.options[new_select.selectedIndex].text}`;
+                    subtitle_text += `<strong>Equality group:</strong> ${new_select.options[new_select.selectedIndex].text}`;
                 }
             } else {
                 subtitle_text += `<strong>${tables[matrix].categories[other_vars[i]].label}</strong>: ${tables[matrix].categories[other_vars[i]].category.label[new_select.value]}<br>`;
