@@ -163,12 +163,6 @@ for (i in seq_along(data_portal$label)) {
     sub("\\[b\\].*", "", .) %>%
     trimws()
 
-  monitoring <- sub(".*\\[b\\]Monitoring", "<strong>Monitoring", note_text) %>%
-    sub("\\[/b\\]", "</strong>", .) %>%
-    sub("\\[b\\].*", "", .) %>%
-    trimws() %>%
-    gsub("\r\n", "<br>", .)
-
   product_code <- json_data$extension$product$code
 
   theme <- data_portal_structure %>%
@@ -176,7 +170,6 @@ for (i in seq_along(data_portal$label)) {
 
   tables$tables[[matrix]] <- list(
     name = name,
-    monitoring = monitoring,
     updated = as.Date(substr(data_portal$updated[i], 1, 10)),
     categories = json_data$dimension,
     statistics = json_data$dimension$STATISTIC$category$label,

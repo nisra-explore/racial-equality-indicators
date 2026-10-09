@@ -454,7 +454,21 @@ export async function plotMap (tables, geog_type) {
         table_title.textContent = tables[geo_menu.value].name;
 
         page_title.textContent = renamePage(tables[matrix].name);
-        summary_text.innerHTML = tables[geo_menu.value].monitoring;
+
+        const note_text = result.note[0];
+
+        let monitoring_text = note_text.slice(note_text.indexOf(["[b]Monitoring"]))
+            .replace("[b]", "<strong>")
+            .replace("[/b]", "</strong>");
+
+        monitoring_text = monitoring_text.slice(0, monitoring_text.indexOf(["[b]"]))
+            .trim()
+            .replace(/\r\n/g, "<br>");
+
+        console.log(monitoring_text);
+
+
+        summary_text.innerHTML = monitoring_text;
 
         nav_theme.textContent = tables[geo_menu.value].theme;        
         nav_subject.textContent = tables[geo_menu.value].subject;    
