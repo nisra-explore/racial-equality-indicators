@@ -465,9 +465,6 @@ export async function plotMap (tables, geog_type) {
             .trim()
             .replace(/\r\n/g, "<br>");
 
-        console.log(monitoring_text);
-
-
         summary_text.innerHTML = monitoring_text;
 
         nav_theme.textContent = tables[geo_menu.value].theme;        
