@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-10-07T10:20:53.438Z",
+  "last_run": "2026-10-09T14:35:38.033Z",
   "table_count": 20,
   "tables": {
     "ACCMEPREI": {
@@ -82,8 +82,8 @@
     },
     "BELNGHREI": {
       "name": "Indicator 3.d - Percentage of people who say they feel like they belong to their neighbourhood",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>There was a significant decrease in respondents’ sense of belonging to their neighbourhood when compared with baseline (2014: 87%; 2024: 82%).    <br>There was no significant change when compared with the previous year (2023: 81%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>There was a significant decrease in respondents’ sense of belonging to their neighbourhood when compared with baseline (2014: 87%; 2025: 80%). <br>There was no significant change when compared with the previous year (2024: 82%).",
+      "updated": "2026-10-08",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -103,7 +103,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -115,7 +115,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -147,14 +148,14 @@
         "BELNGHREI": "Percentage of people who say they feel like they belong to their neighbourhood"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 154
+      "rows": 168
     },
     "BELNIREI": {
       "name": "Indicator 3.d - Percentage of people who say they feel like they belong to Northern Ireland",
@@ -295,8 +296,8 @@
     },
     "CULRICREI": {
       "name": "Indicator 4.a - Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>Since the baseline there has been a significant increase in the proportion of respondents who agreed that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland (2014: 59%; 2024: 65%); however, there was no change between 2024 and the previous year (2023: 65%).",
-      "updated": "2026-05-21",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>When compared with the previous year, there has been a significant decrease in the proportion of respondents who agreed that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland (2024: 65%; 2025: 55%); however, there was no significant change between 2025 and the baseline (2014: 59%).",
+      "updated": "2026-10-08",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -316,7 +317,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -328,7 +329,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -358,19 +360,19 @@
         "CULRICREI": "Percentage who think that the culture and traditions of the minority ethnic community add to the richness and diversity of Northern Ireland"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "CULTIRTRREI": {
       "name": "Indicator 4.b - Percentage of people who believe that the culture of Irish Travellers is more respected than it once was",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>Since the baseline, there has been a significant increase in the proportion of respondents who agreed that the culture of Irish Travellers is more respected than it once was (2024: 26%; 2014: 18%). There was no significant difference from the previous year (2023: 24%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>There has been a significant decrease in the proportion of respondents who agreed that the culture of Irish Travellers is more respected than it once was when comparted with the previous year (2025: 19%; 2024: 26%). There was no significant difference from the baseline (2014: 18%).",
+      "updated": "2026-10-08",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -390,7 +392,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -402,7 +404,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -432,14 +435,14 @@
         "CULTIRTRREI": "Percentage of people who believe that the culture of Irish Travellers is more respected than it once was"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "DESTREI": {
       "name": "Indicator 1.c - Percentage of students from minority ethnic communities who go on to Higher, Further Education, employment, unemployment, training compared with the general population",
@@ -602,8 +605,8 @@
     },
     "MEGPALREI": {
       "name": "Indicator 4.c - Percentage of people who have friends from minority ethnic communities",
-      "monitoring": "<strong>Monitoring from baseline (2014 - 2024) <\/strong><br>In 2024, the percentage of people with friends from at least one minority ethnic community (58%) was significantly higher than the baseline position (2014: 42%). There was no significant change from the previous year (2023: 56%). <br> <br>At baseline, respondents were most likely to have friends from the Polish (22%), Black (18%) and Chinese (16%) minority ethnic communities. In 2024, respondents were most likely to have friends from similar minority ethnic communities:  Black (28%), Polish (26%), and South Asian (22%).",
-      "updated": "2026-05-19",
+      "monitoring": "<strong>Monitoring from baseline (2014 - 2025) <\/strong><br>In 2025, the percentage of people with friends from at least one minority ethnic community (40%) was significantly lower than the previous year (2024: 58%). There was no significant change from the baseline position (2014: 42%). <br><br>At baseline, respondents were most likely to have friends from the Polish (22%), Black (18%) and Chinese (16%) minority ethnic communities. In 2025, respondents were most likely to have friends from similar minority ethnic communities: Polish (33%), Black (28%), and South Asian (20%).",
+      "updated": "2026-10-08",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -623,7 +626,7 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+            "index": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
             "label": {
               "2014": "2014",
               "2015": "2015",
@@ -635,7 +638,8 @@
               "2021": "2021",
               "2022": "2022",
               "2023": "2023",
-              "2024": "2024"
+              "2024": "2024",
+              "2025": "2025"
             }
           },
           "label": "Year"
@@ -665,14 +669,14 @@
         "MEGPALREI": "Percentage of people who have friends from minority ethnic communities"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"],
+      "time_series": ["2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
       "theme": "Themed datasets",
       "theme_code": 65,
       "subject": "Racial equality",
       "subject_code": 168,
       "product": "Racial equality indicators",
       "product_code": "REREI",
-      "rows": 132
+      "rows": 144
     },
     "MEGPUBLIREI": {
       "name": "Indicator 3.a - Percentage who think minority ethnic people participate ‘a little’ or ‘a lot’ in public life",
