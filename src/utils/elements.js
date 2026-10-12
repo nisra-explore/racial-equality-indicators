@@ -40,7 +40,7 @@ export const table_updated = document.getElementById("table-updated");
 export const share_btn = document.querySelectorAll('button[type="share"]');
 export const headline_stat_label = document.getElementById("headline-stat-label");
 export const stat_info_text = document.getElementById("stat-info-text");
-export const download_btn = document.getElementById("download-btn");
+export const download_dropdown = document.getElementById("download-dropdown");
 export const capture = document.getElementById("capture");
 export const headline_year = document.getElementById("headline-year");
 export const skip_link = document.getElementById("skip-link");
