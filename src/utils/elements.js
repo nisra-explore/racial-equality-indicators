@@ -37,7 +37,7 @@ export const table_tabs = document.getElementById("table-tabs");
 export const table_tabs_content = document.getElementById("table-tabs-content");
 export const tables_title = document.getElementById("tables-title");
 export const table_updated = document.getElementById("table-updated");
-export const share_btn = document.querySelectorAll('button[type="share"]');
+export const share_btn = document.getElementById("share-btn");
 export const headline_stat_label = document.getElementById("headline-stat-label");
 export const stat_info_text = document.getElementById("stat-info-text");
 export const download_dropdown = document.getElementById("download-dropdown");

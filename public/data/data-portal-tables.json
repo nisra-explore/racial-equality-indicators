@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-10-09T20:34:43.454Z",
+  "last_run": "2026-10-12T18:38:49.661Z",
   "table_count": 1248,
   "tables": {
     "ABI01": {
@@ -13026,7 +13026,7 @@
     },
     "BUSFUEL": {
       "name": "Buses by fuel type",
-      "updated": "2026-09-18",
+      "updated": "2026-10-12",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -181983,7 +181983,7 @@
     },
     "WATER01A": {
       "name": "Water usage - showers",
-      "updated": "2026-07-08",
+      "updated": "2026-10-12",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -182003,10 +182003,11 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2023/24", "2024/25"],
+            "index": ["2023/24", "2024/25", "2025/26"],
             "label": {
               "2023/24": "2023/24",
-              "2024/25": "2024/25"
+              "2024/25": "2024/25",
+              "2025/26": "2025/26"
             }
           },
           "label": "Financial year"
@@ -182030,18 +182031,18 @@
         "PER_RESP": "Percentage of respondents"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2023/24", "2024/25"],
+      "time_series": ["2023/24", "2024/25", "2025/26"],
       "theme": "People and communities",
       "theme_code": 70,
       "subject": "Property and housing",
       "subject_code": 165,
       "product": "Household characteristics",
       "product_code": "PHHHC",
-      "rows": 12
+      "rows": 18
     },
     "WATER03A": {
       "name": "Water usage - baths",
-      "updated": "2026-07-08",
+      "updated": "2026-10-12",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -182061,9 +182062,10 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": "2024/25",
+            "index": ["2024/25", "2025/26"],
             "label": {
-              "2024/25": "2024/25"
+              "2024/25": "2024/25",
+              "2025/26": "2025/26"
             }
           },
           "label": "Financial year"
@@ -182088,18 +182090,18 @@
         "PER_RESP": "Percentage of respondents"
       },
       "time": "TLIST(A1)",
-      "time_series": "2024/25",
+      "time_series": ["2024/25", "2025/26"],
       "theme": "People and communities",
       "theme_code": 70,
       "subject": "Property and housing",
       "subject_code": 165,
       "product": "Household characteristics",
       "product_code": "PHHHC",
-      "rows": 7
+      "rows": 14
     },
     "WATER05A": {
       "name": "Water usage - hosepipe/bucket",
-      "updated": "2026-07-08",
+      "updated": "2026-10-12",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -182119,10 +182121,11 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2023/24", "2024/25"],
+            "index": ["2023/24", "2024/25", "2025/26"],
             "label": {
               "2023/24": "2023/24",
-              "2024/25": "2024/25"
+              "2024/25": "2024/25",
+              "2025/26": "2025/26"
             }
           },
           "label": "Financial year"
@@ -182146,18 +182149,18 @@
         "PER_RESP": "Percentage of respondents"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2023/24", "2024/25"],
+      "time_series": ["2023/24", "2024/25", "2025/26"],
       "theme": "People and communities",
       "theme_code": 70,
       "subject": "Property and housing",
       "subject_code": 165,
       "product": "Household characteristics",
       "product_code": "PHHHC",
-      "rows": 12
+      "rows": 18
     },
     "WATER06A07A": {
       "name": "Water usage - washing machine and dishwasher",
-      "updated": "2026-07-08",
+      "updated": "2026-10-12",
       "categories": {
         "STATISTIC": {
           "category": {
@@ -182177,10 +182180,11 @@
         },
         "TLIST(A1)": {
           "category": {
-            "index": ["2023/24", "2024/25"],
+            "index": ["2023/24", "2024/25", "2025/26"],
             "label": {
               "2023/24": "2023/24",
-              "2024/25": "2024/25"
+              "2024/25": "2024/25",
+              "2025/26": "2025/26"
             }
           },
           "label": "Financial year"
@@ -182214,14 +182218,14 @@
         "PER_RESP": "Percentage of respondents"
       },
       "time": "TLIST(A1)",
-      "time_series": ["2023/24", "2024/25"],
+      "time_series": ["2023/24", "2024/25", "2025/26"],
       "theme": "People and communities",
       "theme_code": 70,
       "subject": "Property and housing",
       "subject_code": 165,
       "product": "Household characteristics",
       "product_code": "PHHHC",
-      "rows": 24
+      "rows": 36
     },
     "WBLOCAA": {
       "name": "Individual Wellbeing - Locus of Control",
