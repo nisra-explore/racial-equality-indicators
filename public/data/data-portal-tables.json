@@ -1,6 +1,6 @@
 {
-  "last_run": "2026-10-12T18:38:49.661Z",
-  "table_count": 1248,
+  "last_run": "2026-10-14T20:01:36.737Z",
+  "table_count": 1249,
   "tables": {
     "ABI01": {
       "name": "Annual Business Inquiry: results by industry sector",
@@ -182039,6 +182039,61 @@
       "product": "Household characteristics",
       "product_code": "PHHHC",
       "rows": 18
+    },
+    "WATER02A": {
+      "name": "Water usage - shower duration",
+      "updated": "2026-10-13",
+      "categories": {
+        "STATISTIC": {
+          "category": {
+            "index": "PER_RESP",
+            "label": {
+              "PER_RESP": "Percentage of respondents"
+            },
+            "unit": {
+              "PER_RESP": {
+                "decimals": 1,
+                "label": "%",
+                "position": "end"
+              }
+            }
+          },
+          "label": "Statistic"
+        },
+        "TLIST(A1)": {
+          "category": {
+            "index": "2025/26",
+            "label": {
+              "2025/26": "2025/26"
+            }
+          },
+          "label": "Financial year"
+        },
+        "SHOWERDUR": {
+          "category": {
+            "index": ["1", "2", "3", "4"],
+            "label": {
+              "1": "5 minutes or less",
+              "2": "6 and 10 minutes",
+              "3": "11 to 20 minutes",
+              "4": "More than 20 minutes"
+            }
+          },
+          "label": "Average shower duration"
+        }
+      },
+      "statistics": {
+        "PER_RESP": "Percentage of respondents"
+      },
+      "time": "TLIST(A1)",
+      "time_series": "2025/26",
+      "theme": "People and communities",
+      "theme_code": 70,
+      "subject": "Property and housing",
+      "subject_code": 165,
+      "product": "Household characteristics",
+      "product_code": "PHHHC",
+      "rows": 4
     },
     "WATER03A": {
       "name": "Water usage - baths",
